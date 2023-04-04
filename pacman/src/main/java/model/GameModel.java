@@ -40,13 +40,13 @@ public class GameModel extends Application {
 
         text.setFont(font);
 
-        text.setFill(Color.BLACK);
+        text.setFill(Color.WHITE);
 //        text.setStroke(Color.RED);
         text.setStrokeWidth(1);
 
 //        VBox root = new VBox(text);
         Group root = new Group(text);
-        Scene scene = new Scene(root, 595, 150, Color.BEIGE);
+        Scene scene = new Scene(root, 595, 150, Color.BLACK);
 
         stage.setScene(scene);
         stage.show();
