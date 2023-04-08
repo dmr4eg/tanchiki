@@ -1,4 +1,4 @@
-package tanchiki.assyldamnurakali;
+package game.pacman;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

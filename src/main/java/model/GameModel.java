@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 
 import static javafx.application.Application.launch;
 
+
 public class GameModel extends Application {
 //    private final Font font = Font.loadFont("file:resources/CCOverbyteOffW00-Regular.ttf", 20);
     private boolean isRunning = false;
@@ -33,7 +34,7 @@ public class GameModel extends Application {
 
 //    private imageLoader imageLoader = new imageLoader();
 
-    public void start (Stage stage){
+    public void start (Stage stage) throws FileNotFoundException {
         Text text = new Text(30.0, 75.0, "LOL");
         Font font = Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 30);
 
