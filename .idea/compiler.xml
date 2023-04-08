@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="assyldamnurakali" />
+        <module name="pacman" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="assyldamnurakali" target="19" />
+    </bytecodeTargetLevel>
   </component>
 </project>

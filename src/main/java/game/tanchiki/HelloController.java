@@ -1,4 +1,4 @@
-package game.pacman;
+package game.tanchiki;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
