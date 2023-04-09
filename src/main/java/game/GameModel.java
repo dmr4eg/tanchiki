@@ -20,14 +20,6 @@ public class GameModel extends Application {
 
         FileReader fileReader = new FileReader(fileName);
 
-        try {
-            int i;
-            while ((i = fileReader.read()) != -1) {
-                System.out.print((char) i);
-            }
-        } finally {
-            fileReader.close();
-        }
     }
 }
 //
