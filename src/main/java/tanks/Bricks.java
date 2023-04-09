@@ -1,11 +1,11 @@
-package game;
+package tanks;
 
+import com.google.gson.Gson;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
 
 import java.io.FileReader;
-import com.google.gson.Gson;
 import java.util.Map;
 
 public class Bricks {

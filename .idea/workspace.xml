@@ -5,28 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="269ef673-ab83-4ed9-b222-3cd47ed4e238" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/GameModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/GameModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/CCOverbyteOffW00-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CCOverbyteOffW00-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/down.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/pacman/HelloApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/pacman/HelloController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/pacman/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ghost.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/heart.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/left.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pacman.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/right.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/up.gif" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tanks/Bullet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tanks/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tanks/GameModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tanks/Model.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tanks/Nonstatic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/tanks/Tanks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Bricks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tanks/Bricks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tanks/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/GameModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Tanks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Tanks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/brrr.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tanks/brrr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tanks/styles.css" afterDir="false" />
     </list>
-    <list id="56059dc6-547d-4d90-87ef-6d7c88b1342c" name="Changes by dmr4eg" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list id="56059dc6-547d-4d90-87ef-6d7c88b1342c" name="Changes by dmr4eg" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +52,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/CVUT/TeamGame/src/main/java/tanks"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

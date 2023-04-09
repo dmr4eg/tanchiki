@@ -1,11 +1,11 @@
-package game;
+package tanks;
 
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class Tanks extends Nonstatic{
+public class Tanks extends Nonstatic {
 
     private Group root;
     private int Orientation;
