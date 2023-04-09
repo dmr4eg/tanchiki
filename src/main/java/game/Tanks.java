@@ -2,29 +2,30 @@ package game;
 
 
 import javafx.scene.Group;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class Tanks extends Nonstatic{
 
-    private Group root;
+    private GraphicsContext gc;
     private int Orientation;
 
 
-    public Tanks(int HP,int MS,int DMG, Group root, int Orientation, int PosX, int PosY) {
+    public Tanks(int HP, int MS, int DMG, GraphicsContext gc, int Orientation, int PosX, int PosY) {
         super.HP = HP;
         super.DMG = DMG;
         super.MS = MS;
-        this.root = root;
+        this.gc = gc;
         this.Orientation = Orientation;
         this.PosY = PosY;
         this.PosX = PosX;
-        Rectangle brick = new Rectangle(PosX, PosY, 16, 16);
-        brick.setFill(Color.BLUE);
-        this.root.getChildren().add(brick);
+
     }
 
     private void updatePos(int x,int  y){
+        gc.setFill(Color.BLACK);
+        gc.fillRect(PosX,PosY,16,16);
         if (x==1){
             PosX += MS;
             Orientation = 1;

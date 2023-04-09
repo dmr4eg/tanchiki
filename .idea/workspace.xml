@@ -5,21 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="269ef673-ab83-4ed9-b222-3cd47ed4e238" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tanks/Bullet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tanks/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tanks/GameModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tanks/Model.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tanks/Nonstatic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tanks/Tanks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Bricks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tanks/Bricks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tanks/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/GameModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Tanks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Tanks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/brrr.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tanks/brrr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tanks/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/Bricks.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/Enemy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/GameModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/Tanks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Tanks.class" afterDir="false" />
     </list>
     <list id="56059dc6-547d-4d90-87ef-6d7c88b1342c" name="Changes by dmr4eg" comment="" />
+    <list id="418be624-e450-4897-b2a2-09db30ee6746" name="Changes by User" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Tanks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Tanks.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +32,22 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/game/Controller.java">
+      <ranges>
+        <range start1="0" end1="0" start2="0" end2="1" changelist="418be624-e450-4897-b2a2-09db30ee6746" />
+        <range start1="4" end1="4" start2="5" end2="7" changelist="418be624-e450-4897-b2a2-09db30ee6746" />
+        <range start1="7" end1="7" start2="10" end2="13" changelist="418be624-e450-4897-b2a2-09db30ee6746" />
+        <range start1="10" end1="10" start2="16" end2="17" changelist="418be624-e450-4897-b2a2-09db30ee6746" />
+        <range start1="16" end1="17" start2="23" end2="24" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
+        <range start1="19" end1="19" start2="26" end2="28" changelist="418be624-e450-4897-b2a2-09db30ee6746" />
+        <range start1="22" end1="23" start2="31" end2="38" changelist="418be624-e450-4897-b2a2-09db30ee6746" />
+        <range start1="25" end1="27" start2="40" end2="41" changelist="418be624-e450-4897-b2a2-09db30ee6746" />
+        <range start1="28" end1="29" start2="42" end2="44" changelist="418be624-e450-4897-b2a2-09db30ee6746" />
+        <range start1="35" end1="39" start2="50" end2="53" changelist="418be624-e450-4897-b2a2-09db30ee6746" />
+      </ranges>
+    </file>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -53,9 +67,15 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/CVUT/TeamGame/src/main/java/tanks"
+    "last_opened_file_path": "C:/CVUT/TeamGame/src/main/java/tanks",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
