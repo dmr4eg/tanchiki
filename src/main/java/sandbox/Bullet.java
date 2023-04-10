@@ -1,4 +1,4 @@
-package tanks;
+package sandbox;
 
 public class Bullet {
     private int DMG;

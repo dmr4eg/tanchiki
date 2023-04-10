@@ -1,4 +1,4 @@
-package tanks;
+package sandbox;
 
 public class Enemy {
 

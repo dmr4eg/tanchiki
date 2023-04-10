@@ -1,4 +1,4 @@
-package tanks;
+package sandbox;
 
 import javafx.application.Application;
 import javafx.scene.Group;
