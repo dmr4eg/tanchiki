@@ -28,6 +28,8 @@ public class Tanks extends Nonstatic{
     }
 
     private void updatePos(int x,int  y){
+        gc.fillRect(0, 0, 600, 600);
+        gc.setFill(Color.BLACK);
         if (x==1){
             PosX += MS;
             Orientation = 1;
@@ -73,18 +75,28 @@ public class Tanks extends Nonstatic{
     }
 
     public void moveLeft() {
+
+//        gc.fillRect(0, 0, 600, 600 );
+//        gc.setFill(Color.BLACK);
         updatePos(-1, 0);
     }
 
     public void moveRight() {
+//        gc.fillRect(0, 0, 600, 600);
+//        gc.setFill(Color.BLACK);
         updatePos(1, 0);
     }
 
     public void moveUp() {
+//        gc.fillRect(0, 0, 600, 600);
+//        gc.setFill(Color.BLACK);
         updatePos(0, -1);
     }
 
     public void moveDown() {
+
+//        gc.fillRect(0, 0, 600, 600);
+//        gc.setFill(Color.BLACK);
         updatePos(0, 1);
     }
 }

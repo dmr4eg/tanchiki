@@ -33,15 +33,26 @@ public class Controller extends Application{
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         Tanks tanks = new Tanks(100, 5, 20, gc, 1, 100, 100);
-        Timeline tl = new Timeline(new KeyFrame(Duration.millis(10), e->run(gc, tanks)));
 //        tl.setCycleCount(Timeline.INDEFINITE);
 
         // Set up scene and show stage
         Scene scene = new Scene(new StackPane(canvas));
         stage.setScene(scene);
         stage.show();
+        Timeline tl = new Timeline(new KeyFrame(Duration.millis(10), e->run(gc, tanks, scene)));
 
-        // Add event handlers for moving the tank
+        // Add event handlers for moving the tank;
+
+        tl.play();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    public void run(GraphicsContext gc, Tanks tanks, Scene scene) {
+        gc.fillRect(0, 0, WIDTH, HEIGHT);
+        gc.setFill(Color.BLACK);
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case LEFT:
@@ -58,17 +69,6 @@ public class Controller extends Application{
                     break;
             }
         });
-
-        tl.play();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    public void run(GraphicsContext gc, Tanks tanks) {
-        gc.fillRect(0, 0, WIDTH, HEIGHT);
-        gc.setFill(Color.BLACK);
 
         tanks.update(1, 0, 20);
     }
