@@ -3,6 +3,7 @@ package game;
 
 import javafx.scene.Group;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -10,6 +11,7 @@ public class Tanks extends Nonstatic{
 
     private GraphicsContext gc;
     private int Orientation;
+    Image image = new Image("player1_tank_right.png");
 
 
     public Tanks(int HP, int MS, int DMG, GraphicsContext gc, int Orientation, int PosX, int PosY) {
@@ -24,8 +26,8 @@ public class Tanks extends Nonstatic{
     }
 
     private void updatePos(int x,int  y){
-        gc.setFill(Color.BLACK);
-        gc.fillRect(PosX,PosY,16,16);
+
+        gc.drawImage( image, PosX, PosY);
         if (x==1){
             PosX += MS;
             Orientation = 1;

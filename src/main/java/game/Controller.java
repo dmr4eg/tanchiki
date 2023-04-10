@@ -31,9 +31,7 @@ public class Controller extends Application{
         // Create group to hold all bricks
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-
-        Tanks tanks = new Tanks(100, 1, 20,gc, 1, 100, 100);
-
+        Tanks tanks = new Tanks(100, 1, 20, gc, 1, 100, 100);
         Timeline tl = new Timeline(new KeyFrame(Duration.millis(10), e->run(gc, tanks)));
         tl.setCycleCount(Timeline.INDEFINITE);
 
@@ -49,6 +47,9 @@ public class Controller extends Application{
     }
 
     public void run(GraphicsContext gc, Tanks tanks) {
+        gc.fillRect(0, 0 , WIDTH, HEIGHT);
         gc.setFill(Color.BLACK);
+        tanks.update(1,0, 20);
+
         }
 }

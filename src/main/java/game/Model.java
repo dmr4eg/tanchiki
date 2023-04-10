@@ -14,6 +14,7 @@ public class Model {
     }
 
     public void update(){
+
     }
 
     public void addBullet(Bullet bulet){
