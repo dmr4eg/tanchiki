@@ -11,7 +11,10 @@ public class Tanks extends Nonstatic{
 
     private GraphicsContext gc;
     private int Orientation;
-    Image image = new Image("player1_tank_right.png");
+    private Image imageRight = new Image("player1_tank_right.png");
+    private Image imageLeft = new Image("player1_tank_left.png");
+    private Image imageUp = new Image("player1_tank_up.png");
+    private Image imageDown = new Image("player1_tank_down.png");
 
 
     public Tanks(int HP, int MS, int DMG, GraphicsContext gc, int Orientation, int PosX, int PosY) {
@@ -22,27 +25,28 @@ public class Tanks extends Nonstatic{
         this.Orientation = Orientation;
         this.PosY = PosY;
         this.PosX = PosX;
-
     }
 
     private void updatePos(int x,int  y){
-
-        gc.drawImage( image, PosX, PosY);
         if (x==1){
             PosX += MS;
             Orientation = 1;
+            gc.drawImage( imageRight, PosX, PosY);
         }
         if (y==1){
             PosY += MS;
             Orientation = 2;
+            gc.drawImage( imageDown, PosX, PosY);
         }
         if (y == -1){
             PosY -= MS;
             Orientation = 3;
+            gc.drawImage( imageUp, PosX, PosY);
         }
         if (x == -1){
             PosX -= MS;
             Orientation = 4;
+            gc.drawImage( imageLeft, PosX, PosY);
         }
     }
 
@@ -66,5 +70,21 @@ public class Tanks extends Nonstatic{
     private void Fire(){
         Bullet bullet = new Bullet(DMG, getPosX(), getPosY(), Orientation);
 //        model.addBullet(bullet);
+    }
+
+    public void moveLeft() {
+        updatePos(-1, 0);
+    }
+
+    public void moveRight() {
+        updatePos(1, 0);
+    }
+
+    public void moveUp() {
+        updatePos(0, -1);
+    }
+
+    public void moveDown() {
+        updatePos(0, 1);
     }
 }
