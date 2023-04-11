@@ -11,10 +11,10 @@ public class Tanks extends Nonstatic{
 
     private GraphicsContext gc;
     private int Orientation;
-    private Image imageRight = new Image("player1_tank_right.png");
-    private Image imageLeft = new Image("player1_tank_left.png");
-    private Image imageUp = new Image("player1_tank_up.png");
-    private Image imageDown = new Image("player1_tank_down.png");
+    private Image imageRight = new Image("p1right.png");
+    private Image imageLeft = new Image("p1left.png");
+    private Image imageUp = new Image("p1up.png");
+    private Image imageDown = new Image("p1down.png");
 
 
     public Tanks(int HP, int MS, int DMG, GraphicsContext gc, int Orientation, int PosX, int PosY) {

@@ -6,8 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="269ef673-ab83-4ed9-b222-3cd47ed4e238" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Tanks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Tanks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sandbox/brrr.json" beforeDir="false" afterPath="$PROJECT_DIR$/brrr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/break_brick.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/enemy_bullet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/enemy_tank_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/enemy_tank_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/enemy_tank_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/enemy_tank_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player1_tank_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player1_tank_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player1_tank_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player1_tank_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player2_tank_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player2_tank_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player2_tank_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/player2_tank_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/solid_brick.jpg" beforeDir="false" />
     </list>
     <list id="56059dc6-547d-4d90-87ef-6d7c88b1342c" name="Changes by dmr4eg" comment="" />
     <list id="418be624-e450-4897-b2a2-09db30ee6746" name="Changes by User" comment="" />
@@ -51,6 +66,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
