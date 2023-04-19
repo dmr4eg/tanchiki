@@ -16,8 +16,10 @@ public class Tanks extends Nonstatic{
     private Image imageUp = new Image("p1up.png");
     private Image imageDown = new Image("p1down.png");
 
+    private Model model;
 
-    public Tanks(int HP, int MS, int DMG, GraphicsContext gc, int Orientation, int PosX, int PosY) {
+
+    public Tanks(int HP, int MS, int DMG, GraphicsContext gc, int Orientation, int PosX, int PosY, Model model) {
         super.HP = HP;
         super.DMG = DMG;
         super.MS = MS;
@@ -25,40 +27,50 @@ public class Tanks extends Nonstatic{
         this.Orientation = Orientation;
         this.PosY = PosY;
         this.PosX = PosX;
+        this.model = model;
     }
 
-    private void updatePos(int x,int  y){
-        gc.fillRect(0, 0, 600, 600);
-        gc.setFill(Color.BLACK);
-        if (x==1){
-            PosX += MS;
-            Orientation = 1;
-            gc.drawImage( imageRight, PosX, PosY);
-        }
-        if (y==1){
-            PosY += MS;
-            Orientation = 2;
-            gc.drawImage( imageDown, PosX, PosY);
-        }
-        if (y == -1){
-            PosY -= MS;
-            Orientation = 3;
-            gc.drawImage( imageUp, PosX, PosY);
-        }
-        if (x == -1){
-            PosX -= MS;
-            Orientation = 4;
-            gc.drawImage( imageLeft, PosX, PosY);
+    private void updatePos(){
+        if (Orientation != 0){
+            if (Orientation == 2){
+                PosX += MS;
+            }
+            if (Orientation == 4){
+                PosY += MS;
+            }
+            if (Orientation == 3){
+                PosY -= MS;
+            }
+            if (Orientation == 1){
+                PosX -= MS;
         }
     }
+    }
+    private void draw(){
+        switch (Orientation){
+            case 1:
+                gc.drawImage(imageLeft, PosX, PosY);
+                break;
 
+            case 2:
+                gc.drawImage(imageRight, PosX, PosY);
+                break;
+
+            case 3:
+                gc.drawImage(imageUp, PosX, PosY);
+                break;
+            case 4:
+                gc.drawImage(imageDown, PosX, PosY);
+                break;
+        }
+    }
     private void updateHP(int DMG){
         HP -= DMG;
     }
 
-    public void update(int x,int y, int DMG){
-        updatePos(x,y);
+    public void update(int DMG){
         updateHP(DMG);
+        draw();
     }
 
     private int getPosX(){
@@ -69,34 +81,30 @@ public class Tanks extends Nonstatic{
         return PosY;
     }
 
-    private void Fire(){
-        Bullet bullet = new Bullet(DMG, getPosX(), getPosY(), Orientation);
-//        model.addBullet(bullet);
+    public void fire(){
+        Bullet bullet = new Bullet(DMG, getPosX(), getPosY(), Orientation, gc);
+        model.addBullet(bullet);
     }
 
     public void moveLeft() {
-
-//        gc.fillRect(0, 0, 600, 600 );
-//        gc.setFill(Color.BLACK);
-        updatePos(-1, 0);
+        Orientation = 1;
+        updatePos();
     }
 
     public void moveRight() {
-//        gc.fillRect(0, 0, 600, 600);
-//        gc.setFill(Color.BLACK);
-        updatePos(1, 0);
+        Orientation = 2;
+        updatePos();
+
     }
 
     public void moveUp() {
-//        gc.fillRect(0, 0, 600, 600);
-//        gc.setFill(Color.BLACK);
-        updatePos(0, -1);
+        Orientation = 3;
+        updatePos();
+
     }
 
     public void moveDown() {
-
-//        gc.fillRect(0, 0, 600, 600);
-//        gc.setFill(Color.BLACK);
-        updatePos(0, 1);
+        Orientation = 4;
+        updatePos();
     }
 }

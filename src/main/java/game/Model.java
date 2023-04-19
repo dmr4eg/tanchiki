@@ -3,23 +3,29 @@ package game;
 import java.util.ArrayList;
 
 public class Model {
-    private ArrayList<Bullet> bulets;
+    private ArrayList<Bullet> bullets;
     private ArrayList<Tanks[]> tanks;
     boolean isStart;
 
-    public Model(ArrayList<Bullet> bulets, ArrayList<Tanks[]> tanks, boolean isStart) {
-        this.bulets = bulets;
-        this.tanks = tanks;
+    public Model(boolean isStart) {
         this.isStart = isStart;
     }
 
     public void update(){
-
+        for(Bullet bullet : bullets){
+            bullet.update();
+        }
     }
 
-    public void addBullet(Bullet bulet){
-        bulets.add(bulet);
+    public void addBullet(Bullet bullet){
+        bullets.add(bullet);
+    }
+    public ArrayList<Bullet> getBullets(){
+        return bullets;
     }
 
+    private void calculateCollision(){
+
+    }
 
 }
