@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Controller extends Application implements Runnable {
+public class Controller extends Application{
     private final int WIDTH = 600;
     private final int HEIGHT = 600;
 
@@ -20,15 +20,10 @@ public class Controller extends Application implements Runnable {
         Scene scene = new Scene(root, WIDTH, HEIGHT, Color.BLACK);
         stage.setScene(scene);
         stage.show();
-        Tanks tanks = new Tanks(100, 1, 20, root, 1, 100, 100);
+//        Tanks tanks = new Tanks(100, 1, 20, root, 1, 100, 100);
     }
 
     public static void main(String[] args) {
         launch(args);
-    }
-
-    @Override
-    public void run() {
-
     }
 }
