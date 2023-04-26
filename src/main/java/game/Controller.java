@@ -10,6 +10,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -27,6 +28,8 @@ public class Controller extends Application{
     private final int HEIGHT = 600;
     private boolean isGameStart = true;
     private Model model = new Model(true);
+
+    private int TILE = 50;
 
     private Bullet bullet;
 
@@ -46,21 +49,22 @@ public class Controller extends Application{
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case LEFT:
-                    tanks.moveLeft();
+                    if (!(tanks.getPosX() <= 0))tanks.moveLeft();
                     break;
                 case RIGHT:
-                    tanks.moveRight();
+                    if (!(tanks.getPosX() >= WIDTH-TILE))tanks.moveRight();
                     break;
                 case UP:
-                    tanks.moveUp();
+                    if (!(tanks.getPosY() <= 0)) {
+                        tanks.moveUp();
+                    }
                     break;
                 case DOWN:
-                    tanks.moveDown();
+                    if (!(tanks.getPosY() >= HEIGHT- TILE))tanks.moveDown();
                     break;
                 case E:
                     System.out.println(1);
                     tanks.fire();
-                    break;
             }
         });
         tl.play();
@@ -74,6 +78,9 @@ public class Controller extends Application{
         gc.fillRect(0, 0, WIDTH, HEIGHT);
         gc.setFill(Color.BLACK);
         tanks.update(0);
+        if (!model.getBullets().isEmpty()){
+            model.update();
+        }
 
     }
 }

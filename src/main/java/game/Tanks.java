@@ -12,9 +12,15 @@ public class Tanks extends Nonstatic{
     private GraphicsContext gc;
     private int Orientation;
     private Image imageRight = new Image("p1right.png");
+    private Image imageRight2 = new Image("p1right2.png");
     private Image imageLeft = new Image("p1left.png");
+    private Image imageLeft2 = new Image("p1left2.png");
     private Image imageUp = new Image("p1up.png");
+    private Image imageUp2 = new Image("p1up2.png");
     private Image imageDown = new Image("p1down.png");
+    private Image imageDown2 = new Image("p1down2.png");
+
+    private boolean switcher = true;
 
     private Model model;
 
@@ -49,18 +55,34 @@ public class Tanks extends Nonstatic{
     private void draw(){
         switch (Orientation){
             case 1:
-                gc.drawImage(imageLeft, PosX, PosY);
+                if (switcher){
+                    gc.drawImage(imageLeft, PosX, PosY);
+                }else {
+                    gc.drawImage(imageLeft2, PosX, PosY);
+                }
                 break;
 
             case 2:
-                gc.drawImage(imageRight, PosX, PosY);
+                if(switcher){
+                    gc.drawImage(imageRight, PosX, PosY);
+                }else {
+                    gc.drawImage(imageRight2, PosX, PosY);
+                }
                 break;
 
             case 3:
-                gc.drawImage(imageUp, PosX, PosY);
+                if(switcher){
+                    gc.drawImage(imageUp, PosX, PosY);
+                }else {
+                    gc.drawImage(imageUp2, PosX, PosY);
+                }
                 break;
             case 4:
-                gc.drawImage(imageDown, PosX, PosY);
+                if(switcher){
+                    gc.drawImage(imageDown, PosX, PosY);
+                }else {
+                    gc.drawImage(imageDown2, PosX, PosY);
+                }
                 break;
         }
     }
@@ -73,38 +95,41 @@ public class Tanks extends Nonstatic{
         draw();
     }
 
-    private int getPosX(){
-        return PosX;
+    @Override
+    public int getPosX() {
+        return super.getPosX();
     }
 
-    private int getPosY(){
-        return PosY;
+    public int getPosY() {
+        return super.getPosY();
     }
 
     public void fire(){
-        Bullet bullet = new Bullet(DMG, getPosX(), getPosY(), Orientation, gc);
+        Bullet bullet = new Bullet(DMG, getPosX(), getPosY(), Orientation, gc, MS);
         model.addBullet(bullet);
     }
 
     public void moveLeft() {
         Orientation = 1;
         updatePos();
+        switcher = !switcher;
     }
 
     public void moveRight() {
         Orientation = 2;
         updatePos();
-
+        switcher = !switcher;
     }
 
     public void moveUp() {
         Orientation = 3;
         updatePos();
-
+        switcher = !switcher;
     }
 
     public void moveDown() {
         Orientation = 4;
         updatePos();
+        switcher = !switcher;
     }
 }

@@ -3,7 +3,7 @@ package game;
 import java.util.ArrayList;
 
 public class Model {
-    private ArrayList<Bullet> bullets;
+    private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
     private ArrayList<Tanks[]> tanks;
     boolean isStart;
 

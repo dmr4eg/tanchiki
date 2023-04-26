@@ -7,6 +7,11 @@ public class Nonstatic {
     protected int PosX;
     protected int PosY;
 
+    public int getPosX() {
+        return PosX;
+    }
 
-
+    public int getPosY() {
+        return PosY;
+    }
 }
