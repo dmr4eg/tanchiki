@@ -41,12 +41,12 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/CVUT/JAVA_CVUT/cvic8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/CVUT/TeamgameBackUp&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -55,17 +55,16 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\CVUT\TeamGame\src\main" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
+    <configuration name="start_game" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="19" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="game.Controller" />
+      <module name="pacman" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -88,6 +87,15 @@
       <workItem from="1681756839971" duration="281000" />
       <workItem from="1681798386025" duration="74000" />
       <workItem from="1681798531763" duration="299000" />
+      <workItem from="1681940230259" duration="619000" />
+      <workItem from="1681946201094" duration="666000" />
+      <workItem from="1681987860171" duration="1874000" />
+      <workItem from="1681989786399" duration="253000" />
+      <workItem from="1682504623455" duration="850000" />
+      <workItem from="1682519570104" duration="1055000" />
+      <workItem from="1682520680123" duration="4288000" />
+      <workItem from="1682527274307" duration="24000" />
+      <workItem from="1682527727906" duration="1562000" />
     </task>
     <servers />
   </component>
