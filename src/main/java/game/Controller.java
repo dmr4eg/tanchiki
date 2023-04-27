@@ -27,7 +27,7 @@ public class Controller extends Application{
     private final int WIDTH = 600;
     private final int HEIGHT = 600;
     private boolean isGameStart = true;
-    private Model model = new Model(true);
+    private Model model;
 
     private int TILE = 50;
 
@@ -37,8 +37,8 @@ public class Controller extends Application{
         // Create group to hold all bricks
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        model = new Model(true, gc);
         Tanks tanks = new Tanks(100, 5, 20, gc, 1, 100, 100, model);
-        Bricks brick = new Bricks("sada.txt");
 
         // Set up scene and show stage
         Scene scene = new Scene(new StackPane(canvas));
@@ -79,6 +79,7 @@ public class Controller extends Application{
         gc.fillRect(0, 0, WIDTH, HEIGHT);
         gc.setFill(Color.BLACK);
         tanks.update(0);
+        model.drawWalls();
         if (!model.getBullets().isEmpty()){
             model.update();
         }
