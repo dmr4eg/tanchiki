@@ -82,6 +82,5 @@ public class Controller extends Application{
         if (!model.getBullets().isEmpty()){
             model.update();
         }
-
     }
 }

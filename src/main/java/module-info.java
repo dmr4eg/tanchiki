@@ -3,6 +3,7 @@ module game.pacman {
     requires javafx.fxml;
     requires javafx.graphics;
     requires com.google.gson;
+    requires com.fasterxml.jackson.databind;
 
 //    exports controller;
 //    exports view;
