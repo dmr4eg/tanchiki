@@ -26,6 +26,10 @@ public class Bullet {
         this.ms = ms;
     }
 
+    public boolean isInScreen(){
+        return getPosX() >= -5 && getPosX() < 600 && getPosY() >= -5 && getPosY() <= 600;
+    }
+
     private void draw(){
         switch (Orientation){
             case 1:
@@ -47,23 +51,17 @@ public class Bullet {
     }
 
     public void update(){
-        switch(Orientation){
-            case 1:
-                PosX-= 2;
-                break;
-            case 2:
-                PosX+= 2;
-                break;
-            case 3:
-                PosY-= 2;
-                break;
-            case 4:
-                PosY+= 2;
-                break;
-            default:break;
+        if(isInScreen()) {
+            switch (Orientation) {
+                case 1 -> PosX -= 2;
+                case 2 -> PosX += 2;
+                case 3 -> PosY -= 2;
+                case 4 -> PosY += 2;
+                default -> {
+                }
+            }
+            draw();
         }
-        draw();
-
     }
 
     public int getPosX() {

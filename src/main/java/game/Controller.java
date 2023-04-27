@@ -38,12 +38,13 @@ public class Controller extends Application{
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         Tanks tanks = new Tanks(100, 5, 20, gc, 1, 100, 100, model);
+        Bricks brick = new Bricks("sada.txt");
 
         // Set up scene and show stage
         Scene scene = new Scene(new StackPane(canvas));
         stage.setScene(scene);
         stage.show();
-        Timeline tl = new Timeline(new KeyFrame(Duration.millis(10), e->run(gc, tanks, scene)));
+        Timeline tl = new Timeline(new KeyFrame(Duration.millis(5), e->run(gc, tanks, scene)));
         tl.setCycleCount(Timeline.INDEFINITE);
         // Add event handlers for moving the tank;
         scene.setOnKeyPressed(event -> {

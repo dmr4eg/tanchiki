@@ -10,6 +10,8 @@ import javafx.scene.shape.Rectangle;
 public class Tanks extends Nonstatic{
 
     private GraphicsContext gc;
+
+    private int fireCooldown = 0;
     private int Orientation;
     private Image imageRight = new Image("p1right.png");
     private Image imageRight2 = new Image("p1right2.png");
@@ -91,6 +93,7 @@ public class Tanks extends Nonstatic{
     }
 
     public void update(int DMG){
+        if (fireCooldown > 0 && fireCooldown <= 100)fireCooldown--;
         updateHP(DMG);
         draw();
     }
@@ -105,8 +108,11 @@ public class Tanks extends Nonstatic{
     }
 
     public void fire(){
-        Bullet bullet = new Bullet(DMG, getPosX(), getPosY(), Orientation, gc, MS);
-        model.addBullet(bullet);
+        if (fireCooldown == 0){
+            Bullet bullet = new Bullet(DMG, getPosX(), getPosY(), Orientation, gc, MS);
+            model.addBullet(bullet);
+            fireCooldown = 100;
+        }
     }
 
     public void moveLeft() {

@@ -12,9 +12,16 @@ public class Model {
     }
 
     public void update(){
+        ArrayList<Bullet> newBuletsArr = new ArrayList<Bullet>(
+        );
         for(Bullet bullet : bullets){
-            bullet.update();
+            if(bullet.isInScreen()) {
+                bullet.update();
+                newBuletsArr.add(bullet);
+                continue;
+            }
         }
+        bullets = newBuletsArr;
     }
 
     public void addBullet(Bullet bullet){
