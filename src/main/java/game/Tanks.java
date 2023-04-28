@@ -12,6 +12,11 @@ public class Tanks extends Nonstatic{
     private GraphicsContext gc;
 
     private int fireCooldown = 0;
+
+    public void setOrientation(int orientation) {
+        Orientation = orientation;
+    }
+
     private int Orientation;
     private Image imageRight = new Image("p1right.png");
     private Image imageRight2 = new Image("p1right2.png");

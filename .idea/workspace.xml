@@ -8,6 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Bricks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Bricks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Tanks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Tanks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/Bricks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Bricks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Model.class" afterDir="false" />
     </list>
     <list id="56059dc6-547d-4d90-87ef-6d7c88b1342c" name="Changes by dmr4eg" comment="" />
     <list id="418be624-e450-4897-b2a2-09db30ee6746" name="Changes by User" comment="" />
@@ -114,7 +117,7 @@
       <workItem from="1682591943668" duration="449000" />
       <workItem from="1682600322932" duration="2407000" />
       <workItem from="1682609077061" duration="360000" />
-      <workItem from="1682620836459" duration="12682000" />
+      <workItem from="1682620836459" duration="15411000" />
     </task>
     <servers />
   </component>

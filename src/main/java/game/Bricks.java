@@ -17,7 +17,8 @@ public class Bricks {
         this.gc =gc;
         this.bricksData = bricksData;
         ArrayList<int[]> arr = new ArrayList<>();
-        int [][] arrayBlocksCoords = {{100, 0},{150,0},{200,0},{250, 0}, {300,0},{350, 0}, {400, 0}, {450, 0}, {500, 0}, {550, 0}};
+        int [][] arrayBlocksCoords = {{100, 0},{150,0},{200,0},{250, 0}, {300,0},{350, 0}, {400, 0}, {450, 0}, {500, 0}, {550, 0},
+                {150,125},{200,125},{250, 125}, {300,125},{350, 125}, {400, 125}, {450, 125}, {500, 125}, {550, 125}};
         for (int[] i: arrayBlocksCoords){
             arr.add(i);
         }
