@@ -13,13 +13,16 @@ public class Bricks {
     private GraphicsContext gc;
 
 
-    public Bricks (String filename, GraphicsContext gc) {
+    public Bricks (String filename, GraphicsContext gc, ArrayList<int[]> bricksData) {
         this.gc =gc;
-        int[] arr = new int[] {100,150,200,250};
-        for(int posX : arr){
-            Brick brick = new Brick(posX, 200, 10);
-            bricksClasses.add(brick);
+        this.bricksData = bricksData;
+        ArrayList<int[]> arr = new ArrayList<>();
+        int [][] arrayBlocksCoords = {{100, 0},{150,0},{200,0},{250, 0}, {300,0},{350, 0}, {400, 0}, {450, 0}, {500, 0}, {550, 0}};
+        for (int[] i: arrayBlocksCoords){
+            arr.add(i);
         }
+        generate_brick(arr);
+
 
 //        try (FileReader reader = new FileReader("sada.txt")) {
 //            // читаем посимвольно
@@ -41,9 +44,10 @@ public class Bricks {
         }
     }
 
-        private void generate_brick(){
-        for (int[] oneBrick: bricksData ) {
-            bricksClasses.add(new Brick(oneBrick[0], oneBrick[1], oneBrick[2]));
+    private void generate_brick(ArrayList<int[]> arr){
+        for(int[] coord : arr){
+            Brick brick = new Brick(coord[0],coord[1] , 1);
+            bricksClasses.add(brick);
         }
     }
 

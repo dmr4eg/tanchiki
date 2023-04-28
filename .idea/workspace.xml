@@ -7,7 +7,6 @@
     <list default="true" id="269ef673-ab83-4ed9-b222-3cd47ed4e238" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Bricks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Bricks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Model.java" afterDir="false" />
     </list>
     <list id="56059dc6-547d-4d90-87ef-6d7c88b1342c" name="Changes by dmr4eg" comment="" />
@@ -115,7 +114,7 @@
       <workItem from="1682591943668" duration="449000" />
       <workItem from="1682600322932" duration="2407000" />
       <workItem from="1682609077061" duration="360000" />
-      <workItem from="1682620836459" duration="10564000" />
+      <workItem from="1682620836459" duration="12682000" />
     </task>
     <servers />
   </component>
