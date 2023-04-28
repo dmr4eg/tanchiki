@@ -15,7 +15,6 @@ public class Brick {
             this.Health = health;
     }
 
-
     public int getPosX(){
         return PosX;
     }

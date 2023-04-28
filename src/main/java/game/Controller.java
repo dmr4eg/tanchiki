@@ -49,18 +49,16 @@ public class Controller extends Application{
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case LEFT:
-                    if ((!(model.getPlayer1().getPosX() <= 0))&& !model.isCsollision_tank()[0])model.getPlayer1().moveLeft();
+                    if ((!(model.getPlayer1().getPosX() <= 0))&& !model.isCsollision_tank()[0])model.getPlayer1().moveLeft();else model.setPlayer1Orientation(1);
                     break;
                 case RIGHT:
-                    if ((!(model.getPlayer1().getPosX() >= WIDTH-TILE)) && !model.isCsollision_tank()[1])model.getPlayer1().moveRight();
+                    if ((!(model.getPlayer1().getPosX() >= WIDTH-TILE)) && !model.isCsollision_tank()[1])model.getPlayer1().moveRight();else model.setPlayer1Orientation(2);
                     break;
                 case UP:
-                    if (!((model.getPlayer1().getPosY() <= 0)) && !model.isCsollision_tank()[2]) {
-                        model.getPlayer1().moveUp();
-                    }
+                    if (!((model.getPlayer1().getPosY() <= 0)) && !model.isCsollision_tank()[2]) model.getPlayer1().moveUp();else model.setPlayer1Orientation(3);
                     break;
                 case DOWN:
-                    if ((!(model.getPlayer1().getPosY() >= HEIGHT- TILE)) && !model.isCsollision_tank()[3])model.getPlayer1().moveDown();
+                    if ((!(model.getPlayer1().getPosY() >= HEIGHT- TILE)) && !model.isCsollision_tank()[3])model.getPlayer1().moveDown();else model.setPlayer1Orientation(4);
                     break;
                 case E:
                     model.getPlayer1().fire();
