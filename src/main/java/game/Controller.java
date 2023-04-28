@@ -38,34 +38,33 @@ public class Controller extends Application{
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         model = new Model(true, gc);
-        Tanks tanks = new Tanks(100, 5, 20, gc, 1, 100, 100, model);
 
         // Set up scene and show stage
         Scene scene = new Scene(new StackPane(canvas));
         stage.setScene(scene);
         stage.show();
-        Timeline tl = new Timeline(new KeyFrame(Duration.millis(5), e->run(gc, tanks, scene)));
+        Timeline tl = new Timeline(new KeyFrame(Duration.millis(5), e->run(gc, scene)));
         tl.setCycleCount(Timeline.INDEFINITE);
         // Add event handlers for moving the tank;
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case LEFT:
-                    if (!(tanks.getPosX() <= 0))tanks.moveLeft();
+                    if ((!(model.getPlayer1().getPosX() <= 0))&& !model.isCollisionLeft())model.getPlayer1().moveLeft();
                     break;
                 case RIGHT:
-                    if (!(tanks.getPosX() >= WIDTH-TILE))tanks.moveRight();
+                    if ((!(model.getPlayer1().getPosX() >= WIDTH-TILE)) && !model.isCollisionRight())model.getPlayer1().moveRight();
                     break;
                 case UP:
-                    if (!(tanks.getPosY() <= 0)) {
-                        tanks.moveUp();
+                    if (!((model.getPlayer1().getPosY() <= 0)) && !model.isCollisionForward()) {
+                        model.getPlayer1().moveUp();
                     }
                     break;
                 case DOWN:
-                    if (!(tanks.getPosY() >= HEIGHT- TILE))tanks.moveDown();
+                    if ((!(model.getPlayer1().getPosY() >= HEIGHT- TILE)) && !model.isCollisionBackward())model.getPlayer1().moveDown();
                     break;
                 case E:
                     System.out.println(1);
-                    tanks.fire();
+                    model.getPlayer1().fire();
             }
         });
         tl.play();
@@ -75,11 +74,15 @@ public class Controller extends Application{
         launch(args);
     }
 
-    public void run(GraphicsContext gc, Tanks tanks, Scene scene) {
+    public void run(GraphicsContext gc, Scene scene) {
         gc.fillRect(0, 0, WIDTH, HEIGHT);
         gc.setFill(Color.BLACK);
-        tanks.update(0);
+        model.getPlayer1().update(0);
         model.drawWalls();
+        if(model.isCollisionBackward()) System.out.println("collision Backward");
+        if(model.isCollisionLeft()) System.out.println("collision left");
+        if(model.isCollisionRight()) System.out.println("collision right");
+        if(model.isCollisionForward()) System.out.println("collision forward");
         if (!model.getBullets().isEmpty()){
             model.update();
         }

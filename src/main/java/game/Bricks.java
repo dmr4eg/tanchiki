@@ -15,9 +15,9 @@ public class Bricks {
 
     public Bricks (String filename, GraphicsContext gc) {
         this.gc =gc;
-        int[] arr = new int[] {0,50,100,150};
+        int[] arr = new int[] {100,150,200,250};
         for(int posX : arr){
-            Brick brick = new Brick(posX, 0, 10);
+            Brick brick = new Brick(posX, 200, 10);
             bricksClasses.add(brick);
         }
 
