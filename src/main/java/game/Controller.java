@@ -79,10 +79,6 @@ public class Controller extends Application{
         gc.setFill(Color.BLACK);
         model.getPlayer1().update(0);
         model.drawWalls();
-        if(model.isCollisionBackward()) System.out.println("collision Backward");
-        if(model.isCollisionLeft()) System.out.println("collision left");
-        if(model.isCollisionRight()) System.out.println("collision right");
-        if(model.isCollisionForward()) System.out.println("collision forward");
         if (!model.getBullets().isEmpty()){
             model.update();
         }

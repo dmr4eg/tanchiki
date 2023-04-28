@@ -30,9 +30,11 @@ public class Model {
         ArrayList<Bullet> newBuletsArr = new ArrayList<Bullet>();
         Brick brick;
         for(Bullet bullet : bullets){
-            if((brick = isCollision(bullet))!= null)
-                bricks.removeBrick(brick);
             if(bullet.isInScreen()) {
+                if((brick = isCollision(bullet))!= null) {
+                    bricks.removeBrick(brick);
+                    continue;
+                }
                 bullet.update();
                 newBuletsArr.add(bullet);
                 continue;

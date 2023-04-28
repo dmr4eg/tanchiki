@@ -114,7 +114,7 @@ public class Tanks extends Nonstatic{
 
     public void fire(){
         if (fireCooldown == 0){
-            Bullet bullet = new Bullet(DMG, getPosX(), getPosY(), Orientation, gc, MS);
+            Bullet bullet = new Bullet(DMG, PosX, PosY, Orientation, gc, MS);
             model.addBullet(bullet);
             fireCooldown = 100;
         }

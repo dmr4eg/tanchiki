@@ -19,8 +19,25 @@ public class Bullet {
 
     public Bullet(int DMG, int posX, int posY, int Orientation, GraphicsContext gc, int ms) {
         this.DMG = DMG;
-        PosX = posX;
-        PosY = posY;
+        switch (Orientation){
+            case 1:
+                PosX = posX;
+                PosY = posY+ 20;
+                break;
+            case 2:
+                PosX = posX + 50;
+                PosY = posY + 20;
+                break;
+            case 3:
+                PosX = posX + 20;
+                PosY = posY;
+                break;
+            case 4:
+                PosX = posX + 20;
+                PosY = posY + 50;
+                break;
+        }
+
         this.Orientation = Orientation;
         this.gc = gc;
         this.ms = ms;
@@ -33,16 +50,16 @@ public class Bullet {
     private void draw(){
         switch (Orientation){
             case 1:
-                gc.drawImage(new Image("bullet2.png"), PosX, PosY+20);
+                gc.drawImage(new Image("bullet2.png"), PosX, PosY);
                 break;
             case 2:
-                gc.drawImage(new Image("bullet2.png"), PosX+45, PosY+20);
+                gc.drawImage(new Image("bullet2.png"), PosX, PosY);
                 break;
             case 3:
-                gc.drawImage(new Image("bullet2.png"), PosX+20, PosY);
+                gc.drawImage(new Image("bullet2.png"), PosX, PosY);
                 break;
             case 4:
-                gc.drawImage(new Image("bullet2.png"), PosX+20, PosY+45);
+                gc.drawImage(new Image("bullet2.png"), PosX, PosY);
                 break;
             default:
                 break;
