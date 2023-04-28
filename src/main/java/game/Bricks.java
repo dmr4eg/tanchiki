@@ -55,4 +55,8 @@ public class Bricks {
     public ArrayList<Brick> getBricksClasses() {
         return bricksClasses;
     }
+
+    public void removeBrick(Brick brick){
+        bricksClasses.remove(brick);
+    }
 }

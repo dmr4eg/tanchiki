@@ -28,7 +28,10 @@ public class Model {
 
     public void update(){
         ArrayList<Bullet> newBuletsArr = new ArrayList<Bullet>();
+        Brick brick;
         for(Bullet bullet : bullets){
+            if((brick = isCollision(bullet))!= null)
+                bricks.removeBrick(brick);
             if(bullet.isInScreen()) {
                 bullet.update();
                 newBuletsArr.add(bullet);
@@ -46,6 +49,20 @@ public class Model {
 
     public ArrayList<Bullet> getBullets(){
         return bullets;
+    }
+
+    public boolean bullet;
+
+    private Brick isCollision(Bullet bullet){
+        for(Brick brick : bricks.getBricksClasses()){
+            int bulletX = bullet.getPosX();
+            int bulletY = bullet.getPosY();
+            int brickX = brick.getPosX();
+            int brickY = brick.getPosY();
+            if(((((bulletX>= brickX) && (bulletX <= brickX + 50)) || ((bulletX + 10>= brickX) && (bulletX + 10 <= brickX + 50)))) &&
+                    (((bulletY >= brickY) && (bulletY <= brickY+50)) || ((bulletY+10 >= brickY)&&(bulletY+10 <= brickY + 50))))return brick;
+        }
+        return null;
     }
 
     public boolean isCollisionForward(){
