@@ -59,7 +59,8 @@ public class Tanks extends Nonstatic{
         }
     }
     }
-    private void draw(){
+
+    public void draw(){
         switch (Orientation){
             case 1:
                 if (switcher){
@@ -96,20 +97,10 @@ public class Tanks extends Nonstatic{
     private void updateHP(int DMG){
         HP -= DMG;
     }
-
     public void update(int DMG){
         if (fireCooldown > 0 && fireCooldown <= 100)fireCooldown--;
         updateHP(DMG);
         draw();
-    }
-
-    @Override
-    public int getPosX() {
-        return super.getPosX();
-    }
-
-    public int getPosY() {
-        return super.getPosY();
     }
 
     public void fire(){
@@ -142,5 +133,18 @@ public class Tanks extends Nonstatic{
         Orientation = 4;
         updatePos();
         switcher = !switcher;
+    }
+
+    public int getOrientation() {
+        return Orientation;
+    }
+
+    @Override
+    public int getPosX() {
+        return super.getPosX();
+    }
+
+    public int getPosY() {
+        return super.getPosY();
     }
 }

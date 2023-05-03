@@ -8,6 +8,13 @@ public class Brick {
     private int PosY;
     private int Health;
 
+    private boolean isBreakable = true;
+
+    private boolean isBase = false;
+
+    public boolean isBreakable() {
+        return isBreakable;
+    }
 
     public Brick(int PosX, int  PosY, int health){
             this.PosX = PosX;
