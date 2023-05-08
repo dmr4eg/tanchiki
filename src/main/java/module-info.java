@@ -1,4 +1,4 @@
-module game.pacman {
+module game {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
