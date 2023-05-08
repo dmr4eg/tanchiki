@@ -19,7 +19,7 @@ public class Model {
         this.bricks = new Bricks("level1.json", gc);
         this.gc = gc;
         base = bricks.getBase();
-        player1 = new Tanks(100, 1, 20, gc, 1, 100, 100, this);
+        player1 = new Tanks(100, 5, 20, gc, 1, 100, 100, this);
         this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1);
         this.isStart = isStart;
         enemyTank = new Tanks(100, 1 , 1, gc, 1, 400, 400, this);
