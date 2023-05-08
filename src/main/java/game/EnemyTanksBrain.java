@@ -54,9 +54,7 @@ public class EnemyTanksBrain {
 
     }
 
-    private void computing_to_base(Tanks tank, Brick brick){
-        ifCollision_fire(tank, brick);
-        fire_in_player_or_move_to_base(tank);
+    public void move(Tanks tank){
         switch (tank.getOrientation()){
             case 1:
                 tank.moveLeft();
@@ -72,9 +70,14 @@ public class EnemyTanksBrain {
                 break;
         }
     }
+    public void computing_to_base(Tanks tank, Brick brick){
+        ifCollision_fire(tank, brick);
+        fire_in_player_or_move_to_base(tank);
+    }
 
     private void fire_in_player_or_move_to_base(Tanks tank){
-        if((tank.getPosX() >= base.getPosX() && tank.getPosX() <= base.getPosX() + 50)||(tank.getPosX()+50 >= base.getPosX() && tank.getPosX()+50 <= base.getPosX() + 50)){
+        tank.draw();
+        if(tank.getPosX() == base.getPosX() && tank.getPosX() +50 == base.getPosX() + 50){
             if (base.getPosY() < tank.getPosY()) {
                 tank.setOrientation(3);
                 tank.draw();
@@ -85,15 +88,15 @@ public class EnemyTanksBrain {
                 tank.draw();
                 tank.fire();
             }
-        }else if ((tank.getPosY() >= base.getPosY() && tank.getPosY() <= base.getPosY() + 50)||(tank.getPosY()+50 >= base.getPosY() && tank.getPosY()+50 <= base.getPosY() + 50)) {
+        }else if (tank.getPosY() == base.getPosY() && tank.getPosY() +50 == base.getPosY() + 50) {
 
             if (base.getPosX() > tank.getPosX()) {
-                tank.setOrientation(1);
+                tank.setOrientation(2);
                 tank.draw();
                 tank.fire();
             }
             if (base.getPosX() < tank.getPosX()){
-                tank.setOrientation(2);
+                tank.setOrientation(1);
                 tank.draw();
                 tank.fire();
             }

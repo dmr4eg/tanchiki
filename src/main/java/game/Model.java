@@ -7,28 +7,44 @@ import java.util.ArrayList;
 public class Model {
     private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
     private final ArrayList<Tanks> tanks = new ArrayList<Tanks>();
-    boolean isStart;
     private  ArrayList<ArrayList<Integer>> bricsCoords =  new ArrayList<ArrayList<Integer>>(); //[[],[],[]]
     private final Bricks bricks;
     private GraphicsContext gc;
     private final Tanks player1;
-
-
+    private Tanks enemyTank;
+    private final EnemyTanksBrain enemyBrain;
+    private final Brick base;
+    boolean isStart;
     public Model(boolean isStart, GraphicsContext gc) {
-        this.bricks = new Bricks("", gc, null);
+        this.bricks = new Bricks("", gc);
+        this.gc = gc;
+        base = bricks.getBase();
         player1 = new Tanks(100, 1, 20, gc, 1, 100, 100, this);
+        this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1);
         this.isStart = isStart;
+        enemyTank = new Tanks(100, 1 , 1, gc, 1, 400, 400, this);
+        tanks.add(enemyTank);
     }
 
     public void setPlayer1Orientation(int orientation){
         player1.setOrientation(orientation);
     }
 
-    public void drawWalls() {
-        bricks.draw();
+//    public void drawWalls() {
+//        bricks.draw();
+//    }
+
+    public void enemy_computicng(){
+        for(Tanks tank : tanks){
+            if (bricks.getBricksClasses() != null){
+                for(Brick b: bricks.getBricksClasses() ){
+                    b.draw();
+                    enemyBrain.computing_to_base(tank, base);
+                }
+                enemyBrain.move(tank);
+            }
+        }
     }
-
-
     public void update(){
         ArrayList<Bullet> newBuletsArr = new ArrayList<Bullet>();
         Brick brick;
@@ -44,6 +60,7 @@ public class Model {
             }
         }
         bullets = newBuletsArr;
+
     }
 
 
@@ -65,7 +82,13 @@ public class Model {
             int brickX = brick.getPosX();
             int brickY = brick.getPosY();
             if(((((bulletX>= brickX) && (bulletX <= brickX + 50)) || ((bulletX + 10>= brickX) && (bulletX + 10 <= brickX + 50)))) &&
-                    (((bulletY >= brickY) && (bulletY <= brickY+50)) || ((bulletY+10 >= brickY)&&(bulletY+10 <= brickY + 50))))return brick;
+                    (((bulletY >= brickY) && (bulletY <= brickY+50)) || ((bulletY+10 >= brickY)&&(bulletY+10 <= brickY + 50)))){
+                if (brick == base){
+                    isStart = false;
+                    System.out.println(isStart);
+                }
+                return brick;
+            }
         }
         return null;
     }

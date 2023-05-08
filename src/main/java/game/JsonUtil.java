@@ -7,7 +7,7 @@ import java.io.IOException;
 public class JsonUtil {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public void saveJson(DataProcessing data, String fileName) {
+    public void saveJson(Bricks data, String fileName) {
         try {
             objectMapper.writeValue(new File(fileName), data);
         } catch (IOException ex) {
@@ -15,9 +15,9 @@ public class JsonUtil {
         }
     }
 
-    public DataProcessing loadJson(String fileName) {
+    public Bricks loadJson(String fileName) {
         try {
-            return objectMapper.readValue(new File(fileName), DataProcessing.class);
+            return objectMapper.readValue(new File(fileName), Bricks.class);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
             return null;

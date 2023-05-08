@@ -8,6 +8,7 @@ public class Brick {
     private int PosY;
     private int Health;
 
+    private GraphicsContext gc;
     private boolean isBreakable = true;
 
     private boolean isBase = false;
@@ -16,10 +17,26 @@ public class Brick {
         return isBreakable;
     }
 
-    public Brick(int PosX, int  PosY, int health){
+    public Brick(int PosX, int  PosY, int health, GraphicsContext gc){
             this.PosX = PosX;
             this.PosY = PosY;
             this.Health = health;
+            this.gc = gc;
+    }
+
+    public Brick(int PosX, int  PosY, int health, GraphicsContext gc, boolean isBase){
+        this.PosX = PosX;
+        this.PosY = PosY;
+        this.Health = health;
+        this.gc = gc;
+        this.isBase = isBase;
+    }
+
+    public void draw(){
+        if(isBase){
+            gc.drawImage(new Image("base_block.png"), getPosX(), getPosY());
+        }
+        else {gc.drawImage(new Image("brickdef.png"), getPosX(), getPosY());}
     }
 
     public int getPosX(){

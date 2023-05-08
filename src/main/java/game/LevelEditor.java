@@ -1,11 +1,20 @@
 package game;
 
+import javafx.scene.canvas.GraphicsContext;
+
 import java.util.ArrayList;
 
 public class LevelEditor {
-    private final ArrayList<Brick> bricks = new ArrayList<>();
     private final JsonUtil jsonUtil = new JsonUtil();
     private final String fileName = "level1.json";
+
+    private final GraphicsContext gc;
+    private final Bricks bricks;
+
+    public LevelEditor(GraphicsContext gc) {
+        this.gc = gc;
+        this.bricks = new Bricks("", gc);
+    }
 
     public void addBrick(Brick brick) {
         bricks.add(brick);
@@ -13,20 +22,12 @@ public class LevelEditor {
     }
 
     public void removeBrick(Brick brick) {
-        bricks.remove(brick);
+        bricks.removeBrick(brick);
         saveData();
     }
 
-    public ArrayList<Brick> getBricks() {
+    public Bricks getBricks() {
         return bricks;
-    }
-
-    public void loadData() {
-        ArrayList<Brick> loadedData = (ArrayList<Brick>) jsonUtil.loadJson(fileName, ArrayList.class);
-        if (loadedData != null) {
-            bricks.clear();
-            bricks.addAll(loadedData);
-        }
     }
 
     public void saveData() {

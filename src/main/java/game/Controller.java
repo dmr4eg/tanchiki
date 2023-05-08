@@ -43,7 +43,7 @@ public class Controller extends Application{
         Scene scene = new Scene(new StackPane(canvas));
         stage.setScene(scene);
         stage.show();
-        Timeline tl = new Timeline(new KeyFrame(Duration.millis(5), e->run(gc, scene)));
+        Timeline tl = new Timeline(new KeyFrame(Duration.millis(30), e->run(gc, scene)));
         tl.setCycleCount(Timeline.INDEFINITE);
         // Add event handlers for moving the tank;
         scene.setOnKeyPressed(event -> {
@@ -75,7 +75,8 @@ public class Controller extends Application{
         gc.fillRect(0, 0, WIDTH, HEIGHT);
         gc.setFill(Color.BLACK);
         model.getPlayer1().update(0);
-        model.drawWalls();
+//        model.drawWalls();
+        model.enemy_computicng();
         if (!model.getBullets().isEmpty()){
             model.update();
         }
