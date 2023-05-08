@@ -16,7 +16,7 @@ public class Model {
     private final Brick base;
     boolean isStart;
     public Model(boolean isStart, GraphicsContext gc) {
-        this.bricks = new Bricks("", gc);
+        this.bricks = new Bricks("level1.json", gc);
         this.gc = gc;
         base = bricks.getBase();
         player1 = new Tanks(100, 1, 20, gc, 1, 100, 100, this);
@@ -34,7 +34,7 @@ public class Model {
 //        bricks.draw();
 //    }
 
-    public void enemy_computicng(){
+    public void enemy_computing(){
         for(Tanks tank : tanks){
             if (bricks.getBricksClasses() != null){
                 for(Brick b: bricks.getBricksClasses() ){

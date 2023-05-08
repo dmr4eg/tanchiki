@@ -5,21 +5,109 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="269ef673-ab83-4ed9-b222-3cd47ed4e238" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/level1.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/game/Bricks$BrickData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Brick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allclasses-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/allpackages-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/copy.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/copy.svg" beforeDir="false" afterPath="$PROJECT_DIR$/docs/copy.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/element-list" beforeDir="false" afterPath="$PROJECT_DIR$/docs/element-list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/game.pacman/module-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/game.pacman/module-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/jquery-ui.overrides.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/jquery-ui.overrides.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/search-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/search-page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/docs/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/element-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/game/Bullet.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/game/Controller.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/game/EventLis.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/game/Model.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/game/Nonstatic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/game/Tanks.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/game/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/game/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/module-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/sandbox/Bricks.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/sandbox/Bullet.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/sandbox/Controller.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/sandbox/Enemy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/sandbox/GameModel.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/sandbox/Model.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/sandbox/Nonstatic.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/sandbox/Tanks.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/sandbox/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.pacman/sandbox/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-10.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-11.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-12.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-13.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-14.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-15.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-4.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-5.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-6.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-7.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-8.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index-files/index-9.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jquery-ui.overrides.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/legal/ASSEMBLY_EXCEPTION" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/legal/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/legal/jquery.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/legal/jqueryUI.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/member-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/module-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script-dir/jquery-3.6.0.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script-dir/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script-dir/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search-page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/BrickData.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Bricks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Bricks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/EnemyTanksBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/EnemyTanksBrain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/LevelEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/LevelEditor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tag-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/BrickData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/Bricks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Bricks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Controller$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/game/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/EnemyTanksBrain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/EnemyTanksBrain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/LevelEditor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/LevelEditor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/game/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/type-search-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled/src/main/java/org/example/Main.java" beforeDir="false" />
     </list>
-    <list id="56059dc6-547d-4d90-87ef-6d7c88b1342c" name="Changes by dmr4eg" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Bricks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Bricks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/JsonUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/LevelEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/LevelEditor.java" afterDir="false" />
-    </list>
+    <list id="56059dc6-547d-4d90-87ef-6d7c88b1342c" name="Changes by dmr4eg" comment="" />
     <list id="418be624-e450-4897-b2a2-09db30ee6746" name="Changes by User" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,31 +124,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/game/Bricks.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="3" changelist="56059dc6-547d-4d90-87ef-6d7c88b1342c" />
-        <range start1="9" end1="12" start2="10" end2="12" changelist="56059dc6-547d-4d90-87ef-6d7c88b1342c" />
-        <range start1="14" end1="14" start2="14" end2="15" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="15" end1="25" start2="16" end2="26" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="27" end1="46" start2="28" end2="33" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="47" end1="50" start2="34" end2="37" changelist="56059dc6-547d-4d90-87ef-6d7c88b1342c" />
-        <range start1="52" end1="52" start2="39" end2="41" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="61" end1="61" start2="50" end2="65" changelist="56059dc6-547d-4d90-87ef-6d7c88b1342c" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/main/java/game/LevelEditor.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="4" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="5" end1="6" start2="7" end2="7" changelist="56059dc6-547d-4d90-87ef-6d7c88b1342c" />
-        <range start1="8" end1="8" start2="9" end2="17" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="15" end1="16" start2="24" end2="25" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="19" end1="20" start2="28" end2="29" changelist="56059dc6-547d-4d90-87ef-6d7c88b1342c" />
-        <range start1="22" end1="30" start2="31" end2="31" changelist="56059dc6-547d-4d90-87ef-6d7c88b1342c" />
-        <range start1="35" end1="36" start2="36" end2="36" changelist="56059dc6-547d-4d90-87ef-6d7c88b1342c" />
-      </ranges>
-    </file>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -76,24 +139,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/CVUT/TeamgameBackUp",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "inlay.hints",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/CVUT/TeamgameBackUp&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="game" />
@@ -102,9 +165,10 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/java" />
       <recent name="$PROJECT_DIR$/src/main/java/game" />
       <recent name="C:\CVUT\TeamGame\src\main" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">

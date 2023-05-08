@@ -8,7 +8,8 @@ module game.pacman {
 //    exports controller;
 //    exports view;
     exports game; // add this line to export the model package
-    opens game to javafx.base; // add this line to open the model package to javafx.base
+     // add this line to open the model package to javafx.base
+    opens game to com.fasterxml.jackson.databind;
 //    opens view to javafx.fxml;
 //    opens controller to javafx.fxml;
 

@@ -1,4 +1,3 @@
-
 package game;
 
 import com.google.gson.Gson;
@@ -76,7 +75,7 @@ public class Controller extends Application{
         gc.setFill(Color.BLACK);
         model.getPlayer1().update(0);
 //        model.drawWalls();
-        model.enemy_computicng();
+        model.enemy_computing();
         if (!model.getBullets().isEmpty()){
             model.update();
         }

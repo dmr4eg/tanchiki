@@ -16,8 +16,6 @@ public class EnemyTanksBrain {
         this.player = player;
     }
 
-
-
     private boolean[] check_collision(Tanks tank, Brick brick){
         boolean[] retCollisionArr = new boolean [] {false, false, false, false};
             //left
@@ -132,7 +130,4 @@ public class EnemyTanksBrain {
             if (base.getPosY() > tank.getPosY()) tank.setOrientation(4);
         }
     }
-
-
-
 }

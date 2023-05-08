@@ -2,14 +2,13 @@ package game;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Bricks {
     private ArrayList<Brick> bricksClasses = new ArrayList<>();
-    private int[][] bricksData;
     private GraphicsContext gc;
 
     private Brick base;
@@ -20,23 +19,16 @@ public class Bricks {
 
     public Bricks(String filename, GraphicsContext gc) {
         this.gc = gc;
-        bricksData = new int[][] {{100,100,10}, {200,300,10}, {100,500,10}, {500,500,10}};
-//        loadBricksData(filename);
+
+        loadBricksData(filename);
         generateBricks();
-        base = new Brick(275, 550, 100000, gc, true);
+        base = new Brick(300, 550, 100000, gc, true);
         bricksClasses.add(base);
     }
 
-
-//    public void draw(){
-//        for (Brick brick: bricksClasses){
-//            gc.drawImage(new Image("brickdef.png"), brick.getPosX(), brick.getPosY());
-//        }
-//    }
-
     private void generateBricks() {
-        for (int[] coord : bricksData) {
-            Brick brick = new Brick(coord[0], coord[1], 1, gc);
+        for (BrickData brickData : bricksData) {
+            Brick brick = new Brick(brickData.getX(), brickData.getY(), 1, gc);
             bricksClasses.add(brick);
         }
     }
@@ -53,14 +45,26 @@ public class Bricks {
         bricksClasses.add(brick);
     }
 
+    private ArrayList<BrickData> bricksData;
 
+    private void loadBricksData(String filename) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            bricksData = objectMapper.readValue(new File(filename), objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, BrickData.class));
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
-//    private void loadBricksData(String filename) {
-//        try {
-//            ObjectMapper objectMapper = new ObjectMapper();
-//            bricksData = objectMapper.readValue(new File(filename), ArrayList.class);
-//        } catch (IOException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//    }
+    public static class BrickData {
+        private int x;
+        private int y;
+
+        public int getX() {
+            return x;
+        }
+        public int getY() {
+            return y;
+        }
+    }
 }

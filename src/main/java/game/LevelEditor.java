@@ -2,8 +2,6 @@ package game;
 
 import javafx.scene.canvas.GraphicsContext;
 
-import java.util.ArrayList;
-
 public class LevelEditor {
     private final JsonUtil jsonUtil = new JsonUtil();
     private final String fileName = "level1.json";
@@ -13,7 +11,7 @@ public class LevelEditor {
 
     public LevelEditor(GraphicsContext gc) {
         this.gc = gc;
-        this.bricks = new Bricks("", gc);
+        this.bricks = new Bricks(fileName, gc);
     }
 
     public void addBrick(Brick brick) {
