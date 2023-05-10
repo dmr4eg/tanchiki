@@ -11,6 +11,25 @@ public class Tanks extends Nonstatic{
 
     private GraphicsContext gc;
 
+    private boolean[] isColision = new boolean[] {false, false, false, false};
+
+    private boolean isTankMove = true;
+
+    public boolean isTankMove() {
+        return isTankMove;
+    }
+
+    public void setTankIsMove(boolean isTankMove) {
+        this.isTankMove = isTankMove;
+    }
+    public void setIsColision(boolean[] isColision) {
+        this.isColision = isColision;
+    }
+
+    public boolean[] getIsColision() {
+        return isColision;
+    }
+
     private int fireCooldown = 0;
 
     public void setOrientation(int orientation) {
@@ -31,7 +50,6 @@ public class Tanks extends Nonstatic{
 
     private Model model;
 
-
     public Tanks(int HP, int MS, int DMG, GraphicsContext gc, int Orientation, int PosX, int PosY, Model model) {
         super.HP = HP;
         super.DMG = DMG;
@@ -44,20 +62,25 @@ public class Tanks extends Nonstatic{
     }
 
     private void updatePos(){
-        if (Orientation != 0){
-            if (Orientation == 2){
+//        System.out.println(isColision[0]);
+//        System.out.println(isColision[1]);
+//        System.out.println(isColision[2]);
+//        System.out.println(isColision[3]);
+        if (isTankMove){
+            switcher = !switcher;
+            if (Orientation == 2 && !isColision[1] ){
                 PosX += MS;
             }
-            if (Orientation == 4){
+            if (Orientation == 4 && !isColision[3]){
                 PosY += MS;
             }
-            if (Orientation == 3){
+            if (Orientation == 3 && !isColision[2]){
                 PosY -= MS;
             }
-            if (Orientation == 1){
+            if (Orientation == 1 && !isColision[0]){
                 PosX -= MS;
+            }
         }
-    }
     }
 
     public void draw(){
@@ -98,6 +121,7 @@ public class Tanks extends Nonstatic{
         HP -= DMG;
     }
     public void update(int DMG){
+        updatePos();
         if (fireCooldown > 0 && fireCooldown <= 100)fireCooldown--;
         updateHP(DMG);
         draw();

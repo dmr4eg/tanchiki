@@ -18,10 +18,10 @@ public class Brick {
     }
 
     public Brick(int PosX, int  PosY, int health, GraphicsContext gc){
-            this.PosX = PosX;
-            this.PosY = PosY;
-            this.Health = health;
-            this.gc = gc;
+        this.PosX = PosX;
+        this.PosY = PosY;
+        this.Health = health;
+        this.gc = gc;
     }
 
     public Brick(int PosX, int  PosY, int health, GraphicsContext gc, boolean isBase){

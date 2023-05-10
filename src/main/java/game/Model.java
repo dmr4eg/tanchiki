@@ -19,7 +19,7 @@ public class Model {
         this.bricks = new Bricks("level1.json", gc);
         this.gc = gc;
         base = bricks.getBase();
-        player1 = new Tanks(100, 5, 20, gc, 1, 100, 100, this);
+        player1 = new Tanks(100, 1, 20, gc, 1, 100, 100, this);
         this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1);
         this.isStart = isStart;
         enemyTank = new Tanks(100, 1 , 1, gc, 1, 400, 400, this);
@@ -30,17 +30,11 @@ public class Model {
         player1.setOrientation(orientation);
     }
 
-//    public void drawWalls() {
-//        bricks.draw();
-//    }
 
     public void enemy_computing(){
         for(Tanks tank : tanks){
-            if (bricks.getBricksClasses() != null){
-                for(Brick b: bricks.getBricksClasses() ){
-                    b.draw();
-                    enemyBrain.computing_to_base(tank, base);
-                }
+            if(bricks.getBricksClasses() != null){
+                enemyBrain.computing_to_base(tank, bricks);
                 enemyBrain.move(tank);
             }
         }
@@ -93,22 +87,27 @@ public class Model {
         return null;
     }
 
-    public boolean[] isCsollision_tank(){
-        boolean[] retCollisionArr = new boolean [] {false, false, false, false};
-        for(Brick brick : bricks.getBricksClasses()){
+    public boolean[] isCsollision_tank() {
+        boolean[] retCollisionArr = new boolean[]{false, false, false, false};
+        for (Brick brick : bricks.getBricksClasses()) {
             //left
-            if ((((player1.getPosY()+1 >= brick.getPosY()+1) && (player1.getPosY()+1 <= brick.getPosY() + 49)) || ((player1.getPosY() + 49 >= brick.getPosY()+1) && (player1.getPosY() + 49 <= brick.getPosY() + 49))) &&
-                    ((player1.getPosX() <= brick.getPosX() + 50) && (player1.getPosX() >= brick.getPosX() + 50))) retCollisionArr[0] = true;
+            if ((((player1.getPosY() + 1 >= brick.getPosY() + 1) && (player1.getPosY() + 1 <= brick.getPosY() + 49)) || ((player1.getPosY() + 49 >= brick.getPosY() + 1) && (player1.getPosY() + 49 <= brick.getPosY() + 49))) &&
+                    ((player1.getPosX() <= brick.getPosX() + 50) && (player1.getPosX() >= brick.getPosX() + 50)))
+                retCollisionArr[0] = true;
             //right
-            if ((((player1.getPosY()+1 >= brick.getPosY()+1) && (player1.getPosY()+1 <= brick.getPosY() + 49)) || ((player1.getPosY() + 49 >= brick.getPosY()+1) && (player1.getPosY() + 49 <= brick.getPosY() + 49))) &&
-                    ((player1.getPosX()+ 50 <= brick.getPosX()) && (player1.getPosX() + 50 >= brick.getPosX()))) retCollisionArr[1] = true;
+            if ((((player1.getPosY() + 1 >= brick.getPosY() + 1) && (player1.getPosY() + 1 <= brick.getPosY() + 49)) || ((player1.getPosY() + 49 >= brick.getPosY() + 1) && (player1.getPosY() + 49 <= brick.getPosY() + 49))) &&
+                    ((player1.getPosX() + 50 <= brick.getPosX()) && (player1.getPosX() + 50 >= brick.getPosX())))
+                retCollisionArr[1] = true;
             //forward
-            if ((((player1.getPosX()+1 >= brick.getPosX()+1) && (player1.getPosX()+1 <= brick.getPosX()+49)) || ((player1.getPosX() + 49 >= brick.getPosX()+1) && (player1.getPosX() + 49 <= brick.getPosX()+49))) &&
-                    ((player1.getPosY() <= brick.getPosY()+49) && (player1.getPosY() >= brick.getPosY()+ 49)))retCollisionArr[2] = true;
+            if ((((player1.getPosX() + 1 >= brick.getPosX() + 1) && (player1.getPosX() + 1 <= brick.getPosX() + 49)) || ((player1.getPosX() + 49 >= brick.getPosX() + 1) && (player1.getPosX() + 49 <= brick.getPosX() + 49))) &&
+                    ((player1.getPosY() <= brick.getPosY() + 49) && (player1.getPosY() >= brick.getPosY() + 49)))
+                retCollisionArr[2] = true;
             //backward
-            if ((((player1.getPosX()+1 >= brick.getPosX()+1) && (player1.getPosX()+1 <= brick.getPosX()+49)) || ((player1.getPosX() + 49 >= brick.getPosX()+1) && (player1.getPosX() + 49 <= brick.getPosX()+49))) &&
-                    ((player1.getPosY()+49 <= brick.getPosY()) && (player1.getPosY() +49 >= brick.getPosY() - 1))) retCollisionArr[3] = true;
+            if ((((player1.getPosX() + 1 >= brick.getPosX() + 1) && (player1.getPosX() + 1 <= brick.getPosX() + 49)) || ((player1.getPosX() + 49 >= brick.getPosX() + 1) && (player1.getPosX() + 49 <= brick.getPosX() + 49))) &&
+                    ((player1.getPosY() + 49 <= brick.getPosY()) && (player1.getPosY() + 49 >= brick.getPosY() - 1)))
+                retCollisionArr[3] = true;
         }
+        player1.setIsColision(retCollisionArr);
         return retCollisionArr;
     }
 
