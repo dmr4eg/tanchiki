@@ -23,4 +23,27 @@ public class JsonUtil {
             return null;
         }
     }
+
+
+
+
+    //----------------------------------------------------------------
+    public void saveJsonObj(Obj obj, String fileName) {
+        try {
+            objectMapper.writeValue(new File(fileName), obj);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public Obj loadJsonObj(String fileName) {
+        try {
+            return objectMapper.readValue(new File(fileName), Obj.class);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+
+
 }

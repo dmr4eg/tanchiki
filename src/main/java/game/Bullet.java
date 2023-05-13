@@ -21,20 +21,20 @@ public class Bullet {
         this.DMG = DMG;
         switch (Orientation){
             case 1:
-                PosX = posX;
-                PosY = posY+ 20;
+                PosX = posX - 11;
+                PosY = posY + 20;
                 break;
             case 2:
-                PosX = posX + 50;
+                PosX = posX + 50 + 1;
                 PosY = posY + 20;
                 break;
             case 3:
                 PosX = posX + 20;
-                PosY = posY;
+                PosY = posY - 2;
                 break;
             case 4:
                 PosX = posX + 20;
-                PosY = posY + 50;
+                PosY = posY + 50 + 11;
                 break;
         }
 
@@ -44,27 +44,12 @@ public class Bullet {
     }
 
     public boolean isInScreen(){
+
         return getPosX() >= -5 && getPosX() < 600 && getPosY() >= -5 && getPosY() <= 600;
     }
 
     private void draw(){
-        switch (Orientation){
-            case 1:
-                gc.drawImage(new Image("bullet2.png"), PosX, PosY);
-                break;
-            case 2:
-                gc.drawImage(new Image("bullet2.png"), PosX, PosY);
-                break;
-            case 3:
-                gc.drawImage(new Image("bullet2.png"), PosX, PosY);
-                break;
-            case 4:
-                gc.drawImage(new Image("bullet2.png"), PosX, PosY);
-                break;
-            default:
-                break;
-        }
-
+        gc.drawImage(new Image("bullet2.png"), PosX, PosY);
     }
 
     public void update(){

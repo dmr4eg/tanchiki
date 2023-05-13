@@ -10,9 +10,8 @@ import java.util.ArrayList;
 public class Bricks {
     private ArrayList<Brick> bricksClasses = new ArrayList<>();
     private GraphicsContext gc;
-
     private Brick base;
-
+    private ArrayList<BrickData> bricksData;
     public Brick getBase() {
         return base;
     }
@@ -22,13 +21,13 @@ public class Bricks {
 
         loadBricksData(filename);
         generateBricks();
-        base = new Brick(300, 550, 100000, gc, true);
+        base = new Brick(300, 550, 100000, gc, "base", true);
         bricksClasses.add(base);
     }
 
     private void generateBricks() {
         for (BrickData brickData : bricksData) {
-            Brick brick = new Brick(brickData.getX(), brickData.getY(), 1, gc);
+            Brick brick = new Brick(brickData.getX(), brickData.getY(), 1, gc, "brick");
             bricksClasses.add(brick);
         }
     }
@@ -36,16 +35,12 @@ public class Bricks {
     public ArrayList<Brick> getBricksClasses() {
         return bricksClasses;
     }
-
     public void removeBrick(Brick brick){
         bricksClasses.remove(brick);
     }
-
     public void add(Brick brick){
         bricksClasses.add(brick);
     }
-
-    private ArrayList<BrickData> bricksData;
 
     private void loadBricksData(String filename) {
         try {

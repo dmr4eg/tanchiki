@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Model {
     private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
     private final ArrayList<Tanks> tanks = new ArrayList<Tanks>();
+    private ArrayList<Obj> allObjects = new ArrayList<Obj>();
     private  ArrayList<ArrayList<Integer>> bricsCoords =  new ArrayList<ArrayList<Integer>>(); //[[],[],[]]
     private final Bricks bricks;
     private GraphicsContext gc;
@@ -17,12 +18,15 @@ public class Model {
     boolean isStart;
     public Model(boolean isStart, GraphicsContext gc) {
         this.bricks = new Bricks("level1.json", gc);
-        this.gc = gc;
+        allObjects.addAll(bricks.getBricksClasses());
         base = bricks.getBase();
-        player1 = new Tanks(100, 1, 20, gc, 1, 100, 100, this);
+        player1 = new Tanks(100, 1, 20, "player", gc, 1, 100, 100, this);
+        enemyTank = new Tanks(100, 1 , 1, "tank", gc, 1, 400, 400, this);
+        this.gc = gc;
         this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1);
         this.isStart = isStart;
-        enemyTank = new Tanks(100, 1 , 1, gc, 1, 400, 400, this);
+        allObjects.add(player1);
+        allObjects.add(enemyTank);
         tanks.add(enemyTank);
     }
 
@@ -39,6 +43,9 @@ public class Model {
             }
         }
     }
+
+
+
     public void update(){
         ArrayList<Bullet> newBuletsArr = new ArrayList<Bullet>();
         Brick brick;
@@ -63,11 +70,88 @@ public class Model {
     }
 
 
-    public ArrayList<Bullet> getBullets(){
-        return bullets;
+    public boolean bullet;
+
+
+    //checking if is there collision with brick and bullet
+    //---------------------------------------------------------------------------------------------------------------------------------
+    public void updateObjDraw(){
+        for(Obj object: allObjects){
+            object.draw();
+        }
+    }
+    public void enemy_computingObj(){
+        for(Tanks tank : tanks){
+            if(bricks.getBricksClasses() != null){
+                enemyBrain.computing_to_baseObj(tank, allObjects);
+                enemyBrain.move(tank);
+            }
+        }
     }
 
-    public boolean bullet;
+    public void isCollision_tankObj(Tanks checking_obj) {
+        boolean[] retCollisionArr = new boolean[]{false, false, false, false};
+        for (Obj object : allObjects) {
+            if (object != checking_obj) {
+                //left
+                if ((((checking_obj.getPosY() + 1 >= object.getPosY() + 1) && (checking_obj.getPosY() + 1 <= object.getPosY() + 49)) || ((checking_obj.getPosY() + 49 >= object.getPosY() + 1) && (checking_obj.getPosY() + 49 <= object.getPosY() + 49))) &&
+                        ((checking_obj.getPosX() <= object.getPosX() + 50) && (checking_obj.getPosX() >= object.getPosX() + 50)))
+                    retCollisionArr[0] = true;
+                //right
+                if ((((checking_obj.getPosY() + 1 >= object.getPosY() + 1) && (checking_obj.getPosY() + 1 <= object.getPosY() + 49)) || ((checking_obj.getPosY() + 49 >= object.getPosY() + 1) && (checking_obj.getPosY() + 49 <= object.getPosY() + 49))) &&
+                        ((checking_obj.getPosX() + 50 <= object.getPosX()) && (checking_obj.getPosX() + 50 >= object.getPosX())))
+                    retCollisionArr[1] = true;
+                //forward
+                if ((((checking_obj.getPosX() + 1 >= object.getPosX() + 1) && (checking_obj.getPosX() + 1 <= object.getPosX() + 49)) || ((checking_obj.getPosX() + 49 >= object.getPosX() + 1) && (checking_obj.getPosX() + 49 <= object.getPosX() + 49))) &&
+                        ((checking_obj.getPosY() <= object.getPosY() + 49) && (checking_obj.getPosY() >= object.getPosY() + 49)))
+                    retCollisionArr[2] = true;
+                //backward
+                if ((((checking_obj.getPosX() + 1 >= object.getPosX() + 1) && (checking_obj.getPosX() + 1 <= object.getPosX() + 49)) || ((checking_obj.getPosX() + 49 >= object.getPosX() + 1) && (checking_obj.getPosX() + 49 <= object.getPosX() + 49))) &&
+                        ((checking_obj.getPosY() + 49 <= object.getPosY()) && (checking_obj.getPosY() + 49 >= object.getPosY() - 1)))
+                    retCollisionArr[3] = true;
+            }
+        }
+        checking_obj.setIsColision(retCollisionArr);
+    }
+
+    private Obj isBulletCollisionObj(Bullet bullet){
+        for(Obj object : allObjects){
+            int bulletX = bullet.getPosX();
+            int bulletY = bullet.getPosY();
+            System.out.println(object.getType());
+            int objectX = object.getPosX();
+            int objectY = object.getPosY();
+            if((((bulletX>= objectX) && (bulletX <= objectX + 50)) || ((bulletX + 10>= objectX) && (bulletX + 10 <= objectX + 50))) &&
+                    (((bulletY >= objectY) && (bulletY <= objectY+50)) || ((bulletY+10 >= objectY)&&(bulletY+10 <= objectY + 50)))){
+                if (object == base){
+                    isStart = false;
+                    System.out.println(isStart);
+                }
+                return object;
+            }
+        }
+        return null;
+    }
+
+    public void updateObj(){
+        ArrayList<Bullet> newBuletsArr = new ArrayList<Bullet>();
+        Obj object;
+        for(Bullet bullet : bullets){
+            if(bullet.isInScreen()) {
+                bullet.update();
+                if((object = isBulletCollisionObj(bullet))!= null) {
+                    if(object.getType().equals("player") || object.getType().equals("tank")) continue;
+                    allObjects.remove(object);
+                    continue;
+                }
+                newBuletsArr.add(bullet);
+            }
+        }
+        bullets = newBuletsArr;
+    }
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------
+
 
     private Brick isBulletCollision(Bullet bullet){
         for(Brick brick : bricks.getBricksClasses()){
@@ -86,6 +170,8 @@ public class Model {
         }
         return null;
     }
+
+
 
     public boolean[] isCsollision_tank() {
         boolean[] retCollisionArr = new boolean[]{false, false, false, false};
@@ -113,6 +199,9 @@ public class Model {
 
     public Tanks getPlayer1() {
         return player1;
+    }
+    public ArrayList<Bullet> getBullets(){
+        return bullets;
     }
 
 

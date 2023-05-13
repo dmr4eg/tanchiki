@@ -1,40 +1,20 @@
 package game;
 
 
-import javafx.scene.Group;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
-public class Tanks extends Nonstatic{
+public class Tanks extends Obj {
 
     private GraphicsContext gc;
+
+    private final int DMG;
 
     private boolean[] isColision = new boolean[] {false, false, false, false};
 
     private boolean isTankMove = true;
 
-    public boolean isTankMove() {
-        return isTankMove;
-    }
-
-    public void setTankIsMove(boolean isTankMove) {
-        this.isTankMove = isTankMove;
-    }
-    public void setIsColision(boolean[] isColision) {
-        this.isColision = isColision;
-    }
-
-    public boolean[] getIsColision() {
-        return isColision;
-    }
-
     private int fireCooldown = 0;
-
-    public void setOrientation(int orientation) {
-        Orientation = orientation;
-    }
 
     private int Orientation;
     private Image imageRight = new Image("p1right.png");
@@ -50,9 +30,30 @@ public class Tanks extends Nonstatic{
 
     private Model model;
 
-    public Tanks(int HP, int MS, int DMG, GraphicsContext gc, int Orientation, int PosX, int PosY, Model model) {
+    public boolean isTankMove() {
+        return isTankMove;
+    }
+
+    public void setTankIsMove(boolean isTankMove) {
+        this.isTankMove = isTankMove;
+    }
+
+    public void setIsColision(boolean[] isColision) {
+        this.isColision = isColision;
+    }
+
+    public boolean[] getIsColision() {
+        return isColision;
+    }
+
+    public void setOrientation(int orientation) {
+        Orientation = orientation;
+    }
+
+    public Tanks(int HP, int MS, int DMG,String type, GraphicsContext gc, int Orientation, int PosX, int PosY, Model model) {
+        super.type = type;
         super.HP = HP;
-        super.DMG = DMG;
+        this.DMG = DMG;
         super.MS = MS;
         this.gc = gc;
         this.Orientation = Orientation;
@@ -82,7 +83,7 @@ public class Tanks extends Nonstatic{
             }
         }
     }
-
+    @Override
     public void draw(){
         switch (Orientation){
             case 1:

@@ -49,44 +49,39 @@ public class Controller extends Application{
 
         // Add event handlers for moving the tank;
 
-
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
-                case A:
+                case A -> {
                     model.getPlayer1().setTankIsMove(true);
                     model.setPlayer1Orientation(1);
+                }
 //                    if ((!(model.getPlayer1().getPosX() <= 0))&& !model.getPlayer1().getIsColision()[0]){
 //                        model.getPlayer1().moveLeft();
 //                    }
 //                    else model.setPlayer1Orientation(1);
-                    break;
-                case D:
+                case D -> {
                     model.getPlayer1().setTankIsMove(true);
                     model.setPlayer1Orientation(2);
+                }
 //                    if ((!(model.getPlayer1().getPosX() >= WIDTH-TILE)) && !model.getPlayer1().getIsColision()[1]){
 //                        model.getPlayer1().moveRight();
 //                    }else model.setPlayer1Orientation(2);
-                    break;
-                case W:
+                case W -> {
                     model.getPlayer1().setTankIsMove(true);
                     model.setPlayer1Orientation(3);
+                }
 //                    if (!((model.getPlayer1().getPosY() <= 0)) && !model.getPlayer1().getIsColision()[2]) {
 //                        model.getPlayer1().moveUp();
 //                    }else model.setPlayer1Orientation(3);
-                    break;
-                case S:
+                case S -> {
                     model.getPlayer1().setTankIsMove(true);
                     model.setPlayer1Orientation(4);
+                }
 //                    if ((!(model.getPlayer1().getPosY() >= HEIGHT- TILE)) && !model.getPlayer1().getIsColision()[3]){
 //                        model.getPlayer1().moveDown();
 //                    }else model.setPlayer1Orientation(4);
-                    break;
-                case E:
-                    model.getPlayer1().fire();
-                    break;
-                default :
-                    model.getPlayer1().setTankIsMove(false);
-                    break;
+                case E -> model.getPlayer1().fire();
+                default -> model.getPlayer1().setTankIsMove(false);
             }
         });
         //-------------------------------------------------------------------------------------------------------------------
@@ -103,12 +98,33 @@ public class Controller extends Application{
 
         gc.fillRect(0, 0, WIDTH, HEIGHT);
         gc.setFill(Color.BLACK);
+        //--------------------------------
+
+        model.isCollision_tankObj(model.getPlayer1());
         model.getPlayer1().update(0);
-        model.isCsollision_tank();
-//        model.drawWalls();
-        model.enemy_computing();
-        if (!model.getBullets().isEmpty()){
-            model.update();
+        model.enemy_computingObj();
+        if (!model.getBullets().isEmpty()) {
+            model.updateObj();
         }
+
+        //-------------------------------
+
+
+//
+//        model.getPlayer1().update(0);
+//
+//        model.isCsollision_tank();
+//        //model.isCsollision_tankObj(model.getPlayer1());
+//        //model.drawWalls();
+//
+//        model.enemy_computing();
+//        //model.updateObjDraw();
+//
+//        model.update();
+//        if (!model.getBullets().isEmpty()){
+//            model.update();
+//            //model.updateObj();
+//
+//        }
     }
 }
