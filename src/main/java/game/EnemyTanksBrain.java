@@ -21,7 +21,7 @@ public class EnemyTanksBrain {
     private boolean[] check_collisionObj(Tanks tank, ArrayList<Obj> allObjects){
         boolean[] retCollisionArr = new boolean[]{false, false, false, false};
         for (Obj brick : allObjects) {
-            brick.draw();
+            //brick.draw();
             if (brick != tank) {
                 //left
                 if ((((tank.getPosY() + 1 >= brick.getPosY() + 1) && (tank.getPosY() + 1 <= brick.getPosY() + 49)) || ((tank.getPosY() + 49 >= brick.getPosY() + 1) && (tank.getPosY() + 49 <= brick.getPosY() + 49))) &&
@@ -99,7 +99,7 @@ public class EnemyTanksBrain {
     }
 
     public void move(Tanks tank){
-        tank.update(2);
+        tank.update();
 //        switch (tank.getOrientation()){
 //            case 1:
 //                tank.moveLeft();

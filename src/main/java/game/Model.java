@@ -75,7 +75,7 @@ public class Model {
 
     //checking if is there collision with brick and bullet
     //---------------------------------------------------------------------------------------------------------------------------------
-    public void updateObjDraw(){
+    public void updateDraw(){
         for(Obj object: allObjects){
             object.draw();
         }
@@ -118,7 +118,6 @@ public class Model {
         for(Obj object : allObjects){
             int bulletX = bullet.getPosX();
             int bulletY = bullet.getPosY();
-            System.out.println(object.getType());
             int objectX = object.getPosX();
             int objectY = object.getPosY();
             if((((bulletX>= objectX) && (bulletX <= objectX + 50)) || ((bulletX + 10>= objectX) && (bulletX + 10 <= objectX + 50))) &&
@@ -140,7 +139,15 @@ public class Model {
             if(bullet.isInScreen()) {
                 bullet.update();
                 if((object = isBulletCollisionObj(bullet))!= null) {
-                    if(object.getType().equals("player") || object.getType().equals("tank")) continue;
+                    if(!object.getType().equals("brick")) {
+                        boolean isDead = object.isDead(bullet.getDMG());
+                        if(isDead){
+                            System.out.println(object.getType() + " " + object.getHP());
+                            allObjects.remove(object);
+                            tanks.remove(object);
+                        }
+                        continue;
+                    }
                     allObjects.remove(object);
                     continue;
                 }

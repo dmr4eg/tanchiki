@@ -99,9 +99,9 @@ public class Controller extends Application{
         gc.fillRect(0, 0, WIDTH, HEIGHT);
         gc.setFill(Color.BLACK);
         //--------------------------------
-
+        model.updateDraw();
         model.isCollision_tankObj(model.getPlayer1());
-        model.getPlayer1().update(0);
+        model.getPlayer1().update();
         model.enemy_computingObj();
         if (!model.getBullets().isEmpty()) {
             model.updateObj();

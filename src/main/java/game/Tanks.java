@@ -118,13 +118,10 @@ public class Tanks extends Obj {
                 break;
         }
     }
-    private void updateHP(int DMG){
-        HP -= DMG;
-    }
-    public void update(int DMG){
+
+    public void update(){
         updatePos();
         if (fireCooldown > 0 && fireCooldown <= 100)fireCooldown--;
-        updateHP(DMG);
         draw();
     }
 

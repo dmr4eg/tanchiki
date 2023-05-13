@@ -49,8 +49,4 @@ public class Brick extends Obj{
     public int getPosY() {
         return PosY;
     }
-
-    public int getHealth() {
-        return Health;
-    }
 }

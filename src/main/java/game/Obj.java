@@ -6,17 +6,25 @@ import javafx.scene.image.Image;
 public class Obj {
     protected int MS;
     protected int HP;
+
+    public int getHP() {
+        return HP;
+    }
+
     protected int PosX;
     protected int PosY;
 
+    protected String type;
+
+    protected String picture;
+    protected GraphicsContext gc;
     public String getType() {
         return type;
     }
-
-    protected String type;
-    protected String picture;
-    protected GraphicsContext gc;
-
+    public boolean isDead(int damageTaken){
+        HP = HP - damageTaken;
+        return HP <= 0;
+    }
     public int getPosX() {
         return PosX;
     }

@@ -15,7 +15,9 @@ public class Bullet {
     private int Orientation;
     private Image image = new Image("bullet2.png");
 
-
+    public int getDMG() {
+        return DMG;
+    }
 
     public Bullet(int DMG, int posX, int posY, int Orientation, GraphicsContext gc, int ms) {
         this.DMG = DMG;
