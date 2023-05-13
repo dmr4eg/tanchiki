@@ -2,7 +2,11 @@ package game;
 
 import javafx.scene.canvas.GraphicsContext;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class Model {
     private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
@@ -16,6 +20,8 @@ public class Model {
     private final EnemyTanksBrain enemyBrain;
     private final Brick base;
     boolean isStart;
+    private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
+
     public Model(boolean isStart, GraphicsContext gc) {
         this.bricks = new Bricks("level1.json", gc);
         allObjects.addAll(bricks.getBricksClasses());
@@ -28,6 +34,15 @@ public class Model {
         allObjects.add(player1);
         allObjects.add(enemyTank);
         tanks.add(enemyTank);
+        FileHandler fhm = null;
+        try {
+            fhm = new FileHandler("modelLogs.txt");
+        } catch (IOException e) {
+            throw new RuntimeException("Cannot open log file", e);
+        }
+        fhm.setFormatter(new SimpleFormatter());
+        LOGGER.addHandler(fhm);
+        LOGGER.info("Model instantiated");
     }
 
     public void setPlayer1Orientation(int orientation){
@@ -61,12 +76,14 @@ public class Model {
             }
         }
         bullets = newBuletsArr;
-
+        LOGGER.info(String.format("Updated %d bullets", bullets.size()));
     }
 
 
     public void addBullet(Bullet bullet){
         bullets.add(bullet);
+        LOGGER.info("New bullet added");
+
     }
 
 
@@ -90,25 +107,37 @@ public class Model {
     }
 
     public void isCollision_tankObj(Tanks checking_obj) {
+        if (checking_obj.hasCollided) {
+            return;
+        }
         boolean[] retCollisionArr = new boolean[]{false, false, false, false};
         for (Obj object : allObjects) {
             if (object != checking_obj) {
                 //left
                 if ((((checking_obj.getPosY() + 1 >= object.getPosY() + 1) && (checking_obj.getPosY() + 1 <= object.getPosY() + 49)) || ((checking_obj.getPosY() + 49 >= object.getPosY() + 1) && (checking_obj.getPosY() + 49 <= object.getPosY() + 49))) &&
-                        ((checking_obj.getPosX() <= object.getPosX() + 50) && (checking_obj.getPosX() >= object.getPosX() + 50)))
+                        ((checking_obj.getPosX() <= object.getPosX() + 50) && (checking_obj.getPosX() >= object.getPosX() + 50))) {
                     retCollisionArr[0] = true;
+                    LOGGER.info("Tank collided with an object");
+                }
                 //right
                 if ((((checking_obj.getPosY() + 1 >= object.getPosY() + 1) && (checking_obj.getPosY() + 1 <= object.getPosY() + 49)) || ((checking_obj.getPosY() + 49 >= object.getPosY() + 1) && (checking_obj.getPosY() + 49 <= object.getPosY() + 49))) &&
-                        ((checking_obj.getPosX() + 50 <= object.getPosX()) && (checking_obj.getPosX() + 50 >= object.getPosX())))
+                        ((checking_obj.getPosX() + 50 <= object.getPosX()) && (checking_obj.getPosX() + 50 >= object.getPosX()))) {
                     retCollisionArr[1] = true;
+                    LOGGER.info("Tank collided with an object");
+                }
+
                 //forward
                 if ((((checking_obj.getPosX() + 1 >= object.getPosX() + 1) && (checking_obj.getPosX() + 1 <= object.getPosX() + 49)) || ((checking_obj.getPosX() + 49 >= object.getPosX() + 1) && (checking_obj.getPosX() + 49 <= object.getPosX() + 49))) &&
-                        ((checking_obj.getPosY() <= object.getPosY() + 49) && (checking_obj.getPosY() >= object.getPosY() + 49)))
+                        ((checking_obj.getPosY() <= object.getPosY() + 49) && (checking_obj.getPosY() >= object.getPosY() + 49))) {
                     retCollisionArr[2] = true;
+                    LOGGER.info("Tank collided with an object");
+                }
                 //backward
                 if ((((checking_obj.getPosX() + 1 >= object.getPosX() + 1) && (checking_obj.getPosX() + 1 <= object.getPosX() + 49)) || ((checking_obj.getPosX() + 49 >= object.getPosX() + 1) && (checking_obj.getPosX() + 49 <= object.getPosX() + 49))) &&
-                        ((checking_obj.getPosY() + 49 <= object.getPosY()) && (checking_obj.getPosY() + 49 >= object.getPosY() - 1)))
+                        ((checking_obj.getPosY() + 49 <= object.getPosY()) && (checking_obj.getPosY() + 49 >= object.getPosY() - 1))) {
                     retCollisionArr[3] = true;
+                    LOGGER.info("Tank collided with an object");
+                }
             }
         }
         checking_obj.setIsColision(retCollisionArr);

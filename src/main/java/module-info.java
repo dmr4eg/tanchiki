@@ -4,6 +4,7 @@ module game {
     requires javafx.graphics;
     requires com.google.gson;
     requires com.fasterxml.jackson.databind;
+    requires java.logging;
 
 //    exports controller;
 //    exports view;

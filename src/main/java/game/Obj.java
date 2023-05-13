@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Obj {
+    public boolean hasCollided;
     protected int MS;
     protected int HP;
 
