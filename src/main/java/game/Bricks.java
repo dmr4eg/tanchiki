@@ -2,7 +2,7 @@ package game;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.canvas.GraphicsContext;
-
+import javafx.scene.control.Alert;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,17 +12,18 @@ public class Bricks {
     private GraphicsContext gc;
     private Brick base;
     private ArrayList<BrickData> bricksData;
-    public Brick getBase() {
-        return base;
-    }
+    private final JsonUtil jsonUtil = new JsonUtil();
 
     public Bricks(String filename, GraphicsContext gc) {
         this.gc = gc;
-
-        loadBricksData(filename);
+        bricksData = (ArrayList<BrickData>) jsonUtil.loadJson(filename);
         generateBricks();
         base = new Brick(300, 550, 100000, gc, "base", true);
         bricksClasses.add(base);
+    }
+
+    public Brick getBase() {
+        return base;
     }
 
     private void generateBricks() {
@@ -42,19 +43,15 @@ public class Bricks {
         bricksClasses.add(brick);
     }
 
-    private void loadBricksData(String filename) {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            bricksData = objectMapper.readValue(new File(filename), objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, BrickData.class));
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+    public void baseBroken(Brick base){
+        if (base.getHP() <= 0){
+            bricksClasses.remove(base);
+            Alert go = new Alert(Alert.AlertType.INFORMATION, "Game Over");
         }
     }
-
     public static class BrickData {
         private int x;
         private int y;
-
         public int getX() {
             return x;
         }

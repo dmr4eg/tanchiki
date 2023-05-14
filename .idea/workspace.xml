@@ -8,14 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllerLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/controllerLogs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modelLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/modelLogs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Bullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/EnemyTanksBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/EnemyTanksBrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Controller$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/EnemyTanksBrain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/EnemyTanksBrain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Bricks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Bricks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/JsonUtil.java" afterDir="false" />
     </list>
     <list id="56059dc6-547d-4d90-87ef-6d7c88b1342c" name="Changes by dmr4eg" comment="" />
     <list id="418be624-e450-4897-b2a2-09db30ee6746" name="Changes by User" comment="" />

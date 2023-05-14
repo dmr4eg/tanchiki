@@ -1,2 +1,2 @@
-мая 14, 2023 2:12:14 AM game.Model <init>
+May 14, 2023 12:25:30 PM game.Model <init>
 INFO: Model instantiated
