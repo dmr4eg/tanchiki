@@ -1,32 +1,26 @@
 package game;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.scene.Group;
+import javafx.application.Platform;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.StackPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-import static java.lang.Thread.sleep;
-import static javafx.application.Application.launch;
-import static javafx.scene.input.KeyCode.*;
+import static javafx.scene.paint.Color.*;
 
 public class Controller extends Application{
     private final int WIDTH = 600;
@@ -42,11 +36,13 @@ public class Controller extends Application{
         // Create group to hold all bricks
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        model = new Model(true, gc);
+        Scene scene = new Scene(new StackPane(canvas));
+        model = new Model(false, gc);
 
         // Set up scene and show stage
-        Scene scene = new Scene(new StackPane(canvas));
-        stage.setScene(scene);
+
+
+        stage.setScene(new Scene(creatiContent(stage, scene)));
         stage.show();
         Timeline tl = new Timeline(new KeyFrame(Duration.millis(20), e->run(gc, scene)));
         tl.setCycleCount(Timeline.INDEFINITE);
@@ -104,29 +100,59 @@ public class Controller extends Application{
                 default -> model.getPlayer1().setTankIsMove(false);
             }
         });
-        //-------------------------------------------------------------------------------------------------------------------
 
-        //----------------------------------------
         tl.play();
     }
+
+    private Parent creatiContent(Stage stage, Scene scene){
+        Pane root = new Pane();
+        root.setPrefSize(800, 480);
+
+        Image bgrImage = new Image(("bgr.jpg"),
+                1980,
+                1080,
+                false, false
+        );
+
+        VBox box = new VBox(10,
+                new MenuItem("START (single player)", () -> { model.startGame();
+                    stage.setScene(scene);}),
+                new MenuItem("START (multiplayer player)", () -> {}),
+                new MenuItem("Level Editor", () -> {}),
+                new MenuItem("Quit", Platform::exit)
+        );
+        box.setBackground(new Background(
+                new BackgroundFill(Color.web("black", 0.6), null, null))
+        );
+        box.setTranslateX(40);
+        box.setTranslateY(40);
+
+        root.getChildren().addAll(
+                new ImageView(bgrImage),
+                box
+        );
+        return root;
+    }
+
+
 
     public static void main(String[] args) {
         launch(args);
     }
 
     public void run(GraphicsContext gc, Scene scene) {
-
-        gc.fillRect(0, 0, WIDTH, HEIGHT);
-        gc.setFill(Color.BLACK);
-        //--------------------------------
-        model.updateDraw();
-        model.isCollision_tankObj(model.getPlayer1());
-        model.getPlayer1().update();
-        model.enemy_computingObj();
-        if (!model.getBullets().isEmpty()) {
-            model.updateObj();
+        if(model.isStart) {
+            gc.fillRect(0, 0, WIDTH, HEIGHT);
+            gc.setFill(BLACK);
+            //--------------------------------
+            model.updateDraw();
+            model.isCollision_tankObj(model.getPlayer1());
+            model.getPlayer1().update();
+            model.enemy_computingObj();
+            if (!model.getBullets().isEmpty()) {
+                model.updateObj();
+            }
         }
-
         //-------------------------------
 
 

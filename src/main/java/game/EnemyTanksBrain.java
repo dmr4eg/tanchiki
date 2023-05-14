@@ -122,7 +122,7 @@ public class EnemyTanksBrain {
 
     private void fire_in_player_or_move_to_base(Tanks tank) {
         if (tank.getType() != "player") {
-            if (tank.getPosX() == player.getPosX() && tank.getPosX() + 50 == player.getPosX() + 50) {
+            if (tank.getPosX()+25 >= player.getPosX() && tank.getPosX() + 25 <= player.getPosX() + 50) {
                 if (player.getPosY() < tank.getPosY()) {
                     tank.setOrientation(3);
                     tank.fire();
@@ -131,7 +131,7 @@ public class EnemyTanksBrain {
                     tank.setOrientation(4);
                     tank.fire();
                 }
-            } else if (tank.getPosY() == player.getPosY() && tank.getPosY() + 50 == player.getPosY() + 50) {
+            } else if (tank.getPosY() +25 >= player.getPosY() && tank.getPosY() + 25 <= player.getPosY() + 50) {
 
                 if (player.getPosX() > tank.getPosX()) {
                     tank.setOrientation(2);

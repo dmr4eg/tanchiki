@@ -27,7 +27,7 @@ public class Model {
         allObjects.addAll(bricks.getBricksClasses());
         base = bricks.getBase();
         player1 = new Tanks(100, 1, 20, "player", gc, 1, 100, 100, this);
-        enemyTank = new Tanks(100, 1 , 1, "tank", gc, 1, 400, 400, this);
+        enemyTank = new Tanks(100, 0 , 1, "tank", gc, 1, 100, 400, this);
         this.gc = gc;
         this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1);
         this.isStart = isStart;
@@ -44,7 +44,9 @@ public class Model {
         LOGGER.addHandler(fhm);
         LOGGER.info("Model instantiated");
     }
-
+    public void startGame(){
+        isStart = true;
+    }
     public void setPlayer1Orientation(int orientation){
         player1.setOrientation(orientation);
     }
@@ -177,7 +179,7 @@ public class Model {
                         }
                         continue;
                     }
-                    allObjects.remove(object);
+                    if(object.getType().equals("brick"))allObjects.remove(object);
                     continue;
                 }
                 newBuletsArr.add(bullet);

@@ -32,11 +32,11 @@ public class Bullet {
                 break;
             case 3:
                 PosX = posX + 20;
-                PosY = posY - 2;
+                PosY = posY - 11;
                 break;
             case 4:
                 PosX = posX + 20;
-                PosY = posY + 50 + 11;
+                PosY = posY + 50 + 1;
                 break;
         }
 

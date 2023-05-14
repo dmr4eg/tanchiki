@@ -6,17 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="269ef673-ab83-4ed9-b222-3cd47ed4e238" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brrr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllerLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/controllerLogs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/modelLogs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Bullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/JsonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/EnemyTanksBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/EnemyTanksBrain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Nonstatic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Obj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Obj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/game/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Controller$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/game/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/EnemyTanksBrain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/EnemyTanksBrain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/game/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
     </list>
     <list id="56059dc6-547d-4d90-87ef-6d7c88b1342c" name="Changes by dmr4eg" comment="" />
     <list id="418be624-e450-4897-b2a2-09db30ee6746" name="Changes by User" comment="" />
@@ -143,6 +142,7 @@
       <workItem from="1683991558834" duration="886000" />
       <workItem from="1684001144097" duration="241000" />
       <workItem from="1684001428698" duration="5431000" />
+      <workItem from="1684008244170" duration="12267000" />
     </task>
     <servers />
   </component>
@@ -159,21 +159,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/game/Model.java</url>
-          <line>82</line>
-          <properties class="game.Model" method="addBullet">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
