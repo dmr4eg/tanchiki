@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Bricks {
-    private ArrayList<Brick> bricksClasses = new ArrayList<>();
+    private static ArrayList<Brick> bricksClasses = new ArrayList<>();
     private GraphicsContext gc;
     private Brick base;
     private ArrayList<BrickData> bricksData;
@@ -43,12 +43,6 @@ public class Bricks {
         bricksClasses.add(brick);
     }
 
-    public void baseBroken(Brick base){
-        if (base.getHP() <= 0){
-            bricksClasses.remove(base);
-            Alert go = new Alert(Alert.AlertType.INFORMATION, "Game Over");
-        }
-    }
     public static class BrickData {
         private int x;
         private int y;

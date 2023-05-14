@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
@@ -121,6 +122,7 @@ public class Controller extends Application{
                 new MenuItem("Level Editor", () -> {}),
                 new MenuItem("Quit", Platform::exit)
         );
+
         box.setBackground(new Background(
                 new BackgroundFill(Color.web("black", 0.6), null, null))
         );
@@ -133,8 +135,6 @@ public class Controller extends Application{
         );
         return root;
     }
-
-
 
     public static void main(String[] args) {
         launch(args);

@@ -2,6 +2,7 @@ package game;
 
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -19,24 +20,25 @@ class MenuItem extends StackPane {
                 new Stop(0.1, Color.web("black", 0.75)),
                 new Stop(1.0, Color.web("black", 0.15))
         );
-        Rectangle bg = new Rectangle(250, 30, gradient);
+        Rectangle bg = new Rectangle(720, 93, gradient);
         Rectangle line = new Rectangle(5, 30 );
 
-        line.fillProperty().bind(
-                Bindings.when(hoverProperty()).then(Color.RED).otherwise(Color.GRAY)
-        );
+//        line.fillProperty().bind(
+//                Bindings.when(hoverProperty()).then(Color.RED).otherwise(Color.GRAY)
+//        );
         Text text = new Text(name);
         text.fillProperty().bind(
                 Bindings.when(hoverProperty()).then(Color.WHITE).otherwise(Color.GRAY)
         );
-        text.setFont(Font.font(16.0));
+
+        Font font = Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 30);
+        text.setFont(font);
 
         setOnMouseClicked(e -> action.run());
-
-        setAlignment(Pos.CENTER_LEFT);
+        setAlignment(Pos.CENTER);
 
         HBox box = new HBox(20, line, text);
-        box.setAlignment(Pos.CENTER_LEFT);
+        box.setAlignment(Pos.CENTER);
 
         getChildren().addAll(bg, box);
     }

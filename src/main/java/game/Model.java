@@ -20,13 +20,14 @@ public class Model {
     private final EnemyTanksBrain enemyBrain;
     private final Brick base;
     boolean isStart;
+    public boolean bullet;
     private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
 
     public Model(boolean isStart, GraphicsContext gc) {
         this.bricks = new Bricks("level1.json", gc);
         allObjects.addAll(bricks.getBricksClasses());
         base = bricks.getBase();
-        player1 = new Tanks(100, 1, 20, "player", gc, 1, 100, 100, this);
+        player1 = new Tanks(100, 1, 25, "player", gc, 1, 100, 100, this);
         enemyTank = new Tanks(100, 0 , 1, "tank", gc, 1, 100, 400, this);
         this.gc = gc;
         this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1);
@@ -51,7 +52,6 @@ public class Model {
         player1.setOrientation(orientation);
     }
 
-
     public void enemy_computing(){
         for(Tanks tank : tanks){
             if(bricks.getBricksClasses() != null){
@@ -60,8 +60,6 @@ public class Model {
             }
         }
     }
-
-
 
     public void update(){
         ArrayList<Bullet> newBuletsArr = new ArrayList<Bullet>();
@@ -81,16 +79,10 @@ public class Model {
         LOGGER.info(String.format("Updated %d bullets", bullets.size()));
     }
 
-
     public void addBullet(Bullet bullet){
         bullets.add(bullet);
         LOGGER.info("New bullet added");
-
     }
-
-
-    public boolean bullet;
-
 
     //checking if is there collision with brick and bullet
     //---------------------------------------------------------------------------------------------------------------------------------
@@ -154,7 +146,7 @@ public class Model {
             if((((bulletX>= objectX) && (bulletX <= objectX + 50)) || ((bulletX + 10>= objectX) && (bulletX + 10 <= objectX + 50))) &&
                     (((bulletY >= objectY) && (bulletY <= objectY+50)) || ((bulletY+10 >= objectY)&&(bulletY+10 <= objectY + 50)))){
                 if (object == base){
-                    isStart = false;
+//                    isStart = false;
                     System.out.println(isStart);
                 }
                 return object;
@@ -276,8 +268,4 @@ public class Model {
 //        }
 //        return false;
 //    }
-
-
-
-
 }

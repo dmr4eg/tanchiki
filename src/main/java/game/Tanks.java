@@ -26,6 +26,14 @@ public class Tanks extends Obj {
     private Image imageDown = new Image("p1down.png");
     private Image imageDown2 = new Image("p1down2.png");
 
+//    private Image imageRight = new Image("");
+//    private Image imageRight2 = new Image("");
+//    private Image imageLeft = new Image("");
+//    private Image imageLeft2 = new Image("");
+//    private Image imageUp = new Image("");
+//    private Image imageUp2 = new Image("");
+//    private Image imageDown = new Image("");
+//    private Image imageDown2 = new Image("");
     private boolean switcher = true;
 
     private Model model;
@@ -62,6 +70,43 @@ public class Tanks extends Obj {
         this.model = model;
     }
 
+//    public void setTankType(String type) {
+//        switch (type) {
+//            case "player1":
+//                imageRight = new Image("p1right.png");
+//                imageRight2 = new Image("p1right2.png");
+//                imageLeft = new Image("p1left.png");
+//                imageLeft2 = new Image("p1left2.png");
+//                imageUp = new Image("p1up.png");
+//                imageUp2 = new Image("p1up2.png");
+//                imageDown = new Image("p1down.png");
+//                imageDown2 = new Image("p1down2.png");
+//                break;
+//            case "player2":
+//                imageRight = new Image("p2right.png");
+//                imageRight2 = new Image("p2right2.png");
+//                imageLeft = new Image("p2left.png");
+//                imageLeft2 = new Image("p2left2.png");
+//                imageUp = new Image("p2up.png");
+//                imageUp2 = new Image("p2up2.png");
+//                imageDown = new Image("p2down.png");
+//                imageDown2 = new Image("p2down2.png");
+//                break;
+//            case "enemyTank":
+//                imageRight = new Image("eright.png");
+//                imageRight2 = new Image("eright2.png");
+//                imageLeft = new Image("eleft.png");
+//                imageLeft2 = new Image("eleft2.png");
+//                imageUp = new Image("eup.png");
+//                imageUp2 = new Image("eup2.png");
+//                imageDown = new Image("edown.png");
+//                imageDown2 = new Image("edown2.png");
+//                break;
+//            default:
+//                throw new IllegalArgumentException("Invalid tank type: " + type);
+//        }
+//    }
+
     private void updatePos(){
 //        System.out.println(isColision[0]);
 //        System.out.println(isColision[1]);
@@ -85,7 +130,7 @@ public class Tanks extends Obj {
     }
     @Override
     public void draw(){
-        switch (Orientation){
+        switch (Orientation) {
             case 1:
                 if (switcher){
                     gc.drawImage(imageLeft, PosX, PosY);
