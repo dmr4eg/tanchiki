@@ -11,6 +11,8 @@ module game {
     exports game; // add this line to export the model package
      // add this line to open the model package to javafx.base
     opens game to com.fasterxml.jackson.databind;
+    exports net to javafx.graphics;
+
 //    opens view to javafx.fxml;
 //    opens controller to javafx.fxml;
 

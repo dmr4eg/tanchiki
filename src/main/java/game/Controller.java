@@ -15,6 +15,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import net.App;
+
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -28,6 +30,7 @@ public class Controller extends Application{
     private final int HEIGHT = 600;
     private boolean isGameStart = true;
     private Model model;
+    private net.App app = new App();
     private int TILE = 50;
     private Bullet bullet;
     private EventLis eventLis;
@@ -41,11 +44,9 @@ public class Controller extends Application{
         model = new Model(false, gc);
 
         // Set up scene and show stage
-
-
         stage.setScene(new Scene(creatiContent(stage, scene)));
         stage.show();
-        Timeline tl = new Timeline(new KeyFrame(Duration.millis(20), e->run(gc, scene)));
+        Timeline tl = new Timeline(new KeyFrame(Duration.millis(15), e->run(gc, scene)));
         tl.setCycleCount(Timeline.INDEFINITE);
         //eventLis = new EventLis(scene, model, WIDTH, HEIGHT, TILE);
 
@@ -57,7 +58,6 @@ public class Controller extends Application{
         }
         fhc.setFormatter(new SimpleFormatter());
         LOGGER.addHandler(fhc);
-
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case A, LEFT -> {
@@ -101,7 +101,6 @@ public class Controller extends Application{
                 default -> model.getPlayer1().setTankIsMove(false);
             }
         });
-
         tl.play();
     }
 
@@ -116,9 +115,16 @@ public class Controller extends Application{
         );
 
         VBox box = new VBox(10,
-                new MenuItem("START (single player)", () -> { model.startGame();
+                new MenuItem("Single player", () -> {
+                    model.startGame();
                     stage.setScene(scene);}),
-                new MenuItem("START (multiplayer player)", () -> {}),
+                new MenuItem("Multiplayer player", () -> {
+                    try {
+                        app.start(stage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }),
                 new MenuItem("Level Editor", () -> {}),
                 new MenuItem("Quit", Platform::exit)
         );

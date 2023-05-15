@@ -10,7 +10,6 @@ public class Bullet {
     private int PosX;
     private int PosY;
     private GraphicsContext gc;
-
     private int ms;
     private int Orientation;
     private Image image = new Image("bullet2.png");
@@ -57,10 +56,10 @@ public class Bullet {
     public void update(){
         if(isInScreen()) {
             switch (Orientation) {
-                case 1 -> PosX -= 2;
-                case 2 -> PosX += 2;
-                case 3 -> PosY -= 2;
-                case 4 -> PosY += 2;
+                case 1 -> PosX -= 5;
+                case 2 -> PosX += 5;
+                case 3 -> PosY -= 5;
+                case 4 -> PosY += 5;
                 default -> {
                 }
             }
@@ -77,7 +76,5 @@ public class Bullet {
     }
 
     public void die(){
-
     }
-
 }

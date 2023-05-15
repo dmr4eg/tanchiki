@@ -5,35 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="269ef673-ab83-4ed9-b222-3cd47ed4e238" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/net/Client.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/net/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/Connection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/Protocol.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllerLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/controllerLogs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level1.json" beforeDir="false" afterPath="$PROJECT_DIR$/level1.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modelLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/modelLogs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Bricks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Bricks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Bullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/MenuItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Tanks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Tanks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/Bricks$BrickData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Bricks$BrickData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/Bricks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Bricks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/Bullet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Bullet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/game/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Controller$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/game/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/MenuItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/MenuItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/Obj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Obj.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/Tanks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Tanks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/Server.class" afterDir="false" />
     </list>
     <list id="56059dc6-547d-4d90-87ef-6d7c88b1342c" name="Changes by dmr4eg" comment="" />
-    <list id="418be624-e450-4897-b2a2-09db30ee6746" name="Changes by User" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Obj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Obj.java" afterDir="false" />
-    </list>
+    <list id="418be624-e450-4897-b2a2-09db30ee6746" name="Changes by User" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,21 +38,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/game/Model.java">
-      <ranges>
-        <range start1="22" end1="22" start2="22" end2="23" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="28" end1="29" start2="29" end2="30" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="53" end1="54" start2="54" end2="54" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="63" end1="65" start2="63" end2="63" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="82" end1="83" start2="80" end2="80" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="87" end1="88" start2="84" end2="84" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="89" end1="93" start2="85" end2="85" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="156" end1="157" start2="148" end2="149" changelist="418be624-e450-4897-b2a2-09db30ee6746" />
-        <range start1="278" end1="282" start2="270" end2="270" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -81,6 +56,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -88,7 +64,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/CVUT/teampush2",
+    "last_opened_file_path": "/Users/dmr4eg/Folders/Codes/portfolio/pjv-sem/assyldam/src/main/java/net",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -103,6 +79,7 @@
       <recent name="game" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/net" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -112,8 +89,21 @@
       <recent name="C:\CVUT\TeamGame\src\main" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="start_game" type="Application" factoryName="Application">
+  <component name="RunManager" selected="Application.start_game">
+    <configuration name="App" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="net.App" />
+      <module name="game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="net.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="start_game" type="Application" factoryName="Application" singleton="false">
       <option name="ALTERNATIVE_JRE_PATH" value="19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="game.Controller" />
@@ -122,19 +112,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="game" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="game" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -186,6 +168,8 @@
       <workItem from="1684001144097" duration="241000" />
       <workItem from="1684001428698" duration="5431000" />
       <workItem from="1684008244170" duration="12267000" />
+      <workItem from="1684100757519" duration="158000" />
+      <workItem from="1684101688734" duration="5975000" />
     </task>
     <servers />
   </component>
