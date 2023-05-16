@@ -10,7 +10,7 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Client implements Runnable {
+public class  Client implements Runnable {
     private static final Logger LOGGER = Logger.getLogger(Server.class.getName());
     private final App app;
     private final int port;

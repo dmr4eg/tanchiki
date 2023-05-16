@@ -1,6 +1,9 @@
 package game;
 
 import javafx.scene.canvas.GraphicsContext;
+import net.GameClient;
+import net.GameServer;
+import net.packets.Packet00Login;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,28 +11,63 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-public class Model {
+public class Model extends Thread{
     private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
     private final ArrayList<Tanks> tanks = new ArrayList<Tanks>();
     private ArrayList<Obj> allObjects = new ArrayList<Obj>();
     private  ArrayList<ArrayList<Integer>> bricsCoords =  new ArrayList<ArrayList<Integer>>(); //[[],[],[]]
     private final Bricks bricks;
     private GraphicsContext gc;
-    private final Tanks player1;
+    private Tanks player1;
+    private TanksMp player2;
+
+    public void setPlayer2(TanksMp player2) {
+        this.player2 = player2;
+    }
+
+    public void setPlayer1(Tanks player1) {
+        this.player1 = player1;
+    }
+
     private Tanks enemyTank;
-    private final EnemyTanksBrain enemyBrain;
-    private final Brick base;
+    private EnemyTanksBrain enemyBrain;
+    private Brick base;
     boolean isStart;
     public boolean bullet;
-    private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
+    GameServer socketServer;
+    GameClient socketClient;
 
+    private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
     public Model(boolean isStart, GraphicsContext gc) {
+        this.gc = gc;
+        player1 = new Tanks(100, 1, 25, "player", gc, 1, 100, 100, this);
         this.bricks = new Bricks("level1.json", gc);
         allObjects.addAll(bricks.getBricksClasses());
         base = bricks.getBase();
-        player1 = new Tanks(100, 1, 25, "player", gc, 1, 100, 100, this);
         enemyTank = new Tanks(100, 0 , 1, "tank", gc, 1, 100, 400, this);
+        this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1);
+        this.isStart = isStart;
+        allObjects.add(player1);
+        allObjects.add(enemyTank);
+        tanks.add(enemyTank);
+        FileHandler fhm = null;
+        try {
+            fhm = new FileHandler("modelLogs.txt");
+        } catch (IOException e) {
+            throw new RuntimeException("Cannot open log file", e);
+        }
+        fhm.setFormatter(new SimpleFormatter());
+        LOGGER.addHandler(fhm);
+        LOGGER.info("Model instantiated");
+    }
+    public Model(boolean isStart, GraphicsContext gc, String name) {
         this.gc = gc;
+        startBackend(name);
+
+        this.bricks = new Bricks("level1.json", gc);
+        allObjects.addAll(bricks.getBricksClasses());
+        base = bricks.getBase();
+        enemyTank = new Tanks(100, 0 , 1, "tank", gc, 1, 100, 400, this);
         this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1);
         this.isStart = isStart;
         allObjects.add(player1);
@@ -180,7 +218,18 @@ public class Model {
         bullets = newBuletsArr;
     }
 
-    //-----------------------------------------------------------------------------------------------------------------------------------------
+    public GraphicsContext getGc() {
+        return gc;
+    }
+
+    public void addToTanks(Tanks tank) {
+        tanks.add(tank);
+    }
+
+    public void addToAllObjects(Obj object) {
+        allObjects.add(object);
+    }
+//-----------------------------------------------------------------------------------------------------------------------------------------
 
 
     private Brick isBulletCollision(Bullet bullet){
@@ -203,36 +252,23 @@ public class Model {
 
 
 
-    public boolean[] isCsollision_tank() {
-        boolean[] retCollisionArr = new boolean[]{false, false, false, false};
-        for (Brick brick : bricks.getBricksClasses()) {
-            //left
-            if ((((player1.getPosY() + 1 >= brick.getPosY() + 1) && (player1.getPosY() + 1 <= brick.getPosY() + 49)) || ((player1.getPosY() + 49 >= brick.getPosY() + 1) && (player1.getPosY() + 49 <= brick.getPosY() + 49))) &&
-                    ((player1.getPosX() <= brick.getPosX() + 50) && (player1.getPosX() >= brick.getPosX() + 50)))
-                retCollisionArr[0] = true;
-            //right
-            if ((((player1.getPosY() + 1 >= brick.getPosY() + 1) && (player1.getPosY() + 1 <= brick.getPosY() + 49)) || ((player1.getPosY() + 49 >= brick.getPosY() + 1) && (player1.getPosY() + 49 <= brick.getPosY() + 49))) &&
-                    ((player1.getPosX() + 50 <= brick.getPosX()) && (player1.getPosX() + 50 >= brick.getPosX())))
-                retCollisionArr[1] = true;
-            //forward
-            if ((((player1.getPosX() + 1 >= brick.getPosX() + 1) && (player1.getPosX() + 1 <= brick.getPosX() + 49)) || ((player1.getPosX() + 49 >= brick.getPosX() + 1) && (player1.getPosX() + 49 <= brick.getPosX() + 49))) &&
-                    ((player1.getPosY() <= brick.getPosY() + 49) && (player1.getPosY() >= brick.getPosY() + 49)))
-                retCollisionArr[2] = true;
-            //backward
-            if ((((player1.getPosX() + 1 >= brick.getPosX() + 1) && (player1.getPosX() + 1 <= brick.getPosX() + 49)) || ((player1.getPosX() + 49 >= brick.getPosX() + 1) && (player1.getPosX() + 49 <= brick.getPosX() + 49))) &&
-                    ((player1.getPosY() + 49 <= brick.getPosY()) && (player1.getPosY() + 49 >= brick.getPosY() - 1)))
-                retCollisionArr[3] = true;
-        }
-        player1.setIsColision(retCollisionArr);
-        return retCollisionArr;
-    }
-
     public Tanks getPlayer1() {
         return player1;
     }
+
     public ArrayList<Bullet> getBullets(){
         return bullets;
     }
+
+    private void startBackend(String name){
+        socketServer = new GameServer(this);
+        socketServer.start();
+        socketClient = new GameClient(this, "localhost");
+        socketClient.start();
+        Packet00Login loginPacket = new Packet00Login(name.getBytes());
+        loginPacket.writeData(socketClient);
+    }
+
 
 
 //    public boolean isCollisionForward(){
@@ -268,4 +304,27 @@ public class Model {
 //        }
 //        return false;
 //    }
+//public boolean[] isCsollision_tank() {
+//    boolean[] retCollisionArr = new boolean[]{false, false, false, false};
+//    for (Brick brick : bricks.getBricksClasses()) {
+//        //left
+//        if ((((player1.getPosY() + 1 >= brick.getPosY() + 1) && (player1.getPosY() + 1 <= brick.getPosY() + 49)) || ((player1.getPosY() + 49 >= brick.getPosY() + 1) && (player1.getPosY() + 49 <= brick.getPosY() + 49))) &&
+//                ((player1.getPosX() <= brick.getPosX() + 50) && (player1.getPosX() >= brick.getPosX() + 50)))
+//            retCollisionArr[0] = true;
+//        //right
+//        if ((((player1.getPosY() + 1 >= brick.getPosY() + 1) && (player1.getPosY() + 1 <= brick.getPosY() + 49)) || ((player1.getPosY() + 49 >= brick.getPosY() + 1) && (player1.getPosY() + 49 <= brick.getPosY() + 49))) &&
+//                ((player1.getPosX() + 50 <= brick.getPosX()) && (player1.getPosX() + 50 >= brick.getPosX())))
+//            retCollisionArr[1] = true;
+//        //forward
+//        if ((((player1.getPosX() + 1 >= brick.getPosX() + 1) && (player1.getPosX() + 1 <= brick.getPosX() + 49)) || ((player1.getPosX() + 49 >= brick.getPosX() + 1) && (player1.getPosX() + 49 <= brick.getPosX() + 49))) &&
+//                ((player1.getPosY() <= brick.getPosY() + 49) && (player1.getPosY() >= brick.getPosY() + 49)))
+//            retCollisionArr[2] = true;
+//        //backward
+//        if ((((player1.getPosX() + 1 >= brick.getPosX() + 1) && (player1.getPosX() + 1 <= brick.getPosX() + 49)) || ((player1.getPosX() + 49 >= brick.getPosX() + 1) && (player1.getPosX() + 49 <= brick.getPosX() + 49))) &&
+//                ((player1.getPosY() + 49 <= brick.getPosY()) && (player1.getPosY() + 49 >= brick.getPosY() - 1)))
+//            retCollisionArr[3] = true;
+//    }
+//    player1.setIsColision(retCollisionArr);
+//    return retCollisionArr;
+//}
 }

@@ -4,18 +4,27 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import net.App;
+import net.GameClient;
+import net.GameServer;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;
@@ -29,19 +38,23 @@ public class Controller extends Application{
     private final int WIDTH = 600;
     private final int HEIGHT = 600;
     private boolean isGameStart = true;
-    private Model model;
     private net.App app = new App();
     private int TILE = 50;
     private Bullet bullet;
     private EventLis eventLis;
     private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
 
+    private GraphicsContext gc;
+    private Model model;
+    private GameServer socketServer;
+    private GameClient socketClient;
     public void start(Stage stage) {
         // Create group to hold all bricks
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+        this.gc = canvas.getGraphicsContext2D();
         Scene scene = new Scene(new StackPane(canvas));
-        model = new Model(false, gc);
+
+        //initializing gameClient
 
         // Set up scene and show stage
         stage.setScene(new Scene(creatiContent(stage, scene)));
@@ -116,14 +129,37 @@ public class Controller extends Application{
 
         VBox box = new VBox(10,
                 new MenuItem("Single player", () -> {
+                    model = new Model(false, gc);
                     model.startGame();
                     stage.setScene(scene);}),
                 new MenuItem("Multiplayer player", () -> {
-                    try {
-                        app.start(stage);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    Label nameLabel = new Label("Enter your name:");
+                    TextField nameField = new TextField();
+                    nameField.setOnKeyPressed((event) -> {
+                        if (event.getCode() == KeyCode.ENTER) {
+                            model = new Model(false, gc, nameField.getText().trim());
+                            model.startGame();
+                            stage.setScene(scene);
+                        }
+                    });
+                    Button startButton = new Button("Start");
+                    startButton.setOnAction((ActionEvent e) -> {
+                        // 2. as above
+                        model = new Model(false, gc, nameField.getText().trim());
+                        model.startGame();
+                        stage.setScene(scene);
+                    });
+                    HBox hbox = new HBox(4, nameLabel, nameField, startButton);
+                    hbox.setPadding(new Insets(8));
+                    hbox.setAlignment(Pos.CENTER);
+                    Scene startScene = new Scene(hbox);
+                    stage.setScene(startScene);
+                    
+//                    try {
+//                        app.start(stage);
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
                 }),
                 new MenuItem("Level Editor", () -> {}),
                 new MenuItem("Quit", Platform::exit)
@@ -147,7 +183,7 @@ public class Controller extends Application{
     }
 
     public void run(GraphicsContext gc, Scene scene) {
-        if(model.isStart) {
+        if(model != null) {
             gc.fillRect(0, 0, WIDTH, HEIGHT);
             gc.setFill(BLACK);
             //--------------------------------

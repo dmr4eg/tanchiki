@@ -1,2 +1,398 @@
-May 15, 2023 9:15:16 PM game.Model <init>
+мая 16, 2023 4:14:32 PM game.Model <init>
 INFO: Model instantiated
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model addBullet
+INFO: New bullet added
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:32 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Controller lambda$start$1
+INFO: Player1 move up
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Controller lambda$start$1
+INFO: Player1 move down
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Controller lambda$start$1
+INFO: Player1 move down
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model addBullet
+INFO: New bullet added
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:33 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model addBullet
+INFO: New bullet added
+мая 16, 2023 4:14:34 PM game.Controller lambda$start$1
+INFO: Player1 fire
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:34 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model isCollision_tankObj
+INFO: Tank collided with an object
+мая 16, 2023 4:14:35 PM game.Model addBullet
+INFO: New bullet added
+мая 16, 2023 4:14:35 PM game.Controller lambda$start$1
+INFO: Player1 move right
+мая 16, 2023 4:14:37 PM game.Controller lambda$start$1
+INFO: Player1 move left
+мая 16, 2023 4:14:37 PM game.Controller lambda$start$1
+INFO: Player1 move left
+мая 16, 2023 4:14:37 PM game.Controller lambda$start$1
+INFO: Player1 move right
+мая 16, 2023 4:14:38 PM game.Controller lambda$start$1
+INFO: Player1 move down

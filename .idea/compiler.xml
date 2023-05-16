@@ -12,6 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="assyldamnurakali" target="19" />
+      <module name="pacman" target="19" />
     </bytecodeTargetLevel>
   </component>
 </project>
