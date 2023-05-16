@@ -37,13 +37,10 @@ import static javafx.scene.paint.Color.*;
 public class Controller extends Application{
     private final int WIDTH = 600;
     private final int HEIGHT = 600;
-    private boolean isGameStart = true;
     private net.App app = new App();
-    private int TILE = 50;
     private Bullet bullet;
     private EventLis eventLis;
     private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
-
     private GraphicsContext gc;
     private Model model;
     private GameServer socketServer;
@@ -71,49 +68,6 @@ public class Controller extends Application{
         }
         fhc.setFormatter(new SimpleFormatter());
         LOGGER.addHandler(fhc);
-        scene.setOnKeyPressed(event -> {
-            switch (event.getCode()) {
-                case A, LEFT -> {
-                    model.getPlayer1().setTankIsMove(true);
-                    model.setPlayer1Orientation(1);
-                    LOGGER.log(Level.INFO, "Player1 move left");
-                }
-//                    if ((!(model.getPlayer1().getPosX() <= 0))&& !model.getPlayer1().getIsColision()[0]){
-//                        model.getPlayer1().moveLeft();
-//                    }
-//                    else model.setPlayer1Orientation(1);
-                case D, RIGHT -> {
-                    model.getPlayer1().setTankIsMove(true);
-                    model.setPlayer1Orientation(2);
-                    LOGGER.log(Level.INFO, "Player1 move right");
-                }
-//                    if ((!(model.getPlayer1().getPosX() >= WIDTH-TILE)) && !model.getPlayer1().getIsColision()[1]){
-//                        model.getPlayer1().moveRight();
-//                    }else model.setPlayer1Orientation(2);
-                case W, UP -> {
-                    model.getPlayer1().setTankIsMove(true);
-                    model.setPlayer1Orientation(3);
-                    LOGGER.log(Level.INFO, "Player1 move up");
-                }
-//                    if (!((model.getPlayer1().getPosY() <= 0)) && !model.getPlayer1().getIsColision()[2]) {
-//                        model.getPlayer1().moveUp();
-//                    }else model.setPlayer1Orientation(3);
-                case S, DOWN -> {
-                    model.getPlayer1().setTankIsMove(true);
-                    model.setPlayer1Orientation(4);
-                    LOGGER.log(Level.INFO, "Player1 move down");
-                }
-//                    if ((!(model.getPlayer1().getPosY() >= HEIGHT- TILE)) && !model.getPlayer1().getIsColision()[3]){
-//                        model.getPlayer1().moveDown();
-//                    }else model.setPlayer1Orientation(4);
-                case E -> {
-                    model.getPlayer1().fire();
-                    LOGGER.log(Level.INFO, "Player1 fire");
-                }
-
-                default -> model.getPlayer1().setTankIsMove(false);
-            }
-        });
         tl.play();
     }
 
@@ -132,12 +86,15 @@ public class Controller extends Application{
                     model = new Model(false, gc);
                     model.startGame();
                     stage.setScene(scene);}),
+
                 new MenuItem("Multiplayer player", () -> {
                     Label nameLabel = new Label("Enter your name:");
                     TextField nameField = new TextField();
+
                     nameField.setOnKeyPressed((event) -> {
                         if (event.getCode() == KeyCode.ENTER) {
                             model = new Model(false, gc, nameField.getText().trim());
+                            setEventLis(model, scene);
                             model.startGame();
                             stage.setScene(scene);
                         }
@@ -146,6 +103,7 @@ public class Controller extends Application{
                     startButton.setOnAction((ActionEvent e) -> {
                         // 2. as above
                         model = new Model(false, gc, nameField.getText().trim());
+                        setEventLis(model, scene);
                         model.startGame();
                         stage.setScene(scene);
                     });
@@ -161,7 +119,9 @@ public class Controller extends Application{
 //                        e.printStackTrace();
 //                    }
                 }),
+
                 new MenuItem("Level Editor", () -> {}),
+
                 new MenuItem("Quit", Platform::exit)
         );
 
@@ -178,6 +138,11 @@ public class Controller extends Application{
         return root;
     }
 
+    private void setEventLis(Model model,Scene scene){
+        EventLis eventLis = new EventLis(model, scene);
+        eventLis.setEventLis();
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -186,6 +151,7 @@ public class Controller extends Application{
         if(model != null) {
             gc.fillRect(0, 0, WIDTH, HEIGHT);
             gc.setFill(BLACK);
+
             //--------------------------------
             model.updateDraw();
             model.isCollision_tankObj(model.getPlayer1());
@@ -197,6 +163,11 @@ public class Controller extends Application{
         }
         //-------------------------------
 
+
+
+    }
+
+}
 
 //
 //        model.getPlayer1().update(0);
@@ -214,5 +185,3 @@ public class Controller extends Application{
 //            //model.updateObj();
 //
 //        }
-    }
-}

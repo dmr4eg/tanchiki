@@ -202,6 +202,12 @@ public class Tanks extends Obj {
         switcher = !switcher;
     }
 
+    public void setPos(int x, int y){
+        PosX = x;
+        PosY = y;
+    }
+
+
     public int getOrientation() {
         return Orientation;
     }

@@ -14,7 +14,7 @@ import java.util.List;
 public class GameServer extends Thread{
     private DatagramSocket socket;
     private Model model;
-    private List<TanksMp> connectedPlayers = new ArrayList<TanksMp>();
+    private ArrayList<TanksMp> connectedPlayers = new ArrayList<TanksMp>();
 
     public GameServer(Model model){
         this.model = model;
@@ -23,7 +23,6 @@ public class GameServer extends Thread{
         } catch (SocketException e) {
             e.printStackTrace();
         }
-
     }
 
     public void run(){
@@ -35,7 +34,10 @@ public class GameServer extends Thread{
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            //sendData(packet.getData(), packet.getAddress(), packet.getPort());
             parsePacket(packet.getData(), packet.getAddress(), packet.getPort());
+
+
 //            String message = new String(packet.getData());
 //            System.out.println("CLIENT["+packet.getAddress()+": "+packet.getPort()+"] > " +message);
 //            if(message.trim().equalsIgnoreCase("ping"));{
@@ -56,19 +58,32 @@ public class GameServer extends Thread{
                 Packet00Login packet = new Packet00Login(data);
                 System.out.println("["+ address.getHostAddress() + ":" + port+ "] " + packet.getUsername()
                         + " has connected");
-                if(packet.getUsername().equals("player1")) {
-                    TanksMp player = new TanksMp(100, 1, 50, "player", model.getGc(), 3, 100, 100, model, address, port);
-                    model.addToAllObjects(player);
-                    model.setPlayer1(player);
-                }
-                if(packet.getUsername().equals("player2")) {
-                    TanksMp player = new TanksMp(100, 1, 50, "player", model.getGc(), 3, 100, 100, model, address, port);
-                    model.addToAllObjects(player);
-                    model.setPlayer2(player);
+                TanksMp player1 = new TanksMp(100, 1, 50, "player", model.getGc(), 3, 100, 100, model, address, port);
+                if (connectedPlayers.isEmpty()){
+                    connectedPlayers.add(player1);
+                    model.addToAllObjects(player1);
+                    model.setPlayer1(player1);
+                }else{
+                    TanksMp player2 = new TanksMp(100, 1, 50, "player", model.getGc(), 3, 300, 300, model, address, port);
+                    connectedPlayers.add(player2);
+                    byte[] messageToPlayer2 = ("02"+player2.parseToData(0) + "$" + player1.parseToData(0)).getBytes();
+                    sendData(messageToPlayer2, address, port);
+                    model.addToAllObjects(player2);
+                    model.setPlayer2(player2);
+                    sendData(("11"+player2.parseToData(0)).getBytes(), player1.ipAddress, player1.port);
                 }
                 break;
             case DISCONNECT:
                 break;
+
+            case UPDATE:
+                message = message.substring(2);
+                for (TanksMp player: connectedPlayers){
+                    if(port == player.port){
+                        player.parseData(message);
+                    }
+                    else sendData(("11" + message).getBytes(), player.ipAddress, player.port);
+                }
         }
     }
 
