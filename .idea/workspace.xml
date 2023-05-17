@@ -8,22 +8,29 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllerLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/controllerLogs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllerLogs.txt.1" beforeDir="false" afterPath="$PROJECT_DIR$/controllerLogs.txt.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.2" beforeDir="false" afterPath="$PROJECT_DIR$/controllerLogs.txt.2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.3" beforeDir="false" afterPath="$PROJECT_DIR$/controllerLogs.txt.3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modelLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/modelLogs.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modelLogs.txt.1" beforeDir="false" afterPath="$PROJECT_DIR$/modelLogs.txt.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/EventLis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/EventLis.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Tanks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Tanks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/TanksMp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/TanksMp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/GameClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/GameServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/packets/Packet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/packets/Packet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/Controller$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/packets/Packet11Update.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/packets/Packet11Update.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/game/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/EventLis.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/EventLis.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/Obj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Obj.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/TanksMp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/TanksMp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/GameClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/GameClient$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/GameClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/GameClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/GameServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/GameServer$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/GameServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/GameServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/packets/Packet11Update.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/packets/Packet11Update.class" afterDir="false" />
     </list>
-    <list id="56059dc6-547d-4d90-87ef-6d7c88b1342c" name="Changes by dmr4eg" comment="" />
+    <list id="56059dc6-547d-4d90-87ef-6d7c88b1342c" name="Changes by dmr4eg" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Obj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Obj.java" afterDir="false" />
+    </list>
     <list id="418be624-e450-4897-b2a2-09db30ee6746" name="Changes by User" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +180,8 @@
       <workItem from="1684101688734" duration="5975000" />
       <workItem from="1684182979424" duration="105000" />
       <workItem from="1684183124505" duration="12654000" />
-      <workItem from="1684237312320" duration="33004000" />
+      <workItem from="1684237312320" duration="37320000" />
+      <workItem from="1684315544729" duration="2253000" />
     </task>
     <servers />
   </component>

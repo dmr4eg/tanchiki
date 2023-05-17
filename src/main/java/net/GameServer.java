@@ -5,6 +5,7 @@ import game.Model;
 import game.TanksMp;
 import net.packets.Packet;
 import net.packets.Packet00Login;
+import net.packets.Packet11Update;
 
 import java.io.IOException;
 import java.net.*;
@@ -50,6 +51,7 @@ public class GameServer extends Thread{
     private void parsePacket(byte[] data, InetAddress address, int port) {
         String message = new String(data).trim();
         Packet.PacketTypes type = Packet.lookupPacket(message.substring(0, 2));
+        Packet11Update packet11Update = new Packet11Update();
         switch (type){
             default:
             case INVALID:
@@ -61,16 +63,17 @@ public class GameServer extends Thread{
                 TanksMp player1 = new TanksMp(100, 1, 50, "player", model.getGc(), 3, 100, 100, model, address, port);
                 if (connectedPlayers.isEmpty()){
                     connectedPlayers.add(player1);
-                    model.addToAllObjects(player1);
-                    model.setPlayer1(player1);
+                    byte[] messageToPlayer1 = ("02"+packet11Update.parseToData(0, player1) + "$"+ " ").getBytes();
+                    sendData(messageToPlayer1, address, port);
+//                    model.addToAllObjects(player1);
+//                    model.setPlayer1(player1);
                 }else{
                     TanksMp player2 = new TanksMp(100, 1, 50, "player", model.getGc(), 3, 300, 300, model, address, port);
                     connectedPlayers.add(player2);
-                    byte[] messageToPlayer2 = ("02"+player2.parseToData(0) + "$" + player1.parseToData(0)).getBytes();
+                    byte[] messageToPlayer2 = ("02"+packet11Update.parseToData(0, player2) + "$" + packet11Update.parseToData(0, connectedPlayers.get(0))).getBytes();
                     sendData(messageToPlayer2, address, port);
-                    model.addToAllObjects(player2);
-                    model.setPlayer2(player2);
-                    sendData(("11"+player2.parseToData(0)).getBytes(), player1.ipAddress, player1.port);
+//                    model.addToAllObjects(player2);
+//                    model.setPlayer2(player2);
                 }
                 break;
             case DISCONNECT:
@@ -78,9 +81,11 @@ public class GameServer extends Thread{
 
             case UPDATE:
                 message = message.substring(2);
+                System.out.println("UPDATE: " + message);
                 for (TanksMp player: connectedPlayers){
+                    System.out.println();
                     if(port == player.port){
-                        player.parseData(message);
+                        packet11Update.parseData(message, player);
                     }
                     else sendData(("11" + message).getBytes(), player.ipAddress, player.port);
                 }

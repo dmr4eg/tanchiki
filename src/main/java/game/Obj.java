@@ -13,8 +13,6 @@ public class Obj {
     protected String picture;
     protected GraphicsContext gc;
 
-
-
     public int getHP()
     {
         return HP;

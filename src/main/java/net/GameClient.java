@@ -53,37 +53,46 @@ public class GameClient extends Thread{
         private void parsePacket(DatagramPacket packet){
             String message = new String(packet.getData()).trim();
             Packet.PacketTypes type = Packet.lookupPacket(message.substring(0,2));
+            Packet11Update packet11Update = new Packet11Update();
             switch (type){
                 case SUBMIT :
                     String[] allPlayerValues = message.substring(2).split("\\$");
-                    String[] player1value = allPlayerValues[0].split("\\|");
-                    String[] player2value = allPlayerValues[1].split("\\|");
-                    TanksMp player1 = createPlayer(player1value, packet);
-                    TanksMp player2 = createPlayer(player2value, packet);
+                    Tanks player1 = createPlayer(allPlayerValues[0]);
                     model.setPlayer1(player1);
-                    model.setPlayer2(player2);
-                    sendData(("11"+model.getPlayer1().parseToData(0)).getBytes());
+                    if (allPlayerValues.length>1){
+                        Tanks player2 = createPlayer(allPlayerValues[1]);
+                        model.setPlayer2(player2);
+                        model.addToAllObjects(player2);
+                    }
+                    sendData(("11"+packet11Update.parseToData(0,model.getPlayer1())).getBytes());
                     break;
+
                 case UPDATE:
-                    if(model.getPlayer2() == null);
                     message = message.substring(2);
-                    model.getPlayer2().parseData(message);
-                    sendData(("11"+model.getPlayer1().parseToData(0)).getBytes());
+                    if(model.getPlayer2() == null){
+                        Tanks player2 = createPlayer(message);
+                        model.setPlayer2(player2);
+                        model.addToAllObjects(player2);
+                    }else {
+                        packet11Update.parseData(message,model.getPlayer2());
+                    }
+                    sendData(("11"+packet11Update.parseToData(0,model.getPlayer1())).getBytes());
                     break;
             }
         }
 
-        private TanksMp createPlayer(String[] message, DatagramPacket packet){
+        private Tanks createPlayer(String message){
+            String[] player1value = message.split("\\|");
             int orientation = 0;
-            switch (message[0]){
+            switch (player1value[0]){
                 case "00" -> orientation = 1;
                 case"01"-> orientation = 2;
                 case "10" -> orientation = 3;
                 case "11" -> orientation = 4;
             }
-            int posX = Integer.parseInt(message[2]);
-            int posY = Integer.parseInt(message[3]);
-            return new TanksMp(100, 1, 50, "player",model.getGc(),orientation, posX, posY, model, packet.getAddress(), packet.getPort());
+            int posX = Integer.parseInt(player1value[2]);
+            int posY = Integer.parseInt(player1value[3]);
+            return new Tanks(100, 1, 50, "player",model.getGc(),orientation, posX, posY, model);
         }
 
 

@@ -22,13 +22,13 @@ public class Model extends Thread{
     private  ArrayList<ArrayList<Integer>> bricsCoords =  new ArrayList<ArrayList<Integer>>(); //[[],[],[]]
     private final Bricks bricks;
     private GraphicsContext gc;
-    private TanksMp player1;
-    private TanksMp player2;
-    public void setPlayer2(TanksMp player2) {
+    private Tanks player1;
+    private Tanks player2;
+    public void setPlayer2(Tanks player2) {
         this.player2 = player2;
     }
 
-    public void setPlayer1(TanksMp player1) {
+    public void setPlayer1(Tanks player1) {
         this.player1 = player1;
     }
 
@@ -96,11 +96,11 @@ public class Model extends Thread{
         player1.setOrientation(orientation);
     }
 
-    public TanksMp getPlayer1() {
+    public Tanks getPlayer1() {
         return player1;
     }
 
-    public TanksMp getPlayer2() {
+    public Tanks getPlayer2() {
         return player2;
     }
 
