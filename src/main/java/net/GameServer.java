@@ -63,14 +63,14 @@ public class GameServer extends Thread{
                 TanksMp player1 = new TanksMp(100, 1, 50, "player", model.getGc(), 3, 100, 100, model, address, port);
                 if (connectedPlayers.isEmpty()){
                     connectedPlayers.add(player1);
-                    byte[] messageToPlayer1 = ("02"+packet11Update.parseToData(0, player1) + "$"+ " ").getBytes();
+                    byte[] messageToPlayer1 = ("02"+packet11Update.parseToData(player1) + "$"+ " ").getBytes();
                     sendData(messageToPlayer1, address, port);
 //                    model.addToAllObjects(player1);
 //                    model.setPlayer1(player1);
                 }else{
                     TanksMp player2 = new TanksMp(100, 1, 50, "player", model.getGc(), 3, 300, 300, model, address, port);
                     connectedPlayers.add(player2);
-                    byte[] messageToPlayer2 = ("02"+packet11Update.parseToData(0, player2) + "$" + packet11Update.parseToData(0, connectedPlayers.get(0))).getBytes();
+                    byte[] messageToPlayer2 = ("02"+packet11Update.parseToData( player2) + "$" + packet11Update.parseToData( connectedPlayers.get(0))).getBytes();
                     sendData(messageToPlayer2, address, port);
 //                    model.addToAllObjects(player2);
 //                    model.setPlayer2(player2);

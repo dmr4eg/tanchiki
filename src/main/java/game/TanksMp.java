@@ -48,8 +48,4 @@ public class TanksMp extends Tanks {
 //        setPos(Integer.parseInt(messageValues[2]),Integer.parseInt(messageValues[3]));
 //    }
 
-    @Override
-    public void fire() {
-        super.fire();
-    }
 }

@@ -22,7 +22,7 @@ public class Packet11Update extends Packet{
         server.sendDataToAllClients(getData());
     }
 
-    public String parseToData(int isFire, Tanks player){
+    public String parseToData( Tanks player){
         String message = "";
         switch (player.getOrientation()){
             case 1-> message += "00";
@@ -31,8 +31,14 @@ public class Packet11Update extends Packet{
             case 4-> message += "11";
         }
         message+="|";
-        switch (isFire){
-            case 1 -> message += "1";
+        boolean isFire = player.isWasFire();
+        int i;
+        i = isFire? 1 : 0;
+        switch (i){
+            case 1 ->{
+                message += "1";
+                player.setWasFire(false);
+            }
             case 0 -> message += "0";
         }
         message+="|";
@@ -52,6 +58,7 @@ public class Packet11Update extends Packet{
             case "11" -> orientation = 4;
         }
         player.setOrientation(orientation);
+        player.setWasFire(false);
         if(messageValues[1].equals("1"))player.fire();
         player.setPos(Integer.parseInt(messageValues[2]),Integer.parseInt(messageValues[3]));
     }

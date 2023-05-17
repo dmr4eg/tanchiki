@@ -64,7 +64,7 @@ public class GameClient extends Thread{
                         model.setPlayer2(player2);
                         model.addToAllObjects(player2);
                     }
-                    sendData(("11"+packet11Update.parseToData(0,model.getPlayer1())).getBytes());
+                    sendData(("11"+packet11Update.parseToData(model.getPlayer1())).getBytes());
                     break;
 
                 case UPDATE:
@@ -76,7 +76,8 @@ public class GameClient extends Thread{
                     }else {
                         packet11Update.parseData(message,model.getPlayer2());
                     }
-                    sendData(("11"+packet11Update.parseToData(0,model.getPlayer1())).getBytes());
+                    String returnMess = packet11Update.parseToData(model.getPlayer1());
+                    sendData(("11"+returnMess).getBytes());
                     break;
             }
         }

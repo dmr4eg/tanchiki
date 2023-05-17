@@ -1,6 +1,14 @@
 package game;
 
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import net.GameClient;
 import net.GameServer;
 import net.packets.Packet00Login;
@@ -24,6 +32,8 @@ public class Model extends Thread{
     private GraphicsContext gc;
     private Tanks player1;
     private Tanks player2;
+    private Pane gamePane = new Pane();
+    private boolean gameIsStart = true;
     public void setPlayer2(Tanks player2) {
         this.player2 = player2;
     }
@@ -42,7 +52,7 @@ public class Model extends Thread{
     private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
     public Model(boolean isStart, GraphicsContext gc) {
         this.gc = gc;
-        //player1 = new Tanks(100, 1, 25, "player", gc, 1, 100, 100, this);
+        player1 = new Tanks(100, 1, 25, "player", gc, 1, 100, 100, this);
         this.bricks = new Bricks("level1.json", gc);
         allObjects.addAll(bricks.getBricksClasses());
         base = bricks.getBase();
@@ -142,6 +152,7 @@ public class Model extends Thread{
             object.draw();
         }
     }
+
 
     public void enemy_computingObj(){
         for(Tanks tank : tanks){
@@ -243,7 +254,15 @@ public class Model extends Thread{
         allObjects.add(object);
     }
 
-//-----------------------------------------------------------------------------------------------------------------------------------------
+    public void setGameIsStart(boolean status){
+        gameIsStart = status;
+    }
+
+    public boolean isGameIsStart() {
+        return gameIsStart;
+    }
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------
 
 
     private Brick isBulletCollision(Bullet bullet){
@@ -293,5 +312,7 @@ public class Model extends Thread{
         }
     }
 
-
+    public Parent getGamePane() {
+        return gamePane;
+    }
 }

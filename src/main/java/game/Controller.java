@@ -19,16 +19,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import net.App;
 import net.GameClient;
 import net.GameServer;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
@@ -37,7 +34,6 @@ import static javafx.scene.paint.Color.*;
 public class Controller extends Application{
     private final int WIDTH = 600;
     private final int HEIGHT = 600;
-    private net.App app = new App();
     private Bullet bullet;
     private EventLis eventLis;
     private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
@@ -85,7 +81,9 @@ public class Controller extends Application{
                 new MenuItem("Single player", () -> {
                     model = new Model(false, gc);
                     model.startGame();
-                    stage.setScene(scene);}),
+                    stage.setScene(scene);
+                    setEventLis(model, scene);
+                }),
 
                 new MenuItem("Multiplayer player", () -> {
                     Label nameLabel = new Label("Enter your name:");
@@ -112,7 +110,6 @@ public class Controller extends Application{
                     hbox.setAlignment(Pos.CENTER);
                     Scene startScene = new Scene(hbox);
                     stage.setScene(startScene);
-                    
 //                    try {
 //                        app.start(stage);
 //                    } catch (Exception e) {
@@ -149,16 +146,19 @@ public class Controller extends Application{
 
     public void run(GraphicsContext gc, Scene scene) {
         if(model != null) {
-            gc.fillRect(0, 0, WIDTH, HEIGHT);
-            gc.setFill(BLACK);
+            if(model.isGameIsStart()) {
+                gc.fillRect(0, 0, WIDTH, HEIGHT);
+                gc.setFill(BLACK);
 
-            //--------------------------------
-            model.updateDraw();
-            model.isCollision_tankObj(model.getPlayer1());
-            model.getPlayer1().update();
-            model.enemy_computingObj();
-            if (!model.getBullets().isEmpty()) {
-                model.updateObj();
+                //--------------------------------
+                model.updateDraw();
+                model.isCollision_tankObj(model.getPlayer1());
+                model.getPlayer1().update();
+                model.enemy_computingObj();
+                if(model.getPlayer2() != null) model.getPlayer2().updateCooldownAndAnimation();
+                if (!model.getBullets().isEmpty()) {
+                    model.updateObj();
+                }
             }
         }
         //-------------------------------

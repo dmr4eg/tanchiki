@@ -15,6 +15,9 @@ public class Tanks extends Obj {
     private boolean isTankMove = true;
 
     private int fireCooldown = 0;
+    private boolean wasFire = false;
+
+
 
     private int Orientation;
     private Image imageRight = new Image("p1right.png");
@@ -108,10 +111,6 @@ public class Tanks extends Obj {
 //    }
 
     private void updatePos(){
-//        System.out.println(isColision[0]);
-//        System.out.println(isColision[1]);
-//        System.out.println(isColision[2]);
-//        System.out.println(isColision[3]);
         if (isTankMove){
             switcher = !switcher;
             if (Orientation == 2 && !isColision[1] ){
@@ -166,16 +165,21 @@ public class Tanks extends Obj {
 
     public void update(){
         updatePos();
-        if (fireCooldown > 0 && fireCooldown <= 100)fireCooldown--;
+        updateCooldownAndAnimation();
         draw();
     }
 
     public void fire(){
-        if (fireCooldown == 0){
+        if (fireCooldown == 0 ){
             Bullet bullet = new Bullet(DMG, PosX, PosY, Orientation, gc, MS);
             model.addBullet(bullet);
             fireCooldown = 100;
+            setWasFire(true);
         }
+    }
+
+    public void updateCooldownAndAnimation(){
+        if (fireCooldown > 0 && fireCooldown <= 100)fireCooldown--;
     }
 
     public void moveLeft() {
@@ -220,4 +224,13 @@ public class Tanks extends Obj {
     public int getPosY() {
         return super.getPosY();
     }
+
+    public boolean isWasFire() {
+        return wasFire;
+    }
+
+    public void setWasFire(boolean wasFire) {
+        this.wasFire = wasFire;
+    }
+
 }

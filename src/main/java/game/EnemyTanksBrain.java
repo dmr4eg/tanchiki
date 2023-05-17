@@ -161,10 +161,10 @@ public class EnemyTanksBrain {
                     tank.fire();
                 }
             } else {
-                if (player.getPosX() > tank.getPosX()) tank.setOrientation(1);
-                if (player.getPosX() < tank.getPosX()) tank.setOrientation(2);
-                if (player.getPosY() < tank.getPosY()) tank.setOrientation(3);
-                if (player.getPosY() > tank.getPosY()) tank.setOrientation(4);
+                if (base.getPosX() > tank.getPosX()) tank.setOrientation(1);
+                if (base.getPosX() < tank.getPosX()) tank.setOrientation(2);
+                if (base.getPosY() < tank.getPosY()) tank.setOrientation(3);
+                if (base.getPosY() > tank.getPosY()) tank.setOrientation(4);
             }
         }
     }
