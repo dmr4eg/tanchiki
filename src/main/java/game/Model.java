@@ -24,10 +24,11 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class Model extends Thread{
+    private final String gameMode;
     private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
     private final ArrayList<Tanks> tanks = new ArrayList<Tanks>();
     private ArrayList<Obj> allObjects = new ArrayList<Obj>();
-    private  ArrayList<ArrayList<Integer>> bricsCoords =  new ArrayList<ArrayList<Integer>>(); //[[],[],[]]
+    private  ArrayList<ArrayList<Integer>> bricsCoords =  new ArrayList<ArrayList<Integer>>();
     private final Bricks bricks;
     private GraphicsContext gc;
     private Tanks player1;
@@ -49,8 +50,8 @@ public class Model extends Thread{
     public boolean bullet;
     GameServer socketServer;
     GameClient socketClient;
-    private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
-    public Model(boolean isStart, GraphicsContext gc) {
+    private static final Logger LOGGER = Logger.getLogger(Model.class.getName());
+    public Model( GraphicsContext gc) {
         this.gc = gc;
         player1 = new Tanks(100, 1, 25, "player", gc, 1, 100, 100, this);
         this.bricks = new Bricks("level1.json", gc);
@@ -58,7 +59,7 @@ public class Model extends Thread{
         base = bricks.getBase();
         enemyTank = new Tanks(100, 0 , 1, "tank", gc, 1, 100, 400, this);
         this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1);
-        this.isStart = isStart;
+        this.gameMode = "offline";
         allObjects.add(player1);
         allObjects.add(enemyTank);
         tanks.add(enemyTank);
@@ -72,23 +73,16 @@ public class Model extends Thread{
         LOGGER.addHandler(fhm);
         LOGGER.info("Model instantiated");
     }
-    public Model(boolean isStart, GraphicsContext gc, String name) {
+    public Model(GraphicsContext gc, String name) {
         this.gc = gc;
-        startBackend(name);
-
+        this.gameMode = "online";
         this.bricks = new Bricks("level1.json", gc);
         allObjects.addAll(bricks.getBricksClasses());
         base = bricks.getBase();
-        enemyTank = new Tanks(100, 0 , 1, "tank", gc, 1, 100, 400, this);
-        this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1);
-        this.isStart = isStart;
-        if(player1!= null) {
-            allObjects.add(player1);
-        }
-        if ( enemyTank != null) {
-            allObjects.add(enemyTank);
-            tanks.add(enemyTank);
-        }
+        enemyTank = new Tanks(100, 1 , 0, "tank", gc, 1, 100, 400, this);
+        allObjects.add(enemyTank);
+        tanks.add(enemyTank);
+        startBackend(name);
         FileHandler fhm = null;
         try {
             fhm = new FileHandler("modelLogs.txt");
@@ -226,6 +220,7 @@ public class Model extends Thread{
                 bullet.update();
                 if((object = isBulletCollisionObj(bullet))!= null) {
                     if(!object.getType().equals("brick")) {
+                        if(object.getType().equals("player"))continue;
                         boolean isDead = object.isDead(bullet.getDMG());
                         if(isDead){
                             System.out.println(object.getType() + " " + object.getHP());
@@ -259,7 +254,10 @@ public class Model extends Thread{
     }
 
     public boolean isGameIsStart() {
-        return gameIsStart;
+        if(gameMode.equals("online")){
+            return player2 != null;
+        }
+        return true;
     }
 
     //-----------------------------------------------------------------------------------------------------------------------------------------
@@ -289,6 +287,10 @@ public class Model extends Thread{
         return bullets;
     }
 
+    public Parent getGamePane() {
+        return gamePane;
+    }
+//SERVER side--------------------------------------------------------------------------------------------
     private void startBackend(String name){
         if (!isServerStart()) {
             socketServer = new GameServer(this);
@@ -312,7 +314,9 @@ public class Model extends Thread{
         }
     }
 
-    public Parent getGamePane() {
-        return gamePane;
+    public void updateEnemyBrain(Tanks player1, Tanks player2){
+        this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1, player2);
     }
+
+
 }

@@ -79,7 +79,7 @@ public class Controller extends Application{
 
         VBox box = new VBox(10,
                 new MenuItem("Single player", () -> {
-                    model = new Model(false, gc);
+                    model = new Model(gc);
                     model.startGame();
                     stage.setScene(scene);
                     setEventLis(model, scene);
@@ -91,7 +91,7 @@ public class Controller extends Application{
 
                     nameField.setOnKeyPressed((event) -> {
                         if (event.getCode() == KeyCode.ENTER) {
-                            model = new Model(false, gc, nameField.getText().trim());
+                            model = new Model( gc, nameField.getText().trim());
                             setEventLis(model, scene);
                             model.startGame();
                             stage.setScene(scene);
@@ -100,7 +100,7 @@ public class Controller extends Application{
                     Button startButton = new Button("Start");
                     startButton.setOnAction((ActionEvent e) -> {
                         // 2. as above
-                        model = new Model(false, gc, nameField.getText().trim());
+                        model = new Model( gc, nameField.getText().trim());
                         setEventLis(model, scene);
                         model.startGame();
                         stage.setScene(scene);
@@ -169,19 +169,3 @@ public class Controller extends Application{
 
 }
 
-//
-//        model.getPlayer1().update(0);
-//
-//        model.isCsollision_tank();
-//        //model.isCsollision_tankObj(model.getPlayer1());
-//        //model.drawWalls();
-//
-//        model.enemy_computing();
-//        //model.updateObjDraw();
-//
-//        model.update();
-//        if (!model.getBullets().isEmpty()){
-//            model.update();
-//            //model.updateObj();
-//
-//        }

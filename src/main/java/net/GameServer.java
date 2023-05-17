@@ -84,10 +84,9 @@ public class GameServer extends Thread{
                 //System.out.println("UPDATE: " + message);
                 for (TanksMp player: connectedPlayers){
                     System.out.println();
-                    if(port == player.port){
-                        continue;
+                    if(port == player.port)continue;
 //                        packet11Update.parseData(message, player);
-                    }
+
                     else sendData(("11" + message).getBytes(), player.ipAddress, player.port);
                 }
         }

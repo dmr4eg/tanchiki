@@ -59,10 +59,12 @@ public class GameClient extends Thread{
                     String[] allPlayerValues = message.substring(2).split("\\$");
                     Tanks player1 = createPlayer(allPlayerValues[0]);
                     model.setPlayer1(player1);
+                    model.addToAllObjects(player1);
                     if (allPlayerValues.length>1){
                         Tanks player2 = createPlayer(allPlayerValues[1]);
                         model.setPlayer2(player2);
                         model.addToAllObjects(player2);
+                        model.updateEnemyBrain(player2, player1);
                     }
                     sendData(("11"+packet11Update.parseToData(model.getPlayer1())).getBytes());
                     break;
@@ -73,6 +75,7 @@ public class GameClient extends Thread{
                         Tanks player2 = createPlayer(message);
                         model.setPlayer2(player2);
                         model.addToAllObjects(player2);
+                        model.updateEnemyBrain(model.getPlayer1(), player2);
                     }else {
                         packet11Update.parseData(message,model.getPlayer2());
                     }
