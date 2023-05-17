@@ -81,11 +81,12 @@ public class GameServer extends Thread{
 
             case UPDATE:
                 message = message.substring(2);
-                System.out.println("UPDATE: " + message);
+                //System.out.println("UPDATE: " + message);
                 for (TanksMp player: connectedPlayers){
                     System.out.println();
                     if(port == player.port){
-                        packet11Update.parseData(message, player);
+                        continue;
+//                        packet11Update.parseData(message, player);
                     }
                     else sendData(("11" + message).getBytes(), player.ipAddress, player.port);
                 }

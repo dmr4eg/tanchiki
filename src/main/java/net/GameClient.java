@@ -37,7 +37,7 @@ public class GameClient extends Thread{
             }
             String message = new String(packet.getData());
             parsePacket(packet);
-            System.out.println("SERVER["+packet.getAddress()+": "+packet.getPort()+"] > " +message.trim());
+            //System.out.println("SERVER["+packet.getAddress()+": "+packet.getPort()+"] > " +message.trim());
         }
     }
 

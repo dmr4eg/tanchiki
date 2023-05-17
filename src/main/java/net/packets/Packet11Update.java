@@ -42,9 +42,9 @@ public class Packet11Update extends Packet{
             case 0 -> message += "0";
         }
         message+="|";
-        message+=String.format("%3d", player.getPosX());
+        message+=String.valueOf(player.getPosX());
         message+="|";
-        message+=String.format("%3d", player.getPosY());
+        message+=String.valueOf(player.getPosY());
         return message;
     }
 
@@ -58,7 +58,6 @@ public class Packet11Update extends Packet{
             case "11" -> orientation = 4;
         }
         player.setOrientation(orientation);
-        player.setWasFire(false);
         if(messageValues[1].equals("1"))player.fire();
         player.setPos(Integer.parseInt(messageValues[2]),Integer.parseInt(messageValues[3]));
     }

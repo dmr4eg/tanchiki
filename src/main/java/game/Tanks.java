@@ -171,6 +171,7 @@ public class Tanks extends Obj {
 
     public void fire(){
         if (fireCooldown == 0 ){
+            System.out.println("fire");
             Bullet bullet = new Bullet(DMG, PosX, PosY, Orientation, gc, MS);
             model.addBullet(bullet);
             fireCooldown = 100;
