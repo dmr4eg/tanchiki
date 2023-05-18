@@ -12,7 +12,6 @@ import javafx.scene.text.Text;
 import net.GameClient;
 import net.GameServer;
 import net.packets.Packet00Login;
-
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -23,12 +22,12 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+
 public class Model extends Thread{
     private final String gameMode;
     private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
     private final ArrayList<Tanks> tanks = new ArrayList<Tanks>();
     private ArrayList<Obj> allObjects = new ArrayList<Obj>();
-    private  ArrayList<ArrayList<Integer>> bricsCoords =  new ArrayList<ArrayList<Integer>>();
     private final Bricks bricks;
     private GraphicsContext gc;
     private Tanks player1;
@@ -57,7 +56,7 @@ public class Model extends Thread{
         this.bricks = new Bricks("level1.json", gc);
         allObjects.addAll(bricks.getBricksClasses());
         base = bricks.getBase();
-        enemyTank = new Tanks(100, 0 , 1, "tank", gc, 1, 100, 400, this);
+        enemyTank = new Tanks(100, 0 , 1, "enemyTank", gc, 1, 100, 400, this);
         this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1);
         this.gameMode = "offline";
         allObjects.add(player1);
@@ -79,7 +78,7 @@ public class Model extends Thread{
         this.bricks = new Bricks("level1.json", gc);
         allObjects.addAll(bricks.getBricksClasses());
         base = bricks.getBase();
-        enemyTank = new Tanks(100, 1 , 0, "tank", gc, 1, 100, 400, this);
+        enemyTank = new Tanks(100, 1 , 0, "enemyTank", gc, 1, 100, 400, this);
         allObjects.add(enemyTank);
         tanks.add(enemyTank);
         startBackend(name);
@@ -317,6 +316,4 @@ public class Model extends Thread{
     public void updateEnemyBrain(Tanks player1, Tanks player2){
         this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1, player2);
     }
-
-
 }

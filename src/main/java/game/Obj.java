@@ -40,6 +40,10 @@ public class Obj {
 
     }
 
+//    public void draw(String type) {
+//        gc.drawImage(new Image(picture), PosX, PosY);
+//    }
+
     public int getPosX()
     {
         return PosX;

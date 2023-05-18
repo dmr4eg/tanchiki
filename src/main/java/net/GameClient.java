@@ -96,7 +96,7 @@ public class GameClient extends Thread{
             }
             int posX = Integer.parseInt(player1value[2]);
             int posY = Integer.parseInt(player1value[3]);
-            return new Tanks(100, 1, 50, "player",model.getGc(),orientation, posX, posY, model);
+            return new Tanks(100, 1, 50, "player", model.getGc(),orientation, posX, posY, model);
         }
 
 

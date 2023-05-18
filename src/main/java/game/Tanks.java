@@ -5,9 +5,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Tanks extends Obj {
-
-    private GraphicsContext gc;
-
     private final int DMG;
 
     private boolean[] isColision = new boolean[] {false, false, false, false};
@@ -17,27 +14,10 @@ public class Tanks extends Obj {
     private int fireCooldown = 0;
     private boolean wasFire = false;
 
-
-
     private int Orientation;
-//    Image imageRight, imageRight2, imageLeft, imageLeft2, imageUp, imageUp2, imageDown, imageDown2;
-    private Image imageRight = new Image("p1right.png");
-    private Image imageRight2 = new Image("p1right2.png");
-    private Image imageLeft = new Image("p1left.png");
-    private Image imageLeft2 = new Image("p1left2.png");
-    private Image imageUp = new Image("p1up.png");
-    private Image imageUp2 = new Image("p1up2.png");
-    private Image imageDown = new Image("p1down.png");
-    private Image imageDown2 = new Image("p1down2.png");
 
-//    private Image imageRight = new Image("");
-//    private Image imageRight2 = new Image("");
-//    private Image imageLeft = new Image("");
-//    private Image imageLeft2 = new Image("");
-//    private Image imageUp = new Image("");
-//    private Image imageUp2 = new Image("");
-//    private Image imageDown = new Image("");
-//    private Image imageDown2 = new Image("");
+    Image imageRight, imageRight2, imageLeft, imageLeft2, imageUp, imageUp2, imageDown, imageDown2;
+
     private boolean switcher = true;
 
     private Model model;
@@ -63,20 +43,34 @@ public class Tanks extends Obj {
     }
 
     public Tanks(int HP, int MS, int DMG,String type, GraphicsContext gc, int Orientation, int PosX, int PosY, Model model) {
-        super.type = type;
-        super.HP = HP;
+        super(MS, HP, PosX, PosY, type,  gc);
         this.DMG = DMG;
-        super.MS = MS;
-        this.gc = gc;
         this.Orientation = Orientation;
-        this.PosY = PosY;
-        this.PosX = PosX;
         this.model = model;
+        getTankType(type);
+    }
+
+    private void updatePos(){
+        if (isTankMove){
+            switcher = !switcher;
+            if (Orientation == 2 && !isColision[1] ){
+                PosX += MS;
+            }
+            if (Orientation == 4 && !isColision[3]){
+                PosY += MS;
+            }
+            if (Orientation == 3 && !isColision[2]){
+                PosY -= MS;
+            }
+            if (Orientation == 1 && !isColision[0]){
+                PosX -= MS;
+            }
+        }
     }
 
     public void getTankType(String type) {
         switch (type) {
-            case "player1":
+            case "player":
                 imageRight = new Image("p1right.png");
                 imageRight2 = new Image("p1right2.png");
                 imageLeft = new Image("p1left.png");
@@ -97,142 +91,53 @@ public class Tanks extends Obj {
                 imageDown2 = new Image("p2down2.png");
                 break;
             case "enemyTank":
-                imageRight = new Image("eright.png");
-                imageRight2 = new Image("eright2.png");
-                imageLeft = new Image("eleft.png");
-                imageLeft2 = new Image("eleft2.png");
-                imageUp = new Image("eup.png");
-                imageUp2 = new Image("eup2.png");
-                imageDown = new Image("edown.png");
-                imageDown2 = new Image("edown2.png");
+                imageRight = new Image("enright.png");
+                imageRight2 = new Image("enright2.png");
+                imageLeft = new Image("enleft.png");
+                imageLeft2 = new Image("enleft2.png");
+                imageUp = new Image("enup.png");
+                imageUp2 = new Image("enup2.png");
+                imageDown = new Image("endown.png");
+                imageDown2 = new Image("endown2.png");
                 break;
             default:
                 throw new IllegalArgumentException("Invalid tank type: " + type);
         }
     }
 
-    private void updatePos(){
-        if (isTankMove){
-            switcher = !switcher;
-            if (Orientation == 2 && !isColision[1] ){
-                PosX += MS;
-            }
-            if (Orientation == 4 && !isColision[3]){
-                PosY += MS;
-            }
-            if (Orientation == 3 && !isColision[2]){
-                PosY -= MS;
-            }
-            if (Orientation == 1 && !isColision[0]){
-                PosX -= MS;
-            }
-        }
-    }
     @Override
-    public void draw(){
+    public void draw() {
         switch (Orientation) {
             case 1:
-                if (switcher){
-                    gc.drawImage(imageLeft, PosX, PosY);
-                }else {
-                    gc.drawImage(imageLeft2, PosX, PosY);
+                if (switcher) {
+                    super.gc.drawImage(imageLeft, PosX, PosY);
+                } else {
+                    super.gc.drawImage(imageLeft2, PosX, PosY);
                 }
                 break;
-
             case 2:
-                if(switcher){
-                    gc.drawImage(imageRight, PosX, PosY);
-                }else {
-                    gc.drawImage(imageRight2, PosX, PosY);
+                if (switcher) {
+                    super.gc.drawImage(imageRight, PosX, PosY);
+                } else {
+                    super.gc.drawImage(imageRight2, PosX, PosY);
                 }
                 break;
-
             case 3:
                 if(switcher){
-                    gc.drawImage(imageUp, PosX, PosY);
+                    super.gc.drawImage(imageUp, PosX, PosY);
                 }else {
-                    gc.drawImage(imageUp2, PosX, PosY);
+                    super.gc.drawImage(imageUp2, PosX, PosY);
                 }
                 break;
             case 4:
                 if(switcher){
-                    gc.drawImage(imageDown, PosX, PosY);
+                    super.gc.drawImage(imageDown, PosX, PosY);
                 }else {
-                    gc.drawImage(imageDown2, PosX, PosY);
+                    super.gc.drawImage(imageDown2, PosX, PosY);
                 }
                 break;
         }
     }
-
-//    @Override
-//    public void draw(String type) {
-//        Image image1, image2, image3, image4, image5, image6, image7, image8;
-//        switch (type) {
-//            case "player1":
-//                image1 = imageLeft;
-//                image2 = imageLeft2;
-//                image3 = imageRight;
-//                image4 = imageRight2;
-//                image5 = imageUp;
-//                image6 = imageUp2;
-//                image7 = imageDown;
-//                image8 = imageDown2;
-//                break;
-//            case "player2":
-//                image1 = imageLeft;   // Replace with the appropriate images for player 2
-//                image2 = imageLeft2;
-//                image3 = imageRight;
-//                image4 = imageRight2;
-//                image5 = imageUp;
-//                image6 = imageUp2;
-//                image7 = imageDown;
-//                image8 = imageDown2;
-//                break;
-//            case "enemyTank":
-//                image1 = imageLeft;   // Replace with the appropriate images for enemy tank
-//                image2 = imageLeft2;
-//                image3 = imageRight;
-//                image4 = imageRight2;
-//                image5 = imageUp;
-//                image6 = imageUp2;
-//                image7 = imageDown;
-//                image8 = imageDown2;
-//                break;
-//            default:
-//                throw new IllegalArgumentException("Invalid tank type: " + type);
-//        }
-//
-//        switch (Orientation) {
-//            case 1:
-//                if (switcher) {
-//                    gc.drawImage(image1, PosX, PosY);
-//                } else {
-//                    gc.drawImage(image2, PosX, PosY);
-//                }
-//                break;
-//            case 2:
-//                if (switcher) {
-//                    gc.drawImage(image3, PosX, PosY);
-//                } else {
-//                    gc.drawImage(image4, PosX, PosY);
-//                }
-//                break;
-//            case 3:
-//                if(switcher){
-//                    gc.drawImage(image5, PosX, PosY);
-//                }else {
-//                    gc.drawImage(image6, PosX, PosY);
-//                }
-//                break;
-//            case 4:
-//                if(switcher){
-//                    gc.drawImage(image7, PosX, PosY);
-//                }else {
-//                    gc.drawImage(image8, PosX, PosY);
-//                }
-//                break;
-//        }
-//    }
 
     public void update(){
         updatePos();
@@ -243,7 +148,7 @@ public class Tanks extends Obj {
     public void fire(){
         if (fireCooldown == 0 ){
             System.out.println("fire");
-            Bullet bullet = new Bullet(DMG, PosX, PosY, Orientation, gc, MS);
+            Bullet bullet = new Bullet(DMG, super.PosX, super.PosY, Orientation, super.gc, super.MS);
             model.addBullet(bullet);
             fireCooldown = 100;
             setWasFire(true);
@@ -254,35 +159,10 @@ public class Tanks extends Obj {
         if (fireCooldown > 0 && fireCooldown <= 100)fireCooldown--;
     }
 
-    public void moveLeft() {
-        Orientation = 1;
-        updatePos();
-        switcher = !switcher;
-    }
-
-    public void moveRight() {
-        Orientation = 2;
-        updatePos();
-        switcher = !switcher;
-    }
-
-    public void moveUp() {
-        Orientation = 3;
-        updatePos();
-        switcher = !switcher;
-    }
-
-    public void moveDown() {
-        Orientation = 4;
-        updatePos();
-        switcher = !switcher;
-    }
-
     public void setPos(int x, int y){
-        PosX = x;
-        PosY = y;
+        super.PosX = x;
+        super.PosY = y;
     }
-
 
     public int getOrientation() {
         return Orientation;
@@ -304,5 +184,4 @@ public class Tanks extends Obj {
     public void setWasFire(boolean wasFire) {
         this.wasFire = wasFire;
     }
-
 }

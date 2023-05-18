@@ -15,7 +15,7 @@ import java.util.logging.SimpleFormatter;
 import java.util.logging.Logger;
 
 public class EventLis {
-    private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(EventLis.class.getName());
     private Scene scene;
     private Model model;
     private LevelEditor levelEditor;

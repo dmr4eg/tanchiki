@@ -17,11 +17,11 @@ public class EnemyTanksBrain {
         targets.add(player);
     }
 
-    public EnemyTanksBrain(Brick base, Tanks player1, Tanks player2) {
+    public EnemyTanksBrain(Brick base, Tanks player, Tanks player2) {
         this.base = base;
-        this.player = player1;
+        this.player = player;
         this.player2 = player2;
-        targets.add(player1);
+        targets.add(player);
         targets.add(player2);
     }
 

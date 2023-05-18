@@ -5,17 +5,26 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.io.File;
+import java.io.FileInputStream;
+
 public class LevelEditor {
+    //Creating an image
+    Image image = new Image(String.valueOf(new File("brick.png")));
+
+    //Setting the image view
+    ImageView imageView = new ImageView(image);
     private final LevelContainer levelContainer = new LevelContainer();
     private final JsonUtil jsonUtil = new JsonUtil();
     private final String fileName = "level1.json";
     private final GraphicsContext gc;
     private final Bricks bricks;
-    private final Pane canvas;
+    private GridPane canvas;
     private Scene scene;
     private EventLis eventLis;
     private boolean isProcessingBrick;
@@ -28,11 +37,12 @@ public class LevelEditor {
     public LevelEditor(GraphicsContext gc) {
         this.gc = gc;
         this.bricks = new Bricks(fileName, gc);
-        this.canvas = new Pane();
+        canvas = new GridPane();
         canvas.setStyle("-fx-background-color: black;");
         this.canvas.setPrefSize(800, 600);
         scene = new Scene(setButtonsField());
-        eventLis = new EventLis(this, scene)
+        eventLis = new EventLis(this, scene);
+
         ;
     }
 
@@ -109,7 +119,7 @@ public class LevelEditor {
     //----------------------------------draw--------------------------------------------------------------
 
     private void repaint(){
-        
+        //ищу методы для выресовки
     }
 
 
