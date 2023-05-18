@@ -18,13 +18,22 @@ public class EventLis {
     private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
     private Scene scene;
     private Model model;
+    private LevelEditor levelEditor;
 
     public EventLis(Model model, Scene scene) {
         this.scene = scene;
         this.model = model;
+        setEventLisModel();
     }
 
-    public void setEventLis() {
+    public EventLis(LevelEditor levelEditor, Scene scene) {
+        this.scene = scene;
+        this.levelEditor = levelEditor;
+        setEventLisLevelEditor();
+
+    }
+
+    private void setEventLisModel() {
         FileHandler fhc = null;
         try {
             fhc = new FileHandler("controllerLogs.txt");
@@ -91,5 +100,13 @@ public class EventLis {
                 default -> model.getPlayer1().setTankIsMove(false);
             }
         });
+    }
+
+    private void setEventLisLevelEditor(){
+        scene.setOnMouseClicked(mouseEvent ->{
+            int posX =(int)mouseEvent.getX();
+            int posY =(int)mouseEvent.getY();
+            levelEditor.setBlock(posX, posY );
+        } );
     }
 }

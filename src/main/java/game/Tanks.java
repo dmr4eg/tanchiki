@@ -20,6 +20,7 @@ public class Tanks extends Obj {
 
 
     private int Orientation;
+//    Image imageRight, imageRight2, imageLeft, imageLeft2, imageUp, imageUp2, imageDown, imageDown2;
     private Image imageRight = new Image("p1right.png");
     private Image imageRight2 = new Image("p1right2.png");
     private Image imageLeft = new Image("p1left.png");
@@ -73,42 +74,42 @@ public class Tanks extends Obj {
         this.model = model;
     }
 
-//    public void setTankType(String type) {
-//        switch (type) {
-//            case "player1":
-//                imageRight = new Image("p1right.png");
-//                imageRight2 = new Image("p1right2.png");
-//                imageLeft = new Image("p1left.png");
-//                imageLeft2 = new Image("p1left2.png");
-//                imageUp = new Image("p1up.png");
-//                imageUp2 = new Image("p1up2.png");
-//                imageDown = new Image("p1down.png");
-//                imageDown2 = new Image("p1down2.png");
-//                break;
-//            case "player2":
-//                imageRight = new Image("p2right.png");
-//                imageRight2 = new Image("p2right2.png");
-//                imageLeft = new Image("p2left.png");
-//                imageLeft2 = new Image("p2left2.png");
-//                imageUp = new Image("p2up.png");
-//                imageUp2 = new Image("p2up2.png");
-//                imageDown = new Image("p2down.png");
-//                imageDown2 = new Image("p2down2.png");
-//                break;
-//            case "enemyTank":
-//                imageRight = new Image("eright.png");
-//                imageRight2 = new Image("eright2.png");
-//                imageLeft = new Image("eleft.png");
-//                imageLeft2 = new Image("eleft2.png");
-//                imageUp = new Image("eup.png");
-//                imageUp2 = new Image("eup2.png");
-//                imageDown = new Image("edown.png");
-//                imageDown2 = new Image("edown2.png");
-//                break;
-//            default:
-//                throw new IllegalArgumentException("Invalid tank type: " + type);
-//        }
-//    }
+    public void getTankType(String type) {
+        switch (type) {
+            case "player1":
+                imageRight = new Image("p1right.png");
+                imageRight2 = new Image("p1right2.png");
+                imageLeft = new Image("p1left.png");
+                imageLeft2 = new Image("p1left2.png");
+                imageUp = new Image("p1up.png");
+                imageUp2 = new Image("p1up2.png");
+                imageDown = new Image("p1down.png");
+                imageDown2 = new Image("p1down2.png");
+                break;
+            case "player2":
+                imageRight = new Image("p2right.png");
+                imageRight2 = new Image("p2right2.png");
+                imageLeft = new Image("p2left.png");
+                imageLeft2 = new Image("p2left2.png");
+                imageUp = new Image("p2up.png");
+                imageUp2 = new Image("p2up2.png");
+                imageDown = new Image("p2down.png");
+                imageDown2 = new Image("p2down2.png");
+                break;
+            case "enemyTank":
+                imageRight = new Image("eright.png");
+                imageRight2 = new Image("eright2.png");
+                imageLeft = new Image("eleft.png");
+                imageLeft2 = new Image("eleft2.png");
+                imageUp = new Image("eup.png");
+                imageUp2 = new Image("eup2.png");
+                imageDown = new Image("edown.png");
+                imageDown2 = new Image("edown2.png");
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid tank type: " + type);
+        }
+    }
 
     private void updatePos(){
         if (isTankMove){
@@ -162,6 +163,76 @@ public class Tanks extends Obj {
                 break;
         }
     }
+
+//    @Override
+//    public void draw(String type) {
+//        Image image1, image2, image3, image4, image5, image6, image7, image8;
+//        switch (type) {
+//            case "player1":
+//                image1 = imageLeft;
+//                image2 = imageLeft2;
+//                image3 = imageRight;
+//                image4 = imageRight2;
+//                image5 = imageUp;
+//                image6 = imageUp2;
+//                image7 = imageDown;
+//                image8 = imageDown2;
+//                break;
+//            case "player2":
+//                image1 = imageLeft;   // Replace with the appropriate images for player 2
+//                image2 = imageLeft2;
+//                image3 = imageRight;
+//                image4 = imageRight2;
+//                image5 = imageUp;
+//                image6 = imageUp2;
+//                image7 = imageDown;
+//                image8 = imageDown2;
+//                break;
+//            case "enemyTank":
+//                image1 = imageLeft;   // Replace with the appropriate images for enemy tank
+//                image2 = imageLeft2;
+//                image3 = imageRight;
+//                image4 = imageRight2;
+//                image5 = imageUp;
+//                image6 = imageUp2;
+//                image7 = imageDown;
+//                image8 = imageDown2;
+//                break;
+//            default:
+//                throw new IllegalArgumentException("Invalid tank type: " + type);
+//        }
+//
+//        switch (Orientation) {
+//            case 1:
+//                if (switcher) {
+//                    gc.drawImage(image1, PosX, PosY);
+//                } else {
+//                    gc.drawImage(image2, PosX, PosY);
+//                }
+//                break;
+//            case 2:
+//                if (switcher) {
+//                    gc.drawImage(image3, PosX, PosY);
+//                } else {
+//                    gc.drawImage(image4, PosX, PosY);
+//                }
+//                break;
+//            case 3:
+//                if(switcher){
+//                    gc.drawImage(image5, PosX, PosY);
+//                }else {
+//                    gc.drawImage(image6, PosX, PosY);
+//                }
+//                break;
+//            case 4:
+//                if(switcher){
+//                    gc.drawImage(image7, PosX, PosY);
+//                }else {
+//                    gc.drawImage(image8, PosX, PosY);
+//                }
+//                break;
+//        }
+//    }
 
     public void update(){
         updatePos();

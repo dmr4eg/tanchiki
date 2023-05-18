@@ -1,10 +1,7 @@
 package game;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Alert;
-import java.io.File;
-import java.io.IOException;
+
 import java.util.ArrayList;
 
 public class Bricks {
@@ -28,7 +25,7 @@ public class Bricks {
 
     private void generateBricks() {
         for (BrickData brickData : bricksData) {
-            Brick brick = new Brick(brickData.getX(), brickData.getY(), 1, gc, "brick");
+            Brick brick = new Brick(brickData.x,brickData.y,1,gc,"brick");
             bricksClasses.add(brick);
         }
     }

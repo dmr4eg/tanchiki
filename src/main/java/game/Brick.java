@@ -19,8 +19,8 @@ public class Brick extends Obj{
     }
 
     public Brick(int PosX, int  PosY, int health, GraphicsContext gc, String type){
-        super.PosX = PosX;
-        super.PosY = PosY;
+        this.PosX = PosX;
+        this.PosY = PosY;
         this.Health = health;
         this.gc = gc;
         super.type = type;

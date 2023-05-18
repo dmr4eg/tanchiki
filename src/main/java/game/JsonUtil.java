@@ -27,17 +27,17 @@ public class JsonUtil {
 
     //----------------------------------------------------------------
 
-    public void saveJsonObj(Obj obj, String fileName) {
+    public void saveJsonObj(LevelContainer levelContainer, String fileName) {
         try {
-            objectMapper.writeValue(new File(fileName), obj);
+            objectMapper.writeValue(new File(fileName), levelContainer);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
     }
 
-    public Obj loadJsonObj(String fileName) {
+    public LevelContainer loadJsonObj(String fileName) {
         try {
-            return objectMapper.readValue(new File(fileName), Obj.class);
+            return objectMapper.readValue(new File(fileName), LevelContainer.class);
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
             return null;

@@ -70,7 +70,6 @@ public class Controller extends Application{
     private Parent creatiContent(Stage stage, Scene scene){
         Pane root = new Pane();
         root.setPrefSize(800, 480);
-
         Image bgrImage = new Image(("bgr.jpg"),
                 1980,
                 1080,
@@ -83,7 +82,7 @@ public class Controller extends Application{
                     model.startGame();
                     stage.setScene(scene);
                     setEventLis(model, scene);
-                }),
+                }, "menu"),
 
                 new MenuItem("Multiplayer player", () -> {
                     Label nameLabel = new Label("Enter your name:");
@@ -115,11 +114,14 @@ public class Controller extends Application{
 //                    } catch (Exception e) {
 //                        e.printStackTrace();
 //                    }
-                }),
+                }, "menu"),
 
-                new MenuItem("Level Editor", () -> {}),
+                new MenuItem("Level Editor", () -> {
+                    LevelEditor levelEditor = new LevelEditor(gc);
+                    stage.setScene(levelEditor.getScene());
+                }, "menu"),
 
-                new MenuItem("Quit", Platform::exit)
+                new MenuItem("Quit", Platform::exit, "menu")
         );
 
         box.setBackground(new Background(
@@ -137,7 +139,7 @@ public class Controller extends Application{
 
     private void setEventLis(Model model,Scene scene){
         EventLis eventLis = new EventLis(model, scene);
-        eventLis.setEventLis();
+
     }
 
     public static void main(String[] args) {
