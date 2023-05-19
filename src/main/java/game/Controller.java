@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -19,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import net.GameClient;
@@ -32,18 +34,19 @@ import java.util.logging.SimpleFormatter;
 import static javafx.scene.paint.Color.*;
 
 public class Controller extends Application {
-    private final int WIDTH = 600;
+    private final int WIDTH = 800;
     private final int HEIGHT = 600;
     private Bullet bullet;
     private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
     private GraphicsContext gc;
     private Model model;
+    private Obj obj;
     private GameServer socketServer;
     private GameClient socketClient;
 
     public void start(Stage stage) {
-        // Create group to hold all bricks
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
+        // Create group to hold all bricks
         this.gc = canvas.getGraphicsContext2D();
         Scene scene = new Scene(new StackPane(canvas));
         // Set up scene and show stage
@@ -72,7 +75,6 @@ public class Controller extends Application {
                 1080,
                 false, false
         );
-
         VBox box = new VBox(10,
                 new MenuItem("Single player", () -> {
                     model = new Model(gc);
@@ -151,5 +153,30 @@ public class Controller extends Application {
                 }
             }
         }
+    }
+
+    public void rightPanel(){
+        VBox rightPanel = new VBox(
+                10, new MenuItem("HP" ,() -> {
+//            System.out.println("fdasfa");
+        }, "panel")
+        );
+        Rectangle lineLeft = new Rectangle(10, 600, Color.GRAY);
+        rightPanel.setAlignment(Pos.BASELINE_LEFT);
+        HBox hbox = new HBox( 10 ,lineLeft, rightPanel);
+        rightPanel.setTranslateX(600);
+        rightPanel.setTranslateY(0);
+        rightPanel.setBackground(new Background(
+                new BackgroundFill(Color.web("black", 0.6), null, null))
+        );
+        rightPanel.setPadding(new Insets(8));
+        rightPanel.setAlignment(Pos.CENTER);
+        rightPanel.setPrefSize(100, 480);
+        rightPanel.getChildren().addAll();
+        hbox.setPrefSize(200,600);
+        hbox.setTranslateX(600);
+        hbox.setTranslateY(0);
+        hbox.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
+        hbox.getChildren().addAll(lineLeft, rightPanel);
     }
 }

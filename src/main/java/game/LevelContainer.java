@@ -64,10 +64,11 @@ public class LevelContainer {
         return levelTanks;
     }
 
-    public ArrayList<Tanks> parse_From_Obj_To_Tank(ArrayList<Obj> objects, int DMG){
+    public ArrayList<Tanks> parse_From_Obj_To_Tank(ArrayList<Obj> objects, int PlayerDMG,int EnemyDMG ){
         ArrayList<Tanks> retTanks = new ArrayList<Tanks>();
         for (Obj object: objects){
-            if (object.type.equals("tank"))retTanks.add(new Tanks(object.HP, 1, DMG, object.type, gc, 3, object.getPosX(), object.getPosY(),model));
+            if (object.type.equals("tank"))retTanks.add(new Tanks(object.HP, 1, EnemyDMG, object.type, gc, 3, object.getPosX(), object.getPosY(),model));
+            if (object.type.equals("player"))retTanks.add(new Tanks(object.HP, 1, PlayerDMG, object.type, gc, 3, object.getPosX(), object.getPosY(),model));
         }
         return retTanks;
     }

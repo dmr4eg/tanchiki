@@ -43,7 +43,7 @@ public class LevelEditor {
     public LevelEditor(GraphicsContext gc) {
         //root.getChildren().add(gc.getCanvas());
         this.gc = gc;
-        gc.fillRect(0, 0, 800,600);
+        gc.fillRect(0, 0, 800, 600);
         gc.setFill(BLACK);
         this.bricks = new Bricks(fileName, gc);
         //canvas = new GridPane();
@@ -56,9 +56,11 @@ public class LevelEditor {
         eventLis = new EventLis(this, scene);
     }
 
-    private void setButtonsField(){
+    private void setButtonsField() {
         MenuItem button;
-        VBox vbox = new VBox(10,  new MenuItem("BRICK",() -> {
+        VBox vbox = new VBox(
+        10,
+            new MenuItem("BRICK", () -> {
             isProcessingBrick = true;
             isProcessingPlayer1 = true;
             isProcessingBase = false;
@@ -66,42 +68,43 @@ public class LevelEditor {
             isProcessingEnemy = false;
             isProcessingPlayer2 = false;
             System.out.println("BrickButton");
-        }, "levelEditor"),
-                new MenuItem("TANK", () -> {
-                    isProcessingPlayer1 = !isTwoPlayers();
-                    isProcessingBase = false;
-                    isProcessingArmoredBrick = false;
-                    isProcessingBrick = false;
-                    isProcessingEnemy = false;
-                    isProcessingPlayer2 = false;
-                }, "levelEditor"),
-                new MenuItem("BASE", () -> {
-                    isProcessingBase = !isOneBase();
-                    isProcessingPlayer1 = false;
-                    isProcessingArmoredBrick = false;
-                    isProcessingBrick = false;
-                    isProcessingEnemy = false;
-                    isProcessingPlayer2 = false;
+            }, "levelEditor"),
+            new MenuItem("TANK", () -> {
+                isProcessingPlayer1 = !isTwoPlayers();
+                isProcessingBase = false;
+                isProcessingArmoredBrick = false;
+                isProcessingBrick = false;
+                isProcessingEnemy = false;
+                isProcessingPlayer2 = false;
+            }, "levelEditor"),
+            new MenuItem("BASE", () -> {
+                isProcessingBase = !isOneBase();
+                isProcessingPlayer1 = false;
+                isProcessingArmoredBrick = false;
+                isProcessingBrick = false;
+                isProcessingEnemy = false;
+                isProcessingPlayer2 = false;
 
-                }, "levelEditor"),
-                new MenuItem("ARMORED", () -> {
-                    isProcessingArmoredBrick = true;
-                    isProcessingPlayer1 = false;
-                    isProcessingBase = false;
-                    isProcessingBrick = false;
-                    isProcessingEnemy = false;
-                    isProcessingPlayer2 = false;
-                }, "levelEditor"),
-                new MenuItem("ENEMY", () -> {
-                    isProcessingEnemy = true;
-                    isProcessingPlayer1 = false;
-                    isProcessingBase = false;
-                    isProcessingArmoredBrick = false;
-                    isProcessingBrick = false;
-                    isProcessingPlayer2 = false;
-                }, "levelEditor"),
-                new MenuItem("Save", levelContainer::saveData, "levelEditor"),
-                new MenuItem("Back", () -> {}, "levelEditor")
+            }, "levelEditor"),
+            new MenuItem("ARMORED", () -> {
+                isProcessingArmoredBrick = true;
+                isProcessingPlayer1 = false;
+                isProcessingBase = false;
+                isProcessingBrick = false;
+                isProcessingEnemy = false;
+                isProcessingPlayer2 = false;
+            }, "levelEditor"),
+            new MenuItem("ENEMY", () -> {
+                isProcessingEnemy = true;
+                isProcessingPlayer1 = false;
+                isProcessingBase = false;
+                isProcessingArmoredBrick = false;
+                isProcessingBrick = false;
+                isProcessingPlayer2 = false;
+            }, "levelEditor"),
+            new MenuItem("Save", levelContainer::saveData, "levelEditor"),
+            new MenuItem("Back", () -> {
+            }, "levelEditor")
         );
         Rectangle lineLeft = new Rectangle(10, 600, Color.GRAY);
         vbox.setPrefSize(190, 600);
@@ -109,8 +112,8 @@ public class LevelEditor {
                 new BackgroundFill(Color.web("black", 0.6), null, null))
         );
         vbox.setAlignment(Pos.BASELINE_LEFT);
-        HBox hbox = new HBox( 10 ,lineLeft, vbox);
-        hbox.setPrefSize(200,600);
+        HBox hbox = new HBox(10, lineLeft, vbox);
+        hbox.setPrefSize(200, 600);
         hbox.setTranslateX(600);
         hbox.setTranslateY(0);
         hbox.setBackground(new Background(new BackgroundFill(Color.BLACK, null, null)));
@@ -122,73 +125,73 @@ public class LevelEditor {
         int[] pos = neerAvalibleBlock(posX, posY);
         posX = pos[0];
         posY = pos[1];
-        if(isProcessingBrick) {
+        if (isProcessingBrick) {
             //TODO..
             System.out.println("brick processing...");
             Obj object = new Obj(0, 1, posX, posY, "brick", gc);
             System.out.println("check collision");
-            if(!isCollision(posX, posY)){
+            if (!isCollision(posX, posY)) {
                 levelContainer.addToLevelObjects(object);
                 System.out.println("brick added...");
                 drawimageOnPane(imageBrick, posX, posY);
                 System.out.println("have to be painted");
             }
         }
-        if(isProcessingPlayer1) {
+        if (isProcessingPlayer1) {
             //TODO..
             System.out.println("Player1 processing...");
             Obj object = new Obj(1, 100, posX, posY, "player", gc);
             System.out.println("check collision");
-            if(!isCollision(posX, posY)){
+            if (!isCollision(posX, posY)) {
                 levelContainer.addToLevelObjects(object);
                 System.out.println("Player1 added...");
                 drawimageOnPane(imagePlayer, posX, posY);
                 System.out.println("have to be painted");
             }
         }
-        if(isProcessingPlayer2) {
+        if (isProcessingPlayer2) {
             //TODO..
             System.out.println("Player2 processing...");
             Obj object = new Obj(1, 100, posX, posY, "player", gc);
             System.out.println("check collision");
-            if(!isCollision(posX, posY)){
+            if (!isCollision(posX, posY)) {
                 levelContainer.addToLevelObjects(object);
                 System.out.println("brick added...");
                 drawimageOnPane(imagePlayer, posX, posY);
                 System.out.println("have to be painted");
             }
         }
-        if(isProcessingBase) {
+        if (isProcessingBase) {
             //TODO..
             System.out.println("Base processing...");
             Obj object = new Obj(1, 1, posX, posY, "base", gc);
             System.out.println("check collision");
-            if(!isCollision(posX, posY)){
+            if (!isCollision(posX, posY)) {
                 levelContainer.addToLevelObjects(object);
                 System.out.println("brick added...");
                 drawimageOnPane(imageBase, posX, posY);
                 System.out.println("have to be painted");
             }
         }
-        if(isProcessingEnemy) {
+        if (isProcessingEnemy) {
             //TODO..
             System.out.println("Player processing...");
 
             Obj object = new Obj(1, 30, posX, posY, "tank", gc);
             System.out.println("check collision");
-            if(!isCollision(posX, posY)){
+            if (!isCollision(posX, posY)) {
                 levelContainer.addToLevelObjects(object);
                 System.out.println("brick added...");
                 drawimageOnPane(imageEnemy, posX, posY);
                 System.out.println("have to be painted");
             }
         }
-        if(isProcessingArmoredBrick) {
+        if (isProcessingArmoredBrick) {
             //TODO..
             System.out.println("Player processing...");
             Obj object = new Obj(1, 30, posX, posY, "armoredbrick", gc);
             System.out.println("check collision");
-            if(!isCollision(posX, posY)){
+            if (!isCollision(posX, posY)) {
                 levelContainer.addToLevelObjects(object);
                 System.out.println("brick added...");
                 drawimageOnPane(imageArmoredBrick, posX, posY);
@@ -197,38 +200,40 @@ public class LevelEditor {
         }
 
     }
-    private boolean isTwoPlayers(){
+
+    private boolean isTwoPlayers() {
         int counter = 0;
-        for (Obj object: levelContainer.getLevelObjects()){
-            if(object.getType().equals("player"))counter++;
-            if(counter == 2)return true;
-        }
-        return false;
-    }
-    private boolean isOneBase(){
-        for(Obj object: levelContainer.getLevelObjects()){
-            if(object.getType().equals("base"))return true;
+        for (Obj object : levelContainer.getLevelObjects()) {
+            if (object.getType().equals("player")) counter++;
+            if (counter == 2) return true;
         }
         return false;
     }
 
-    private int[] neerAvalibleBlock(int posX, int posY){
+    private boolean isOneBase() {
+        for (Obj object : levelContainer.getLevelObjects()) {
+            if (object.getType().equals("base")) return true;
+        }
+        return false;
+    }
+
+    private int[] neerAvalibleBlock(int posX, int posY) {
         int neerPosX = 0;
         int neerPosY = 0;
-        for(int i = 0; i <= posX; i = i + 50){
+        for (int i = 0; i <= posX; i = i + 50) {
             neerPosX = i;
         }
-        for(int i = 0; i < posY; i = i + 50){
+        for (int i = 0; i < posY; i = i + 50) {
             neerPosY = i;
         }
-        return new int[] {neerPosX, neerPosY};
+        return new int[]{neerPosX, neerPosY};
     }
 
-    private boolean isCollision(int PosX, int PosY){
+    private boolean isCollision(int PosX, int PosY) {
         int coordXcenter = PosX + 25;
         int coordYcenter = PosY + 25;
-        for(Obj object: levelContainer.getLevelObjects()){
-            if((coordXcenter > object.getPosX()-25) && (coordXcenter < object.getPosX()+75) && (coordYcenter > object.getPosY()-25) && (coordYcenter < object.getPosY() + 75)){
+        for (Obj object : levelContainer.getLevelObjects()) {
+            if ((coordXcenter > object.getPosX() - 25) && (coordXcenter < object.getPosX() + 75) && (coordYcenter > object.getPosY() - 25) && (coordYcenter < object.getPosY() + 75)) {
                 return true;
             }
         }
@@ -237,7 +242,7 @@ public class LevelEditor {
 
     //----------------------------------draw--------------------------------------------------------------
 
-    private void drawimageOnPane(Image image, int posX, int posY){
+    private void drawimageOnPane(Image image, int posX, int posY) {
         ImageView imageView = new ImageView(image);
         imageView.setX(posX);
         imageView.setY(posY);
@@ -250,6 +255,7 @@ public class LevelEditor {
     public Scene getScene() {
         return scene;
     }
+
     public void addBrick(Brick brick) {
         bricks.add(brick);
         saveData();
