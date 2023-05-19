@@ -6,29 +6,34 @@ import java.util.ArrayList;
 
 public class LevelContainer {
     private static ArrayList<Obj> levelOvjects = new ArrayList<Obj>();
+    public ArrayList<Obj> getLevelObjects(){
+        return levelOvjects;
+    }
     private static ArrayList<Tanks> levelTanks = new ArrayList<Tanks>();
     private static ArrayList<Brick> levelBricks = new ArrayList<Brick>();
     private GraphicsContext gc;
     private Model model;
 
-//data for Json
+    //data for Json
     private static final JsonUtil jsonUtil = new JsonUtil();
-    private static final String filename = ""; //<- TODO sdelai file dlya etogo
+    private static final String filename = "levelPack.json"; //<- TODO sdelai file dlya etogo
 
     public LevelContainer(Model model, GraphicsContext gc) {
         this.model = model;
         this.gc = gc;
     }
 
-    public LevelContainer(){
+    public LevelContainer(
+
+    ){
 
     }
 
-//Level Objects methods
-    public void addToLevelObjects(Obj object) {
+    //Level Objects methods
+    public static void addToLevelObjects(Obj object) {
         levelOvjects.add(object);
     }
-    public void addToLevelObjects(ArrayList<Obj> objects){
+    public static void addToLevelObjects(ArrayList<Obj> objects){
         levelOvjects.addAll(objects);
 
     }
@@ -67,7 +72,7 @@ public class LevelContainer {
         return retTanks;
     }
 
-//Level Bricks methods:
+    //Level Bricks methods:
     public static void addTolevelBricks(Brick brick){
         levelBricks.add(brick);
     }
@@ -91,6 +96,15 @@ public class LevelContainer {
 
 
 
+    @Override
+    public String toString() {
+        String msg = "";
+        for(Obj object : levelOvjects){
+            msg += "|" + object.type +", PosX" + object.getPosX() + ", PosY" + object.getPosY();
+        }
 
-
+        return "LevelObjects{" +
+                msg +
+                '}';
+    }
 }

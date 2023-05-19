@@ -106,7 +106,8 @@ public class EventLis {
         scene.setOnMouseClicked(mouseEvent ->{
             int posX =(int)mouseEvent.getX();
             int posY =(int)mouseEvent.getY();
-            levelEditor.setBlock(posX, posY );
+            System.out.println(posX + " " + posY);
+            if(posX < 600)levelEditor.setBlock(posX, posY );
         } );
     }
 }
