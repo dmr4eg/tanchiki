@@ -15,8 +15,7 @@ import java.io.FileInputStream;
 
 public class LevelEditor {
     //Creating an image
-    Image image = new Image(String.valueOf(new File("brick.png")));
-
+    Image image = new Image(String.valueOf(new File("brickdef.png")));
     //Setting the image view
     ImageView imageView = new ImageView(image);
     private final LevelContainer levelContainer = new LevelContainer();
@@ -42,18 +41,20 @@ public class LevelEditor {
         this.canvas.setPrefSize(800, 600);
         scene = new Scene(setButtonsField());
         eventLis = new EventLis(this, scene);
-
-        ;
     }
 
-    private Pane setButtonsField(){
-        VBox vbox = new VBox(10,  new MenuItem("BRICK", () -> {
+    private Pane setButtonsField() {
+        VBox vbox = new VBox(10, new MenuItem("BRICK", () -> {
             isProcessingBrick = true;
         }, "levelEditor"),
-                new MenuItem("TANK", () -> {}, "levelEditor"),
-                new MenuItem("BASE", () -> {}, "levelEditor"),
-                new MenuItem("ARMORED", () -> {}, "levelEditor"),
-                new MenuItem("ENEMY", () -> {}, "levelEditor")
+                new MenuItem("TANK", () -> {
+                }, "levelEditor"),
+                new MenuItem("BASE", () -> {
+                }, "levelEditor"),
+                new MenuItem("ARMORED", () -> {
+                }, "levelEditor"),
+                new MenuItem("ENEMY", () -> {
+                }, "levelEditor")
         );
         Rectangle lineLeft = new Rectangle(10, 600, Color.GRAY);
         vbox.setPrefSize(190, 600);
@@ -61,8 +62,8 @@ public class LevelEditor {
                 new BackgroundFill(Color.web("black", 0.6), null, null))
         );
         vbox.setAlignment(Pos.BASELINE_LEFT);
-        HBox hbox = new HBox( 10 ,lineLeft, vbox);
-        hbox.setPrefSize(200,600);
+        HBox hbox = new HBox(10, lineLeft, vbox);
+        hbox.setPrefSize(200, 600);
         hbox.setTranslateX(600);
         hbox.setTranslateY(0);
         canvas.getChildren().add(hbox);
@@ -71,7 +72,7 @@ public class LevelEditor {
 
 
     public void setBlock(int posX, int posY) {
-        if(isProcessingBrick) {
+        if (isProcessingBrick) {
             //TODO..
 
 
@@ -79,35 +80,35 @@ public class LevelEditor {
             levelContainer.addToLevelObjects(object);
             isProcessingBrick = false;
         }
-        if(isProcessingPlayer1) {
+        if (isProcessingPlayer1) {
             //TODO..
 
             Obj object = new Obj(1, 100, posX, posY, "player", gc);
             levelContainer.addToLevelObjects(object);
             isProcessingPlayer1 = false;
         }
-        if(isProcessingPlayer2) {
+        if (isProcessingPlayer2) {
             //TODO..
 
             Obj object = new Obj(1, 100, posX, posY, "player", gc);
             levelContainer.addToLevelObjects(object);
             isProcessingPlayer2 = false;
         }
-        if(isProcessingBase) {
+        if (isProcessingBase) {
             //TODO..
 
             Obj object = new Obj(1, 1, posX, posY, "base", gc);
             levelContainer.addToLevelObjects(object);
             isProcessingBase = false;
         }
-        if(isProcessingEnemy) {
+        if (isProcessingEnemy) {
             //TODO..
 
             Obj object = new Obj(1, 30, posX, posY, "tank", gc);
             levelContainer.addToLevelObjects(object);
             isProcessingEnemy = false;
         }
-        if(isProcessingArmoredBrick) {
+        if (isProcessingArmoredBrick) {
             //TODO..
 
             Obj object = new Obj(1, 30, posX, posY, "armoredbrick", gc);
@@ -118,7 +119,7 @@ public class LevelEditor {
     }
     //----------------------------------draw--------------------------------------------------------------
 
-    private void repaint(){
+    private void repaint() {
         //ищу методы для выресовки
     }
 
@@ -127,6 +128,7 @@ public class LevelEditor {
     public Scene getScene() {
         return scene;
     }
+
     public void addBrick(Brick brick) {
         bricks.add(brick);
         saveData();

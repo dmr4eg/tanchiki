@@ -25,8 +25,6 @@ public class EnemyTanksBrain {
         targets.add(player2);
     }
 
-    //-------------------------------------------------------------------------------------------------------------------
-    //Object project
     private void check_collisionObj(Tanks tank, ArrayList<Obj> allObjects){
         boolean[] retCollisionArr = new boolean[]{false, false, false, false};
         for (Obj brick : allObjects) {
@@ -70,9 +68,6 @@ public class EnemyTanksBrain {
         fire_in_player_or_move_to_base(tank);
     }
 
-    //-------------------------------------------------------------------------------------------------------------------
-
-
     private boolean[] check_collision(Tanks tank, Bricks bricks){
         boolean[] retCollisionArr = new boolean[]{false, false, false, false};
         for (Brick brick : bricks.getBricksClasses()) {
@@ -114,8 +109,6 @@ public class EnemyTanksBrain {
             double lengthX = Math.abs(tank.getPosX() - target.getPosX());
             double lengthY = Math.abs(tank.getPosY() - target.getPosY());
             double currentLen = Math.sqrt(Math.pow(lengthX,2) + Math.pow(lengthY,2));
-            //Алишер:
-            //Дамир:
             distance.add(currentLen);
             if(min > currentLen) {
                 retTarget = target;

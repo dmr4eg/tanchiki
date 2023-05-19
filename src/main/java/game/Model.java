@@ -22,7 +22,6 @@ import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-
 public class Model extends Thread{
     private final String gameMode;
     private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
@@ -34,14 +33,6 @@ public class Model extends Thread{
     private Tanks player2;
     private Pane gamePane = new Pane();
     private boolean gameIsStart = true;
-    public void setPlayer2(Tanks player2) {
-        this.player2 = player2;
-    }
-
-    public void setPlayer1(Tanks player1) {
-        this.player1 = player1;
-    }
-
     private Tanks enemyTank;
     private EnemyTanksBrain enemyBrain;
     private Brick base;
@@ -50,6 +41,7 @@ public class Model extends Thread{
     GameServer socketServer;
     GameClient socketClient;
     private static final Logger LOGGER = Logger.getLogger(Model.class.getName());
+
     public Model( GraphicsContext gc) {
         this.gc = gc;
         player1 = new Tanks(100, 1, 25, "player", gc, 1, 100, 100, this);
@@ -72,6 +64,7 @@ public class Model extends Thread{
         LOGGER.addHandler(fhm);
         LOGGER.info("Model instantiated");
     }
+
     public Model(GraphicsContext gc, String name) {
         this.gc = gc;
         this.gameMode = "online";
@@ -92,6 +85,15 @@ public class Model extends Thread{
         LOGGER.addHandler(fhm);
         LOGGER.info("Model instantiated");
     }
+
+    public void setPlayer2(Tanks player2) {
+        this.player2 = player2;
+    }
+
+    public void setPlayer1(Tanks player1) {
+        this.player1 = player1;
+    }
+
     public void startGame(){
         isStart = true;
     }
@@ -138,14 +140,12 @@ public class Model extends Thread{
         bullets.add(bullet);
         LOGGER.info("New bullet added");
     }
-    //checking if is there collision with brick and bullet
     //---------------------------------------------------------------------------------------------------------------------------------
     public void updateDraw(){
         for(Obj object: allObjects){
             object.draw();
         }
     }
-
 
     public void enemy_computingObj(){
         for(Tanks tank : tanks){
@@ -259,8 +259,7 @@ public class Model extends Thread{
         return true;
     }
 
-    //-----------------------------------------------------------------------------------------------------------------------------------------
-
+//-----------------------------------------------------------------------------------------------------------------------------------------
 
     private Brick isBulletCollision(Bullet bullet){
         for(Brick brick : bricks.getBricksClasses()){
@@ -280,8 +279,6 @@ public class Model extends Thread{
         return null;
     }
 
-
-
     public ArrayList<Bullet> getBullets(){
         return bullets;
     }
@@ -289,7 +286,9 @@ public class Model extends Thread{
     public Parent getGamePane() {
         return gamePane;
     }
+
 //SERVER side--------------------------------------------------------------------------------------------
+
     private void startBackend(String name){
         if (!isServerStart()) {
             socketServer = new GameServer(this);

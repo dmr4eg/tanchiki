@@ -6,44 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="269ef673-ab83-4ed9-b222-3cd47ed4e238" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.1" beforeDir="false" afterPath="$PROJECT_DIR$/controllerLogs.txt.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/modelLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/modelLogs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Brick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/LevelEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/LevelEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/Tanks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Tanks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sandbox/Bricks.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sandbox/Bullet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sandbox/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sandbox/Enemy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sandbox/GameModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sandbox/Model.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sandbox/Nonstatic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sandbox/Tanks.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sandbox/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/Brick.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Brick.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/EnemyTanksBrain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/EnemyTanksBrain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/EventLis.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/EventLis.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/LevelContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/LevelContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/LevelEditor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/LevelEditor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/Obj.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Obj.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/game/Tanks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/Tanks.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sandbox/Bricks.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sandbox/Bullet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sandbox/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sandbox/Enemy.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sandbox/GameModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sandbox/Model.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sandbox/Nonstatic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sandbox/Tanks.class" beforeDir="false" />
-    </list>
-    <list id="93d9fb78-14dc-45b4-8152-7e47c3a9b0d7" name="Changes by dmr4eg" comment="">
+      <change beforePath="$PROJECT_DIR$/modelLogs.txt.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Bullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/EnemyTanksBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/EnemyTanksBrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/EventLis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/EventLis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/JsonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/LevelEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/LevelEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/MenuItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/Obj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Obj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/GameClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/Tanks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Tanks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/TanksMp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/TanksMp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/game/LevelEditor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/game/LevelEditor.class" afterDir="false" />
     </list>
+    <list id="93d9fb78-14dc-45b4-8152-7e47c3a9b0d7" name="Changes by dmr4eg" comment="" />
     <list id="418be624-e450-4897-b2a2-09db30ee6746" name="Changes by User" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,26 +55,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/CVUT/JAVA_CVUT/denistat-master/Game&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/CVUT/JAVA_CVUT/denistat-master/Game",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="game" />
@@ -110,7 +93,7 @@
       <recent name="C:\CVUT\TeamGame\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.start_game">
+  <component name="RunManager" selected="JUnit.ModelTest.testAddBullet">
     <configuration name="App" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="net.App" />
       <module name="game" />
@@ -133,8 +116,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ModelTest.testAddBullet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="game" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="game" />
+      <option name="MAIN_CLASS_NAME" value="game.ModelTest" />
+      <option name="METHOD_NAME" value="testAddBullet" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ModelTest.testAddBullet" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>

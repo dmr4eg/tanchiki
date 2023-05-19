@@ -13,8 +13,7 @@ public class Obj {
     protected String picture;
     protected GraphicsContext gc;
 
-    public int getHP()
-    {
+    public int getHP() {
         return HP;
     }
 
@@ -37,12 +36,7 @@ public class Obj {
     }
 
     public Obj(int HP, int MS, int PosX, int PosY, String type){
-
     }
-
-//    public void draw(String type) {
-//        gc.drawImage(new Image(picture), PosX, PosY);
-//    }
 
     public int getPosX()
     {

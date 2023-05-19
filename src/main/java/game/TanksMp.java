@@ -47,5 +47,4 @@ public class TanksMp extends Tanks {
 //        if(messageValues[1].equals("1"))fire();
 //        setPos(Integer.parseInt(messageValues[2]),Integer.parseInt(messageValues[3]));
 //    }
-
 }

@@ -16,9 +16,9 @@ import javafx.scene.text.Text;
 class MenuItem extends StackPane {
     public MenuItem(String name, Runnable action, String type){
         LinearGradient gradient = new LinearGradient(
-                0, 0.5, 1, 0.5, true, CycleMethod.NO_CYCLE,
-                new Stop(0.1, Color.web("black", 0.75)),
-                new Stop(1.0, Color.web("black", 0.15))
+            0, 0.5, 1, 0.5, true, CycleMethod.NO_CYCLE,
+            new Stop(0.1, Color.web("black", 0.75)),
+            new Stop(1.0, Color.web("black", 0.15))
         );
         Rectangle bg;
         Rectangle line;
@@ -55,7 +55,6 @@ class MenuItem extends StackPane {
             box = new HBox(10, line, text);
             box.setAlignment(Pos.BASELINE_LEFT);
         }
-
         getChildren().addAll(bg, box);
     }
 }

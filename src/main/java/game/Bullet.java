@@ -12,7 +12,7 @@ public class Bullet {
     private GraphicsContext gc;
     private int ms;
     private int Orientation;
-    private Image image = new Image("bullet2.png");
+    private Image bulletim = new Image("bullet2.png");
 
     public int getDMG() {
         return DMG;
@@ -50,7 +50,7 @@ public class Bullet {
     }
 
     private void draw(){
-        gc.drawImage(new Image("bullet2.png"), PosX, PosY);
+        gc.drawImage(bulletim, PosX, PosY);
     }
 
     public void update(){
@@ -73,8 +73,5 @@ public class Bullet {
 
     public int getPosY() {
         return PosY;
-    }
-
-    public void die(){
     }
 }

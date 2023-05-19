@@ -31,28 +31,25 @@ import java.util.logging.SimpleFormatter;
 
 import static javafx.scene.paint.Color.*;
 
-public class Controller extends Application{
+public class Controller extends Application {
     private final int WIDTH = 600;
     private final int HEIGHT = 600;
     private Bullet bullet;
-    private EventLis eventLis;
     private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
     private GraphicsContext gc;
     private Model model;
     private GameServer socketServer;
     private GameClient socketClient;
+
     public void start(Stage stage) {
         // Create group to hold all bricks
         Canvas canvas = new Canvas(WIDTH, HEIGHT);
         this.gc = canvas.getGraphicsContext2D();
         Scene scene = new Scene(new StackPane(canvas));
-
-        //initializing gameClient
-
         // Set up scene and show stage
         stage.setScene(new Scene(creatiContent(stage, scene)));
         stage.show();
-        Timeline tl = new Timeline(new KeyFrame(Duration.millis(15), e->run(gc, scene)));
+        Timeline tl = new Timeline(new KeyFrame(Duration.millis(15), e -> run(gc, scene)));
         tl.setCycleCount(Timeline.INDEFINITE);
         //eventLis = new EventLis(scene, model, WIDTH, HEIGHT, TILE);
 
@@ -67,7 +64,7 @@ public class Controller extends Application{
         tl.play();
     }
 
-    private Parent creatiContent(Stage stage, Scene scene){
+    private Parent creatiContent(Stage stage, Scene scene) {
         Pane root = new Pane();
         root.setPrefSize(800, 480);
         Image bgrImage = new Image(("bgr.jpg"),
@@ -83,14 +80,13 @@ public class Controller extends Application{
                     stage.setScene(scene);
                     setEventLis(model, scene);
                 }, "menu"),
-
                 new MenuItem("Multiplayer player", () -> {
                     Label nameLabel = new Label("Enter your name:");
                     TextField nameField = new TextField();
 
                     nameField.setOnKeyPressed((event) -> {
                         if (event.getCode() == KeyCode.ENTER) {
-                            model = new Model( gc, nameField.getText().trim());
+                            model = new Model(gc, nameField.getText().trim());
                             setEventLis(model, scene);
                             model.startGame();
                             stage.setScene(scene);
@@ -99,7 +95,7 @@ public class Controller extends Application{
                     Button startButton = new Button("Start");
                     startButton.setOnAction((ActionEvent e) -> {
                         // 2. as above
-                        model = new Model( gc, nameField.getText().trim());
+                        model = new Model(gc, nameField.getText().trim());
                         setEventLis(model, scene);
                         model.startGame();
                         stage.setScene(scene);
@@ -109,18 +105,11 @@ public class Controller extends Application{
                     hbox.setAlignment(Pos.CENTER);
                     Scene startScene = new Scene(hbox);
                     stage.setScene(startScene);
-//                    try {
-//                        app.start(stage);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
                 }, "menu"),
-
                 new MenuItem("Level Editor", () -> {
                     LevelEditor levelEditor = new LevelEditor(gc);
                     stage.setScene(levelEditor.getScene());
                 }, "menu"),
-
                 new MenuItem("Quit", Platform::exit, "menu")
         );
 
@@ -137,9 +126,8 @@ public class Controller extends Application{
         return root;
     }
 
-    private void setEventLis(Model model,Scene scene){
+    private void setEventLis(Model model, Scene scene) {
         EventLis eventLis = new EventLis(model, scene);
-
     }
 
     public static void main(String[] args) {
@@ -147,8 +135,8 @@ public class Controller extends Application{
     }
 
     public void run(GraphicsContext gc, Scene scene) {
-        if(model != null) {
-            if(model.isGameIsStart()) {
+        if (model != null) {
+            if (model.isGameIsStart()) {
                 gc.fillRect(0, 0, WIDTH, HEIGHT);
                 gc.setFill(BLACK);
 
@@ -157,17 +145,11 @@ public class Controller extends Application{
                 model.isCollision_tankObj(model.getPlayer1());
                 model.getPlayer1().update();
                 model.enemy_computingObj();
-                if(model.getPlayer2() != null) model.getPlayer2().updateCooldownAndAnimation();
+                if (model.getPlayer2() != null) model.getPlayer2().updateCooldownAndAnimation();
                 if (!model.getBullets().isEmpty()) {
                     model.updateObj();
                 }
             }
         }
-        //-------------------------------
-
-
-
     }
-
 }
-

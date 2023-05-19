@@ -6,20 +6,13 @@ import javafx.scene.image.Image;
 
 public class Tanks extends Obj {
     private final int DMG;
-
     private boolean[] isColision = new boolean[] {false, false, false, false};
-
     private boolean isTankMove = true;
-
     private int fireCooldown = 0;
     private boolean wasFire = false;
-
     private int Orientation;
-
     Image imageRight, imageRight2, imageLeft, imageLeft2, imageUp, imageUp2, imageDown, imageDown2;
-
     private boolean switcher = true;
-
     private Model model;
 
     public boolean isTankMove() {
@@ -173,6 +166,7 @@ public class Tanks extends Obj {
         return super.getPosX();
     }
 
+    @Override
     public int getPosY() {
         return super.getPosY();
     }
