@@ -45,6 +45,8 @@ public class Packet11Update extends Packet{
         message+=String.valueOf(player.getPosX());
         message+="|";
         message+=String.valueOf(player.getPosY());
+        message+="|";
+        message+=String.valueOf(player.getHP());
         return message;
     }
 
@@ -60,6 +62,7 @@ public class Packet11Update extends Packet{
         player.setOrientation(orientation);
         if(messageValues[1].equals("1"))player.fire();
         player.setPos(Integer.parseInt(messageValues[2]),Integer.parseInt(messageValues[3]));
+        player.setHP(Integer.parseInt(messageValues[4]));
     }
 
     @Override

@@ -1,11 +1,18 @@
 package structure;
 
+import frontend.MenuItem;
+import javafx.scene.layout.HBox;
 import serialization.LevelEditor;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-
+import javafx.stage.Stage;
+import javafx.scene.layout.StackPane;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.Group;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -15,6 +22,7 @@ import java.util.logging.Logger;
 import static javafx.scene.paint.Color.BLACK;
 import static javafx.scene.paint.Color.WHITE;
 
+
 public class EventLis {
     private static final Logger LOGGER = Logger.getLogger(EventLis.class.getName());
     private Scene scene;
@@ -22,7 +30,11 @@ public class EventLis {
     private Controller controller;
     private LevelEditor levelEditor;
 
-    public EventLis(Model model, Scene scene) {
+    private Stage stage;
+    private StackPane stackPane;
+    public EventLis(Model model, Scene scene, StackPane stackPane) {
+        this.stackPane = stackPane;
+        this.stage = stage;
         this.scene = scene;
         this.model = model;
         setEventLisModel();
@@ -43,6 +55,7 @@ public class EventLis {
         }
         fhc.setFormatter(new SimpleFormatter());
         LOGGER.addHandler(fhc);
+        HBox hbox = new HBox(new MenuItem("Save",()->{}, "levelEditor" ));
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case A, LEFT -> {
@@ -83,17 +96,12 @@ public class EventLis {
                     LOGGER.log(Level.INFO, "Player1 fire");
                 }
                 case ESCAPE -> {
+                    System.out.println("forGame");
                     if(model.getGameIsStart()) {
-                        GraphicsContext gc = model.getGc();
-                        gc.setFill(Color.BLACK);
-                        gc.fillRect(0, 0 , 800, 600);
-                        gc.setFill(WHITE);
-                        gc.fillRect(800, 0, 200,600 );
-                        gc.setFill(BLACK);
-                        gc.fillText("PAUSE", 400, 300);
-                        gc.setFont(Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 30));
                         model.setGameIsStart(false);
+                        stackPane.getChildren().add(hbox);
                     } else {
+                        stackPane.getChildren().remove(hbox);
                         model.setGameIsStart(true);
                         System.out.println(model.getGameIsStart());
                     }
@@ -104,6 +112,12 @@ public class EventLis {
     }
 
     private void setEventLisLevelEditor(){
+        scene.setOnMouseDragged(mouseEvent -> {
+            int posX =(int)mouseEvent.getX();
+            int posY =(int)mouseEvent.getY();
+            System.out.println(posX + " " + posY);
+            if(posX < 600)levelEditor.setBlock(posX, posY );
+        });
         scene.setOnMouseClicked(mouseEvent ->{
             int posX =(int)mouseEvent.getX();
             int posY =(int)mouseEvent.getY();

@@ -3,6 +3,7 @@ package net;
 import net.packets.Packet;
 import net.packets.Packet00Login;
 import net.packets.Packet11Update;
+import objects.Tanks;
 import structure.modules.LevelContainer;
 import structure.Model;
 
@@ -61,15 +62,17 @@ public class GameServer extends Thread{
                 System.out.println("["+ address.getHostAddress() + ":" + port+ "] " + packet.getUsername()
                         + " has connected");
 
-                TanksMp player1 = (TanksMp) levelContainer.players.get(0);
                 if (connectedPlayers.isEmpty()){
+                    Tanks p1 = levelContainer.players.get(0);
+                    TanksMp player1 = new TanksMp(p1.getHP(), p1.getMS(),  p1.getDMG(), p1.getType(), model.getGc(), p1.getOrientation(), p1.getPosX(), p1.getPosY(), model, address, port);
                     connectedPlayers.add(player1);
                     byte[] messageToPlayer1 = ("02"+packet11Update.parseToData(player1) + "$"+ " ").getBytes();
                     sendData(messageToPlayer1, address, port);
 //                    model.addToAllObjects(player1);
 //                    model.setPlayer1(player1);
                 }else{
-                    TanksMp player2 = (TanksMp) levelContainer.players.get(1);
+                    Tanks p2 = levelContainer.players.get(1);
+                    TanksMp player2 = new TanksMp(p2.getHP(), p2.getMS(),  p2.getDMG(), p2.getType(), model.getGc(), p2.getOrientation(), p2.getPosX(), p2.getPosY(), model, address, port);
                     connectedPlayers.add(player2);
                     byte[] messageToPlayer2 = ("02"+packet11Update.parseToData( player2) + "$" + packet11Update.parseToData( connectedPlayers.get(0))).getBytes();
                     sendData(messageToPlayer2, address, port);

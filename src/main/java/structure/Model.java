@@ -1,5 +1,6 @@
 package structure;
 
+import frontend.View;
 import javafx.scene.Parent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
@@ -51,15 +52,14 @@ public class Model extends Thread{
     private static final Logger LOGGER = Logger.getLogger(Model.class.getName());
     private int enemyCount = 0;
     public Model( GraphicsContext gc) {
-        levelContainer = new LevelContainer(this, gc);
+        this.gameMode = "offline";
+        levelContainer = new LevelContainer(this, gc, gameMode);
         allObjects = levelContainer.getLevelObjects();
         base = levelContainer.getBase();
         tanks = levelContainer.getLevelTanks();
         bricks = levelContainer.getLevelBricks();
         player1 = levelContainer.players.get(0);
-
-
-        this.gameMode = "offline";
+        allObjects.add(player1);
         this.gc = gc;
         this.enemyBrain = new EnemyTanksBrain(base, player1);
 //        player1 = new Tanks(100, 1, 25, "player", gc, 1, 100, 100, this);
@@ -84,12 +84,13 @@ public class Model extends Thread{
         this.gameMode = "online";
 
 
-        levelContainer = new LevelContainer(this, gc);
+        levelContainer = new LevelContainer(this, gc, gameMode);
         allObjects = levelContainer.getLevelObjects();
         base = levelContainer.getBase();
         tanks = levelContainer.getLevelTanks();
         bricks = levelContainer.getLevelBricks();
-        player1 = levelContainer.players.get(1);
+        ArrayList<Tanks> players = levelContainer.players;
+        //player1 = players.get(0);
 
         startBackend(name);
         FileHandler fhm = null;
@@ -148,7 +149,6 @@ public class Model extends Thread{
         }
     }
 
-
     public void enemy_computingObj(){
         for(Tanks tank : tanks){
             if(bricks != null){
@@ -166,32 +166,41 @@ public class Model extends Thread{
         for (Obj object : allObjects) {
             if (object != checking_obj) {
                 //left
-                if ((((checking_obj.getPosY() + 1 >= object.getPosY() + 1) && (checking_obj.getPosY() + 1 <= object.getPosY() + 49)) || ((checking_obj.getPosY() + 49 >= object.getPosY() + 1) && (checking_obj.getPosY() + 49 <= object.getPosY() + 49))) &&
-                        ((checking_obj.getPosX() <= object.getPosX() + 50) && (checking_obj.getPosX() >= object.getPosX() + 50))) {
+                if ((((checking_obj.getPosY() + 1 >= object.getPosY() + 1) && (checking_obj.getPosY() + 1 <= object.getPosY() + 49)) ||
+                        ((checking_obj.getPosY() + 49 >= object.getPosY() + 1) && (checking_obj.getPosY() + 49 <= object.getPosY() + 49))) &&
+                        ((checking_obj.getPosX() <= object.getPosX() + 50) && (checking_obj.getPosX() >= object.getPosX() + 50))||
+                        (checking_obj.getPosX() < 0)) {
                     retCollisionArr[0] = true;
                     LOGGER.info("Tank collided with an object");
                 }
                 //right
-                if ((((checking_obj.getPosY() + 1 >= object.getPosY() + 1) && (checking_obj.getPosY() + 1 <= object.getPosY() + 49)) || ((checking_obj.getPosY() + 49 >= object.getPosY() + 1) && (checking_obj.getPosY() + 49 <= object.getPosY() + 49))) &&
-                        ((checking_obj.getPosX() + 50 <= object.getPosX()) && (checking_obj.getPosX() + 50 >= object.getPosX()))) {
+                if ((((checking_obj.getPosY() + 1 >= object.getPosY() + 1) && (checking_obj.getPosY() + 1 <= object.getPosY() + 49)) ||
+                        ((checking_obj.getPosY() + 49 >= object.getPosY() + 1) && (checking_obj.getPosY() + 49 <= object.getPosY() + 49))) &&
+                        ((checking_obj.getPosX() + 50 <= object.getPosX()) && (checking_obj.getPosX() + 50 >= object.getPosX())) ||
+                        (checking_obj.getPosX() > 550)) {
                     retCollisionArr[1] = true;
                     LOGGER.info("Tank collided with an object");
                 }
 
                 //forward
-                if ((((checking_obj.getPosX() + 1 >= object.getPosX() + 1) && (checking_obj.getPosX() + 1 <= object.getPosX() + 49)) || ((checking_obj.getPosX() + 49 >= object.getPosX() + 1) && (checking_obj.getPosX() + 49 <= object.getPosX() + 49))) &&
-                        ((checking_obj.getPosY() <= object.getPosY() + 49) && (checking_obj.getPosY() >= object.getPosY() + 49))) {
+                if ((((checking_obj.getPosX() + 1 >= object.getPosX() + 1) && (checking_obj.getPosX() + 1 <= object.getPosX() + 49)) ||
+                        ((checking_obj.getPosX() + 49 >= object.getPosX() + 1) && (checking_obj.getPosX() + 49 <= object.getPosX() + 49))) &&
+                        ((checking_obj.getPosY() <= object.getPosY() + 49) && (checking_obj.getPosY() >= object.getPosY() + 49)) ||
+                        (checking_obj.getPosY() < 0)) {
                     retCollisionArr[2] = true;
                     LOGGER.info("Tank collided with an object");
                 }
                 //backward
-                if ((((checking_obj.getPosX() + 1 >= object.getPosX() + 1) && (checking_obj.getPosX() + 1 <= object.getPosX() + 49)) || ((checking_obj.getPosX() + 49 >= object.getPosX() + 1) && (checking_obj.getPosX() + 49 <= object.getPosX() + 49))) &&
-                        ((checking_obj.getPosY() + 49 <= object.getPosY()) && (checking_obj.getPosY() + 49 >= object.getPosY() - 1))) {
+                if ((((checking_obj.getPosX() + 1 >= object.getPosX() + 1) && (checking_obj.getPosX() + 1 <= object.getPosX() + 49)) ||
+                        ((checking_obj.getPosX() + 49 >= object.getPosX() + 1) && (checking_obj.getPosX() + 49 <= object.getPosX() + 49))) &&
+                        ((checking_obj.getPosY() + 49 <= object.getPosY()) && (checking_obj.getPosY() + 49 >= object.getPosY() - 1)) ||
+                        (checking_obj.getPosY() > 550)) {
                     retCollisionArr[3] = true;
                     LOGGER.info("Tank collided with an object");
                 }
             }
         }
+
         checking_obj.setIsColision(retCollisionArr);
     }
 
@@ -231,7 +240,6 @@ public class Model extends Thread{
                         System.out.println(object.getType() + " " + object.getHP());
                         allObjects.remove(object);
                         tanks.remove(object);
-
 //                        }
                     }
                     continue;
@@ -257,7 +265,7 @@ public class Model extends Thread{
         gameIsStart = status;
     }
 
-    public boolean isGameIsStart() {
+    public boolean isOnlineStart() {
         if(gameMode.equals("online")){
             return player2 != null;
         }
@@ -327,6 +335,11 @@ public class Model extends Thread{
     }
 
     public void UpdateModel(){
+        if(player1.getHP() == 0) {
+            View view = new View(gc);
+            gameIsStart = false;
+            view.drawEnd();
+        }
         updateDraw();
         isCollision_tankObj(player1);
         player1.update();
@@ -336,7 +349,7 @@ public class Model extends Thread{
             updateObj();
         }
     }
-
+//я ща подойду 5 мин
     public int getEnemies(){
         ArrayList<Tanks> a = levelContainer.getLevelTanks();
         return a.size();

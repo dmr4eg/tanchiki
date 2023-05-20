@@ -4,14 +4,22 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Obj {
-    protected int HP = 0;
-    protected static int MS = 0;
     public boolean hasCollided;
+    protected int MS;
+    protected int HP;
     protected int PosX;
     protected int PosY;
     protected String type;
     protected String picture;
     protected GraphicsContext gc;
+
+    public int getHP() {
+        return HP;
+    }
+
+    public void setHP(int HP) {
+        this.HP = HP;
+    }
 
     public String getType() {
         return type;
@@ -19,7 +27,12 @@ public class Obj {
 
     public boolean isDead(int damageTaken){
         HP = HP - damageTaken;
+        if (HP <= 0)HP = 0;
         return HP <= 0;
+    }
+
+    public int getMS() {
+        return MS;
     }
 
     public Obj(int MS, int HP, int posX, int posY, String type, GraphicsContext gc) {
@@ -33,12 +46,7 @@ public class Obj {
 
     public Obj(int HP, int MS, int PosX, int PosY, String type){
     }
-    public static int getMS() {
-        return MS;
-    }
-    public int getHP() {
-        return HP;
-    }
+
     public int getPosX()
     {
         return PosX;

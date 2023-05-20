@@ -27,9 +27,8 @@ public class LevelEditor {
     Image imagePlayer = new Image(String.valueOf(new File("p1up.png")));
     Image imageArmoredBrick = new Image(String.valueOf(new File("solidbrick.png")));
     private ArrayList<LevelContainer.SaveObj> saveObjs = new ArrayList<>();
-    private final LevelContainer levelContainer = new LevelContainer();
+    private final LevelContainer levelContainer;
     private final JsonUtil jsonUtil = new JsonUtil();
-    private final String fileName = "level2.json";
     private final GraphicsContext gc;
     private final Group canvas;
     private final Scene scene;
@@ -41,7 +40,8 @@ public class LevelEditor {
     private boolean isProcessingArmoredBrick;
     private boolean isProcessingEnemy;
 
-    public LevelEditor(GraphicsContext gc) {
+    public LevelEditor(GraphicsContext gc, String filename) {
+        levelContainer = new LevelContainer(filename);
         //root.getChildren().add(gc.getCanvas());
         this.gc = gc;
         gc.fillRect(0, 0, 800,600);

@@ -18,19 +18,24 @@ public class LevelContainer {
     private static ArrayList<LevelContainer.loadObj> loadObjs = new ArrayList<>();
     private static ArrayList<Obj> levelOvjects = new ArrayList<Obj>();
     private static ArrayList<Tanks> levelTanks = new ArrayList<Tanks>();
+    public ArrayList<Tanks> getLevelTanks() {
+        return levelTanks;
+    }
 
     public ArrayList<Tanks> players;
     private static ArrayList<Brick> levelBricks = new ArrayList<Brick>();
     private GraphicsContext gc;
     private Model model;
+
     //data for Json
     private static final JsonUtil jsonUtil = new JsonUtil();
-    private static final String filename = "level3.json";
+    private String filename;
 
-    public LevelContainer(Model model, GraphicsContext gc) {
+    public LevelContainer(Model model, GraphicsContext gc, String mode) {
         this.model = model;
         this.gc = gc;
-        loadObjs = (ArrayList<LevelContainer.loadObj>) jsonUtil.loadJsonSaveObj(filename);
+        if (mode.equals("offline"))loadObjs = (ArrayList<LevelContainer.loadObj>) jsonUtil.loadJsonSaveObj("level3.json");
+        if (mode.equals("online"))loadObjs = (ArrayList<LevelContainer.loadObj>) jsonUtil.loadJsonSaveObj("level4.json");
         generateFromSaveObj();
         parse_From_Obj_To_Brick(levelOvjects);
         parse_From_Obj_To_Tank(levelOvjects, 25, 1);
@@ -38,16 +43,14 @@ public class LevelContainer {
         levelOvjects.clear();
         levelOvjects.addAll(levelTanks);
         levelOvjects.addAll(levelBricks);
-        levelOvjects.addAll(players);
     }
 
-    public LevelContainer() {
-    }
-
-    public ArrayList<Tanks> getLevelTanks() {
-        return levelTanks;
+    public LevelContainer(String mode) {
+        if (mode.equals("offline"))this.filename = "level3.json";
+        if (mode.equals("online"))this.filename = "level4.json";
     }
     private void generateFromSaveObj(){
+        System.out.println("nigger");
         for(loadObj loadObj: loadObjs){
             System.out.println(loadObj.param[2]);
             if(loadObj.param[2] == 1)levelOvjects.add(new Obj(0, loadObj.hp,loadObj.param[0] ,loadObj.param[1] ,"brick" , gc));
@@ -76,8 +79,6 @@ public class LevelContainer {
     public void saveData() {
         jsonUtil.saveJsonSaveObj(saveObjs, filename);
     }
-    //ya v altTab
-    // ок
 
 //Level Tanks methods:
 

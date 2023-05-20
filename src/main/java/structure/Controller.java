@@ -60,8 +60,8 @@ public class Controller extends Application {
         tl.play();
     }
 
-    private void setEventLis(Model model, Scene scene) {
-        EventLis eventLis = new EventLis(model, scene);
+    private void setEventLis(Model model, Scene scene, StackPane gamepane) {
+        EventLis eventLis = new EventLis(model, scene, gamepane);
     }
 
     public static void main(String[] args) {
@@ -70,14 +70,16 @@ public class Controller extends Application {
 
     public void run(GraphicsContext gc, Scene scene) {
         if (model != null && model.getGameIsStart()) {
-            if (model.getGameIsStart() == true) {
-                view.drawPane(model);
+            if (model.isOnlineStart()){
+                if (model.getGameIsStart() == true) {
+                    view.drawPane(model);
+                }
             }
         }
     }
 
-    public void modelStart(Scene scene, Stage stage){
-        setEventLis(model, scene);
+    public void modelStart(Scene scene, Stage stage, StackPane gamePane){
+        setEventLis(model, scene, gamePane);
         model.startGame();
         stage.setScene(scene);
     }
@@ -88,20 +90,20 @@ public class Controller extends Application {
         VBox box = new VBox(10,
             new MenuItem("Single player", () -> {
                 model = new Model(gc);
-                modelStart(scene, stage);
+                modelStart(scene, stage, view.getGamepane());
             }, "menu"),
 
             new MenuItem("Multiplayer player", () -> {
                 nameField.setOnKeyPressed((event) -> {
                     if (event.getCode() == KeyCode.ENTER) {
                         model = new Model(gc, nameField.getText().trim());
-                        modelStart(scene, stage);
+                        modelStart(scene, stage, view.getGamepane());
                     }
                 });
                 Button startButton = new Button("Start");
                 startButton.setOnAction((ActionEvent e) -> {
                     model = new Model(gc, nameField.getText().trim());
-                    modelStart(scene, stage);
+                    modelStart(scene, stage, view.getGamepane());
                 });
                 HBox hbox = new HBox(4, nameLabel, nameField, startButton);
                 hbox.setPadding(new Insets(8));
@@ -115,10 +117,6 @@ public class Controller extends Application {
             }, "menu"),
             new MenuItem("Level Editor MP", () -> {
                 LevelEditor levelEditor = new LevelEditor(gc, "online");
-                stage.setScene(levelEditor.getScene());
-            }, "menu"),
-            new MenuItem("Level Editor", () -> {
-                LevelEditor levelEditor = new LevelEditor(gc);
                 stage.setScene(levelEditor.getScene());
             }, "menu"),
             new MenuItem("Quit", Platform::exit, "menu"));

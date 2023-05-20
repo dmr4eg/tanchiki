@@ -43,7 +43,9 @@ public class Tanks extends Obj {
         this.model = model;
         getTankType(type);
     }
-
+    public int getDMG() {
+        return DMG;
+    }
     private void updatePos(){
         if (isTankMove){
             switcher = !switcher;

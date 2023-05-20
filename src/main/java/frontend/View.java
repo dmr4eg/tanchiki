@@ -30,6 +30,9 @@ public class View {
         this.HEIGHT = HEIGHT;
     }
 
+    public View(GraphicsContext gc){
+    }
+
     public void createGameView(){
         Scene scene = new Scene(gamepane);
         stage.setScene(scene);
@@ -46,6 +49,13 @@ public class View {
         gc.fillText(String.format("Player 1 HP: %d", model.getPlayer1().getHP()), 625,100, 300);
         if(model.getPlayer2()!=null)gc.fillText(String.format("Player 2 HP: %d", model.getPlayer2().getHP()), 625,150, 300);
         gc.fillText(String.format("Enemies left: %d", model.getEnemies()), 625,200, 300);
+    }
+
+    public void drawEnd(){
+        gc.setFill(BLACK);
+        gc.fillRect(0, 0, WIDTH, HEIGHT);
+        gc.setFont(Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 20));
+        gc.fillText("GGWP Loshara", 300,200, 300);
     }
 
     public GraphicsContext getGc() {
