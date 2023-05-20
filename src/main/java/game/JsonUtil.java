@@ -43,4 +43,22 @@ public class JsonUtil {
             return null;
         }
     }
+
+    public void saveJsonSaveObj(ArrayList<LevelContainer.SaveObj> data, String fileName) {
+        try {
+            objectMapper.writeValue(new File(fileName), data);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public ArrayList<LevelContainer.loadObj> loadJsonSaveObj(String filename) {
+        try {
+            return objectMapper.readValue(new File(filename), objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, LevelContainer.loadObj.class));
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+
 }

@@ -83,7 +83,7 @@ public class Tanks extends Obj {
                 imageDown = new Image("p2down.png");
                 imageDown2 = new Image("p2down2.png");
                 break;
-            case "enemyTank":
+            case "tank":
                 imageRight = new Image("enright.png");
                 imageRight2 = new Image("enright2.png");
                 imageLeft = new Image("enleft.png");

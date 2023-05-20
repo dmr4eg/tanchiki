@@ -21,6 +21,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import net.GameClient;
@@ -81,6 +82,7 @@ public class Controller extends Application {
                     model.startGame();
                     stage.setScene(scene);
                     setEventLis(model, scene);
+//                    rightPanel();
                 }, "menu"),
                 new MenuItem("Multiplayer player", () -> {
                     Label nameLabel = new Label("Enter your name:");
@@ -101,6 +103,7 @@ public class Controller extends Application {
                         setEventLis(model, scene);
                         model.startGame();
                         stage.setScene(scene);
+                        rightPanel();
                     });
                     HBox hbox = new HBox(4, nameLabel, nameField, startButton);
                     hbox.setPadding(new Insets(8));
@@ -139,21 +142,19 @@ public class Controller extends Application {
     public void run(GraphicsContext gc, Scene scene) {
         if (model != null) {
             if (model.isGameIsStart()) {
-                gc.fillRect(0, 0, WIDTH, HEIGHT);
                 gc.setFill(BLACK);
+                gc.fillRect(0, 0, WIDTH-200, HEIGHT);
+                gc.setFill(WHITE);
+                model.UpdateModel();
+                gc.fillRect(WIDTH -200, 0, 200,600 );
+                gc.setFill(BLACK);
+                gc.setFont(Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 30));
+                gc.fillText(String.format("playerHP: %d", model.getPlayer1().getHP()), 625,100, 150);
+                if(model.getPlayer2()!=null)gc.fillText(String.format("playerHP: %d", model.getPlayer2().getHP()), 625,300, 150);
 
-                //--------------------------------
-                model.updateDraw();
-                model.isCollision_tankObj(model.getPlayer1());
-                model.getPlayer1().update();
-                model.enemy_computingObj();
-                if (model.getPlayer2() != null) model.getPlayer2().updateCooldownAndAnimation();
-                if (!model.getBullets().isEmpty()) {
-                    model.updateObj();
-                }
+            }
             }
         }
-    }
 
     public void rightPanel(){
         VBox rightPanel = new VBox(

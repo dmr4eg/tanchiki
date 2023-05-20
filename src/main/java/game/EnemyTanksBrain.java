@@ -15,6 +15,7 @@ public class EnemyTanksBrain {
         this.base = base;
         this.player = player;
         targets.add(player);
+        targets.add(base);
     }
 
     public EnemyTanksBrain(Brick base, Tanks player, Tanks player2) {
@@ -28,35 +29,42 @@ public class EnemyTanksBrain {
     private void check_collisionObj(Tanks tank, ArrayList<Obj> allObjects){
         boolean[] retCollisionArr = new boolean[]{false, false, false, false};
         for (Obj brick : allObjects) {
-            //brick.draw();
             if (brick != tank) {
                 //left
                 if ((((tank.getPosY() + 1 >= brick.getPosY() + 1) && (tank.getPosY() + 1 <= brick.getPosY() + 49)) || ((tank.getPosY() + 49 >= brick.getPosY() + 1) && (tank.getPosY() + 49 <= brick.getPosY() + 49))) &&
                         ((tank.getPosX() <= brick.getPosX() + 50) && (tank.getPosX() >= brick.getPosX() + 50))) {
                     retCollisionArr[0] = true;
-                    if (brick.getType().equals("brick")  && tank.getOrientation() == 1)
-                        tank.fire();
+                    if(!brick.getType().equals("tank")) {
+                        if (brick.getType().equals("brick")  && tank.getOrientation() == 1)
+                            tank.fire();
+                    }
                 }
                 //right
                 if ((((tank.getPosY() + 1 >= brick.getPosY() + 1) && (tank.getPosY() + 1 <= brick.getPosY() + 49)) || ((tank.getPosY() + 49 >= brick.getPosY() + 1) && (tank.getPosY() + 49 <= brick.getPosY() + 49))) &&
                         ((tank.getPosX() + 50 <= brick.getPosX()) && (tank.getPosX() + 50 >= brick.getPosX()))) {
                     retCollisionArr[1] = true;
-                    if (brick.getType().equals("brick")  && tank.getOrientation() == 2)
-                        tank.fire();
+                    if(!brick.getType().equals("tank")) {
+                        if (brick.getType().equals("brick")  && tank.getOrientation() == 1)
+                            tank.fire();
+                    }
                 }
                 //forward
                 if ((((tank.getPosX() + 1 >= brick.getPosX() + 1) && (tank.getPosX() + 1 <= brick.getPosX() + 49)) || ((tank.getPosX() + 49 >= brick.getPosX() + 1) && (tank.getPosX() + 49 <= brick.getPosX() + 49))) &&
                         ((tank.getPosY() <= brick.getPosY() + 49) && (tank.getPosY() >= brick.getPosY() + 49))) {
                     retCollisionArr[2] = true;
-                    if (brick.getType().equals("brick" ) && tank.getOrientation() == 3)
-                        tank.fire();
+                    if(!brick.getType().equals("tank")) {
+                        if (brick.getType().equals("brick")  && tank.getOrientation() == 1)
+                            tank.fire();
+                    }
                 }
                 //backward
                 if ((((tank.getPosX() + 1 >= brick.getPosX() + 1) && (tank.getPosX() + 1 <= brick.getPosX() + 49)) || ((tank.getPosX() + 49 >= brick.getPosX() + 1) && (tank.getPosX() + 49 <= brick.getPosX() + 49))) &&
                         ((tank.getPosY() + 49 <= brick.getPosY()) && (tank.getPosY() + 49 >= brick.getPosY() - 1))) {
                     retCollisionArr[3] = true;
-                    if (brick.getType().equals("brick") && tank.getOrientation() == 4)
-                        tank.fire();
+                    if(!brick.getType().equals("tank")) {
+                        if (brick.getType().equals("brick")  && tank.getOrientation() == 1)
+                            tank.fire();
+                    }
                 }
             }
         }
@@ -68,9 +76,9 @@ public class EnemyTanksBrain {
         fire_in_player_or_move_to_base(tank);
     }
 
-    private boolean[] check_collision(Tanks tank, Bricks bricks){
+    private boolean[] check_collision(Tanks tank, ArrayList<Brick> bricks){
         boolean[] retCollisionArr = new boolean[]{false, false, false, false};
-        for (Brick brick : bricks.getBricksClasses()) {
+        for (Brick brick : bricks) {
             brick.draw();
             //left
             if ((((tank.getPosY() + 1 >= brick.getPosY() + 1) && (tank.getPosY() + 1 <= brick.getPosY() + 49)) || ((tank.getPosY() + 49 >= brick.getPosY() + 1) && (tank.getPosY() + 49 <= brick.getPosY() + 49))) &&
@@ -134,7 +142,7 @@ public class EnemyTanksBrain {
 //                break;
 //        }
     }
-    public void computing_to_base(Tanks tank, Bricks bricks){
+    public void computing_to_base(Tanks tank, ArrayList<Brick> bricks){
         check_collision(tank,bricks);
         fire_in_player_or_move_to_base(tank);
     }

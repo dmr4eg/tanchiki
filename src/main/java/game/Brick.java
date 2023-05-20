@@ -7,9 +7,7 @@ public class Brick extends Obj{
     private boolean isBreakable = true;
 
     private boolean isBase = false;
-    private Image basePic = new Image("base_block.png");
-
-    private Image brickPic = new Image("brickdef.png");
+    private Image img;
 
     public boolean isBreakable() {
         return isBreakable;
@@ -17,20 +15,19 @@ public class Brick extends Obj{
 
     public Brick(int PosX, int  PosY, int HP, GraphicsContext gc, String type){
         super(0, HP, PosX, PosY, type,  gc);
+        if(type.equals("brick"))img = new Image("brickdef.png");
+        else if(type.equals("armoredbrick")) img = new Image("solidbrick.png");
+        else img = new Image("base_block.png");
     }
 
     public Brick(int PosX, int  PosY, int HP, GraphicsContext gc, String type, boolean isBase){
         super(0, HP, PosX, PosY, type,  gc);
         this.isBase = isBase;
+        img = new Image("base_block.png");
     }
     @Override
     public void draw(){
-        if(isBase){
-            super.gc.drawImage(basePic, getPosX(), getPosY());
-        }
-        else {
-            super.gc.drawImage(brickPic, getPosX(), getPosY());
-        }
+        super.gc.drawImage(img, getPosX(), getPosY());
     }
 
     public int getPosX(){

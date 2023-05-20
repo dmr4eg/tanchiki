@@ -26,9 +26,9 @@ import java.util.logging.SimpleFormatter;
 public class Model extends Thread{
     private final String gameMode;
     private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
-    private final ArrayList<Tanks> tanks = new ArrayList<Tanks>();
+    private final ArrayList<Tanks> tanks;
     private ArrayList<Obj> allObjects = new ArrayList<Obj>();
-    private final Bricks bricks;
+    private final ArrayList<Brick> bricks;
     private GraphicsContext gc;
     private Tanks player1;
     private Tanks player2;
@@ -47,21 +47,29 @@ public class Model extends Thread{
     private Brick base;
     boolean isStart;
     public boolean bullet;
-    GameServer socketServer;
-    GameClient socketClient;
+    private GameServer socketServer;
+    private GameClient socketClient;
+    private LevelContainer levelContainer;
     private static final Logger LOGGER = Logger.getLogger(Model.class.getName());
     public Model( GraphicsContext gc) {
-        this.gc = gc;
-        player1 = new Tanks(100, 1, 25, "player", gc, 1, 100, 100, this);
-        this.bricks = new Bricks("level1.json", gc);
-        allObjects.addAll(bricks.getBricksClasses());
-        base = bricks.getBase();
-        enemyTank = new Tanks(100, 0 , 1, "enemyTank", gc, 1, 100, 400, this);
-        this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1);
+        levelContainer = new LevelContainer(this, gc);
+        allObjects = levelContainer.getLevelObjects();
+        base = levelContainer.getBase();
+        tanks = levelContainer.getLevelTanks();
+        bricks = levelContainer.getLevelBricks();
+        player1 = levelContainer.players.get(0);
+
+
         this.gameMode = "offline";
-        allObjects.add(player1);
-        allObjects.add(enemyTank);
-        tanks.add(enemyTank);
+        this.gc = gc;
+        this.enemyBrain = new EnemyTanksBrain(base, player1);
+//        player1 = new Tanks(100, 1, 25, "player", gc, 1, 100, 100, this);
+//
+//        allObjects.addAll(bricks.getBricksClasses());
+//        base = bricks.getBase();
+//        enemyTank = new Tanks(100, 0 , 1, "enemyTank", gc, 1, 100, 400, this);
+
+
         FileHandler fhm = null;
         try {
             fhm = new FileHandler("modelLogs.txt");
@@ -75,12 +83,16 @@ public class Model extends Thread{
     public Model(GraphicsContext gc, String name) {
         this.gc = gc;
         this.gameMode = "online";
-        this.bricks = new Bricks("level1.json", gc);
-        allObjects.addAll(bricks.getBricksClasses());
-        base = bricks.getBase();
-        enemyTank = new Tanks(100, 1 , 0, "enemyTank", gc, 1, 100, 400, this);
-        allObjects.add(enemyTank);
-        tanks.add(enemyTank);
+
+
+        levelContainer = new LevelContainer(this, gc);
+        allObjects = levelContainer.getLevelObjects();
+        base = levelContainer.getBase();
+        tanks = levelContainer.getLevelTanks();
+        bricks = levelContainer.getLevelBricks();
+        ArrayList<Tanks> players = levelContainer.getPlayersFromContainer();
+        player1 = players.get(1);
+
         startBackend(name);
         FileHandler fhm = null;
         try {
@@ -107,32 +119,24 @@ public class Model extends Thread{
         return player2;
     }
 
-    public void enemy_computing(){
-        for(Tanks tank : tanks){
-            if(bricks.getBricksClasses() != null){
-                enemyBrain.computing_to_base(tank, bricks);
-                enemyBrain.move(tank);
-            }
-        }
-    }
 
-    public void update(){
-        ArrayList<Bullet> newBuletsArr = new ArrayList<Bullet>();
-        Brick brick;
-        for(Bullet bullet : bullets){
-            if(bullet.isInScreen()) {
-                if((brick = isBulletCollision(bullet))!= null) {
-                    bricks.removeBrick(brick);
-                    continue;
-                }
-                bullet.update();
-                newBuletsArr.add(bullet);
-                continue;
-            }
-        }
-        bullets = newBuletsArr;
-        LOGGER.info(String.format("Updated %d bullets", bullets.size()));
-    }
+//    public void update(){
+//        ArrayList<Bullet> newBuletsArr = new ArrayList<Bullet>();
+//        Brick brick;
+//        for(Bullet bullet : bullets){
+//            if(bullet.isInScreen()) {
+//                if((brick = isBulletCollision(bullet))!= null) {
+//                    bricks.remove(brick);
+//                    continue;
+//                }
+//                bullet.update();
+//                newBuletsArr.add(bullet);
+//                continue;
+//            }
+//        }
+//        bullets = newBuletsArr;
+//        LOGGER.info(String.format("Updated %d bullets", bullets.size()));
+//    }
 
     public void addBullet(Bullet bullet){
         bullets.add(bullet);
@@ -149,7 +153,7 @@ public class Model extends Thread{
 
     public void enemy_computingObj(){
         for(Tanks tank : tanks){
-            if(bricks.getBricksClasses() != null){
+            if(bricks != null){
                 enemyBrain.computing_to_baseObj(tank, allObjects);
                 enemyBrain.move(tank);
             }
@@ -218,17 +222,20 @@ public class Model extends Thread{
             if(bullet.isInScreen()) {
                 bullet.update();
                 if((object = isBulletCollisionObj(bullet))!= null) {
-                    if(!object.getType().equals("brick")) {
-                        if(object.getType().equals("player"))continue;
-                        boolean isDead = object.isDead(bullet.getDMG());
-                        if(isDead){
-                            System.out.println(object.getType() + " " + object.getHP());
-                            allObjects.remove(object);
-                            tanks.remove(object);
-                        }
+                    if(object.getType().equals("armoredbrick")){
+//                        allObjects.remove(object);
                         continue;
                     }
-                    if(object.getType().equals("brick"))allObjects.remove(object);
+//                    if(object.getType().equals("brick")) {
+//                        if(object.getType().equals("player"))continue;
+                    boolean isDead = object.isDead(bullet.getDMG());
+                    if(isDead){
+                        System.out.println(object.getType() + " " + object.getHP());
+                        allObjects.remove(object);
+                        tanks.remove(object);
+
+//                        }
+                    }
                     continue;
                 }
                 newBuletsArr.add(bullet);
@@ -262,23 +269,23 @@ public class Model extends Thread{
     //-----------------------------------------------------------------------------------------------------------------------------------------
 
 
-    private Brick isBulletCollision(Bullet bullet){
-        for(Brick brick : bricks.getBricksClasses()){
-            int bulletX = bullet.getPosX();
-            int bulletY = bullet.getPosY();
-            int brickX = brick.getPosX();
-            int brickY = brick.getPosY();
-            if(((((bulletX>= brickX) && (bulletX <= brickX + 50)) || ((bulletX + 10>= brickX) && (bulletX + 10 <= brickX + 50)))) &&
-                    (((bulletY >= brickY) && (bulletY <= brickY+50)) || ((bulletY+10 >= brickY)&&(bulletY+10 <= brickY + 50)))){
-                if (brick == base){
-                    isStart = false;
-                    System.out.println(isStart);
-                }
-                return brick;
-            }
-        }
-        return null;
-    }
+//    private Brick isBulletCollision(Bullet bullet){
+//        for(Brick brick : bricks){
+//            int bulletX = bullet.getPosX();
+//            int bulletY = bullet.getPosY();
+//            int brickX = brick.getPosX();
+//            int brickY = brick.getPosY();
+//            if(((((bulletX>= brickX) && (bulletX <= brickX + 50)) || ((bulletX + 10>= brickX) && (bulletX + 10 <= brickX + 50)))) &&
+//                    (((bulletY >= brickY) && (bulletY <= brickY+50)) || ((bulletY+10 >= brickY)&&(bulletY+10 <= brickY + 50)))){
+//                if (brick == base){
+//                    isStart = false;
+//                    System.out.println(isStart);
+//                }
+//                return brick;
+//            }
+//        }
+//        return null;
+//    }
 
 
 
@@ -314,6 +321,17 @@ public class Model extends Thread{
     }
 
     public void updateEnemyBrain(Tanks player1, Tanks player2){
-        this.enemyBrain = new EnemyTanksBrain(bricks.getBase(), player1, player2);
+        this.enemyBrain = new EnemyTanksBrain(base, player1, player2);
+    }
+
+    public void UpdateModel(){
+        updateDraw();
+        isCollision_tankObj(player1);
+        player1.update();
+        enemy_computingObj();
+        if (player2 != null) getPlayer2().updateCooldownAndAnimation();
+        if (!getBullets().isEmpty()) {
+            updateObj();
+        }
     }
 }

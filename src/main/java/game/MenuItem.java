@@ -29,15 +29,13 @@ class MenuItem extends StackPane {
         } else if (type.equals("levelEditor")) {
             bg = new Rectangle(190, 30, gradient);
             line = new Rectangle(5, 30);
-        } else if (type.equals("panel")){
-            bg = new Rectangle(190, 30, gradient);
-            line = new Rectangle(5, 30);
-        } else{
+        }else{
             bg = new Rectangle(720, 93, gradient);
             line = new Rectangle(5, 30);
-        } if(type.equals("levelEditor")){
+        }
+        if(type.equals("levelEditor")){
             line.fillProperty().bind(
-                Bindings.when(hoverProperty()).then(Color.RED).otherwise(Color.GRAY));
+                    Bindings.when(hoverProperty()).then(Color.RED).otherwise(Color.GRAY));
         }
         text.setText(name);
         text.fillProperty().bind(
@@ -54,10 +52,6 @@ class MenuItem extends StackPane {
         HBox box = new HBox(20, line, text);
         box.setAlignment(Pos.CENTER);
         if(type.equals("levelEditor")){
-            setAlignment(Pos.BASELINE_LEFT);
-            box = new HBox(10, line, text);
-            box.setAlignment(Pos.BASELINE_LEFT);
-        } else if (type.equals("panel")){
             setAlignment(Pos.BASELINE_LEFT);
             box = new HBox(10, line, text);
             box.setAlignment(Pos.BASELINE_LEFT);

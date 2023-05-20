@@ -5,107 +5,160 @@ import javafx.scene.canvas.GraphicsContext;
 import java.util.ArrayList;
 
 public class LevelContainer {
-    private static ArrayList<Obj> levelOvjects = new ArrayList<Obj>();
-    public ArrayList<Obj> getLevelObjects(){
-        return levelOvjects;
+    public static void setSaveObjs(ArrayList<SaveObj> saveObjs) {
+        LevelContainer.saveObjs = saveObjs;
     }
+
+    private static ArrayList<LevelContainer.SaveObj> saveObjs = new ArrayList<>();
+    private static ArrayList<LevelContainer.loadObj> loadObjs = new ArrayList<>();
+    private static ArrayList<Obj> levelOvjects = new ArrayList<Obj>();
+
+
+
     private static ArrayList<Tanks> levelTanks = new ArrayList<Tanks>();
+
+    public ArrayList<Tanks> getLevelTanks() {
+        return levelTanks;
+    }
+
+    public ArrayList<Tanks> players;
+
     private static ArrayList<Brick> levelBricks = new ArrayList<Brick>();
     private GraphicsContext gc;
     private Model model;
 
     //data for Json
     private static final JsonUtil jsonUtil = new JsonUtil();
-    private static final String filename = "levelPack.json"; //<- TODO sdelai file dlya etogo
+    private static final String filename = "level3.json";
 
     public LevelContainer(Model model, GraphicsContext gc) {
         this.model = model;
         this.gc = gc;
+        loadObjs = (ArrayList<LevelContainer.loadObj>) jsonUtil.loadJsonSaveObj(filename);
+        generateFromSaveObj();
+        parse_From_Obj_To_Brick(levelOvjects);
+        parse_From_Obj_To_Tank(levelOvjects, 25, 1);
+        players = getPlayersFromContainer();
+        levelOvjects.clear();
+        levelOvjects.addAll(levelTanks);
+        levelOvjects.addAll(levelBricks);
+        levelOvjects.addAll(players);
     }
 
-    public LevelContainer(
-
-    ){
-
+    public LevelContainer() {
     }
-
+    private void generateFromSaveObj(){
+        System.out.println("nigger");
+        for(loadObj loadObj: loadObjs){
+            System.out.println(loadObj.param[2]);
+            if(loadObj.param[2] == 1)levelOvjects.add(new Obj(0, loadObj.hp,loadObj.param[0] ,loadObj.param[1] ,"brick" , gc));
+            if(loadObj.param[2] == 2)levelOvjects.add(new Obj(1, loadObj.hp,loadObj.param[0] ,loadObj.param[1] ,"tank" , gc));
+            if(loadObj.param[2] == 3)levelOvjects.add(new Obj(0, loadObj.hp,loadObj.param[0] ,loadObj.param[1] ,"base" , gc));
+            if(loadObj.param[2] == 4)levelOvjects.add(new Obj(1, loadObj.hp,loadObj.param[0] ,loadObj.param[1] ,"player" , gc));
+            if(loadObj.param[2] == 5)levelOvjects.add(new Obj(0, loadObj.hp,loadObj.param[0] ,loadObj.param[1] ,"armoredbrick", gc));
+        }
+    }
     //Level Objects methods
     public static void addToLevelObjects(Obj object) {
         levelOvjects.add(object);
-    }
-    public static void addToLevelObjects(ArrayList<Obj> objects){
-        levelOvjects.addAll(objects);
-
     }
 
     public static ArrayList<Obj> getLevelOvjects() {
         return levelOvjects;
     }
+//
+//    public void loadData() {
+//         levelOvjects = (ArrayList<Obj>) jsonUtil.loadJsonSaveObj(filename);
+//         parse_From_Obj_To_Tank(levelOvjects, 25, 10);
+//         parse_From_Obj_To_Brick(levelOvjects);
+//
+//    }
 
-    public void loadData(){
-        jsonUtil.loadJsonObj(filename);
-    }
-    public void saveData(){
-        jsonUtil.saveJsonObj(this, filename);
+    public void saveData() {
+        jsonUtil.saveJsonSaveObj(saveObjs, filename);
     }
     //ya v altTab
     // ок
 
 //Level Tanks methods:
 
-    public static void addTolevelTanks(Tanks tank){
-        levelTanks.add(tank);
-    }
-    public static void addTolevelTanks(ArrayList<Tanks> tanks){
-        levelTanks.addAll(tanks);
-    }
-
-    public static ArrayList<Tanks> getLevelTanks() {
-        return levelTanks;
-    }
-
-    public ArrayList<Tanks> parse_From_Obj_To_Tank(ArrayList<Obj> objects, int PlayerDMG,int EnemyDMG ){
+    public void parse_From_Obj_To_Tank(ArrayList<Obj> objects, int PlayerDMG, int EnemyDMG) {
         ArrayList<Tanks> retTanks = new ArrayList<Tanks>();
-        for (Obj object: objects){
-            if (object.type.equals("tank"))retTanks.add(new Tanks(object.HP, 1, EnemyDMG, object.type, gc, 3, object.getPosX(), object.getPosY(),model));
-            if (object.type.equals("player"))retTanks.add(new Tanks(object.HP, 1, PlayerDMG, object.type, gc, 3, object.getPosX(), object.getPosY(),model));
+        for (Obj object : objects) {
+            if (object.type.equals("tank"))retTanks.add(new Tanks(object.HP, 1, EnemyDMG, object.type, gc, 3, object.getPosX(), object.getPosY(), model));
         }
-        return retTanks;
+        levelTanks = retTanks;
     }
 
     //Level Bricks methods:
-    public static void addTolevelBricks(Brick brick){
-        levelBricks.add(brick);
+
+    public void parse_From_Obj_To_Brick(ArrayList<Obj> objects) {
+        ArrayList<Brick> retBricks = new ArrayList<Brick>();
+        for (Obj object : objects) {
+            if(object.type.equals("armoredbrick")) {
+                retBricks.add(new Brick(object.getPosX(), object.PosY, 1, gc, object.getType()));
+                continue;
+            }
+            if (object.type.equals("brick")) {
+                retBricks.add(new Brick(object.getPosX(), object.PosY, 1, gc, object.getType()));
+                continue;
+            }
+            if (object.type.equals("base"))retBricks.add(new Brick(object.getPosX(), object.PosY, 1, gc, object.getType(),true));
+        }
+        levelBricks = retBricks;
     }
-    public static void addTolevelBricks(ArrayList<Brick> bricks){
-        levelBricks.addAll(bricks);
+    //getters
+    public ArrayList<Tanks> getPlayersFromContainer() {
+        ArrayList<Tanks> players = new ArrayList<Tanks>();
+        for (Obj player : getLevelObjects()) {
+            if (player.type.equals("player")) players.add(new Tanks(player.HP, player.MS, 25, player.type, gc, 1,player.getPosX() ,player.getPosY() ,model));
+        }
+        return players;
     }
 
-    public static ArrayList<Brick> getLevelBricks() {
+
+    public ArrayList<Brick> getBricks(){return levelBricks;}
+    public ArrayList<Brick> getLevelBricks() {
         return levelBricks;
     }
+    public ArrayList<Obj> getLevelObjects() {
+        return levelOvjects;
+    }
 
-    public ArrayList<Brick> parse_From_Obj_To_Brick(ArrayList<Obj> objects, int DMG){
-        ArrayList<Brick> retBricks = new ArrayList<Brick>();
-        for (Obj object: objects){
-            if (object.type.equals("brick")||object.type.equals("base")|| object.type.equals("armoredbrick")){
-                retBricks.add(new Brick(object.getPosX(), object.PosY, 1, gc, object.getType()));
+    public Brick getBase() {
+        for (Brick base : levelBricks) {
+            if (base.getType().equals("base")) return base;
+        }
+        return new Brick(100, 100, 1, gc, "base", true);
+    }
+
+
+    public static class loadObj {
+
+        private int hp;
+        private int[] param;
+        public int[] getParam() {
+            return param;
+        }
+
+        public int getHP() {
+            return hp;
+        }
+    }
+        public static class SaveObj {
+
+            private int hp;
+            private int[] param;
+            public SaveObj(int hp, int t, int x, int y) {
+                this.hp = hp;
+                param = new int[] {x, y, t};
+            }
+            public int[] getParam() {
+                return param;
+            }
+
+            public int getHP() {
+                return hp;
             }
         }
-        return retBricks;
-    }
-
-
-
-    @Override
-    public String toString() {
-        String msg = "";
-        for(Obj object : levelOvjects){
-            msg += "|" + object.type +", PosX" + object.getPosX() + ", PosY" + object.getPosY();
-        }
-
-        return "LevelObjects{" +
-                msg +
-                '}';
-    }
 }
