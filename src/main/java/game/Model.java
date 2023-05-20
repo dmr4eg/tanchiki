@@ -1,22 +1,17 @@
 package game;
 
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import net.GameClient;
 import net.GameServer;
 import net.packets.Packet00Login;
 import java.io.IOException;
 import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -51,6 +46,7 @@ public class Model extends Thread{
     private GameClient socketClient;
     private LevelContainer levelContainer;
     private static final Logger LOGGER = Logger.getLogger(Model.class.getName());
+    private int enemyCount = 0;
     public Model( GraphicsContext gc) {
         levelContainer = new LevelContainer(this, gc);
         allObjects = levelContainer.getLevelObjects();
@@ -90,8 +86,7 @@ public class Model extends Thread{
         base = levelContainer.getBase();
         tanks = levelContainer.getLevelTanks();
         bricks = levelContainer.getLevelBricks();
-        ArrayList<Tanks> players = levelContainer.getPlayersFromContainer();
-        player1 = players.get(1);
+        player1 = levelContainer.players.get(1);
 
         startBackend(name);
         FileHandler fhm = null;
@@ -266,6 +261,10 @@ public class Model extends Thread{
         return true;
     }
 
+    public boolean getGameIsStart(){
+        return gameIsStart;
+    }
+
     //-----------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -299,7 +298,7 @@ public class Model extends Thread{
     //SERVER side--------------------------------------------------------------------------------------------
     private void startBackend(String name){
         if (!isServerStart()) {
-            socketServer = new GameServer(this);
+            socketServer = new GameServer(this, levelContainer);
             socketServer.start();
         }
         socketClient = new GameClient(this, "localhost");
@@ -334,4 +333,10 @@ public class Model extends Thread{
             updateObj();
         }
     }
+
+    public int getEnemies(){
+        ArrayList<Tanks> a = levelContainer.getLevelTanks();
+        return a.size();
+    }
+
 }

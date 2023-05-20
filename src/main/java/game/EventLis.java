@@ -2,6 +2,8 @@ package game;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -14,10 +16,14 @@ import java.util.logging.Level;
 import java.util.logging.SimpleFormatter;
 import java.util.logging.Logger;
 
+import static javafx.scene.paint.Color.BLACK;
+import static javafx.scene.paint.Color.WHITE;
+
 public class EventLis {
     private static final Logger LOGGER = Logger.getLogger(EventLis.class.getName());
     private Scene scene;
     private Model model;
+    private Controller controller;
     private LevelEditor levelEditor;
 
     public EventLis(Model model, Scene scene) {
@@ -30,7 +36,6 @@ public class EventLis {
         this.scene = scene;
         this.levelEditor = levelEditor;
         setEventLisLevelEditor();
-
     }
 
     private void setEventLisModel() {
@@ -82,19 +87,19 @@ public class EventLis {
                     LOGGER.log(Level.INFO, "Player1 fire");
                 }
                 case ESCAPE -> {
-                    model.setGameIsStart(!model.isGameIsStart());
-                    HBox pause = new HBox();
-                    pause.setPrefSize(100, 100);
-                    pause.setAlignment(Pos.CENTER);
-                    pause.setStyle("-fx-background-color: rgba(0, 0, 0, 0.5);");
-                    Text text = new Text("PAUSED");
-                    text.setFont(Font.font("Verdana", FontWeight.BOLD, 30));
-                    text.setFill(Color.WHITE);
-                    pause.getChildren().add(text);
-                    if (!model.isGameIsStart()) {
-                        scene.setRoot(pause);
+                    if(model.getGameIsStart()) {
+                        GraphicsContext gc = model.getGc();
+                        gc.setFill(Color.BLACK);
+                        gc.fillRect(0, 0 , 800, 600);
+                        gc.setFill(WHITE);
+                        gc.fillRect(800, 0, 200,600 );
+                        gc.setFill(BLACK);
+                        gc.fillText("PAUSE", 400, 300);
+                        gc.setFont(Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 30));
+                        model.setGameIsStart(false);
                     } else {
-                        scene.setRoot(model.getGamePane());
+                        model.setGameIsStart(true);
+                        System.out.println(model.getGameIsStart());
                     }
                 }
                 default -> model.getPlayer1().setTankIsMove(false);

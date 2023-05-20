@@ -12,21 +12,12 @@ public class LevelContainer {
     private static ArrayList<LevelContainer.SaveObj> saveObjs = new ArrayList<>();
     private static ArrayList<LevelContainer.loadObj> loadObjs = new ArrayList<>();
     private static ArrayList<Obj> levelOvjects = new ArrayList<Obj>();
-
-
-
     private static ArrayList<Tanks> levelTanks = new ArrayList<Tanks>();
 
-    public ArrayList<Tanks> getLevelTanks() {
-        return levelTanks;
-    }
-
     public ArrayList<Tanks> players;
-
     private static ArrayList<Brick> levelBricks = new ArrayList<Brick>();
     private GraphicsContext gc;
     private Model model;
-
     //data for Json
     private static final JsonUtil jsonUtil = new JsonUtil();
     private static final String filename = "level3.json";
@@ -47,8 +38,11 @@ public class LevelContainer {
 
     public LevelContainer() {
     }
+
+    public ArrayList<Tanks> getLevelTanks() {
+        return levelTanks;
+    }
     private void generateFromSaveObj(){
-        System.out.println("nigger");
         for(loadObj loadObj: loadObjs){
             System.out.println(loadObj.param[2]);
             if(loadObj.param[2] == 1)levelOvjects.add(new Obj(0, loadObj.hp,loadObj.param[0] ,loadObj.param[1] ,"brick" , gc));

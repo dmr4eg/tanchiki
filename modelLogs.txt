@@ -1,14 +1,4 @@
-мая 20, 2023 11:52:09 AM game.Model <init>
+May 20, 2023 8:42:05 PM game.Model <init>
 INFO: Model instantiated
-мая 20, 2023 11:52:10 AM game.Model addBullet
-INFO: New bullet added
-мая 20, 2023 11:52:12 AM game.Model addBullet
-INFO: New bullet added
-мая 20, 2023 11:52:13 AM game.Model addBullet
-INFO: New bullet added
-мая 20, 2023 11:52:15 AM game.Model addBullet
-INFO: New bullet added
-мая 20, 2023 11:52:16 AM game.Model isCollision_tankObj
-INFO: Tank collided with an object
-мая 20, 2023 11:52:17 AM game.Model addBullet
-INFO: New bullet added
+May 20, 2023 8:42:07 PM game.Model <init>
+INFO: Model instantiated

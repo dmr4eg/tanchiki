@@ -24,7 +24,6 @@ public class LevelEditor {
     Image imageBase = new Image(String.valueOf(new File("base_block.png")));
     Image imagePlayer = new Image(String.valueOf(new File("p1up.png")));
     Image imageArmoredBrick = new Image(String.valueOf(new File("solidbrick.png")));
-
     private ArrayList<LevelContainer.SaveObj> saveObjs = new ArrayList<>();
     private final LevelContainer levelContainer = new LevelContainer();
     private final JsonUtil jsonUtil = new JsonUtil();
@@ -103,7 +102,9 @@ public class LevelEditor {
                     levelContainer.setSaveObjs(saveObjs);
                     levelContainer.saveData();
                 }, "levelEditor"),
-                new MenuItem("Back", () -> {}, "levelEditor")
+                new MenuItem("Back", () -> {
+
+                }, "levelEditor")
         );
         Rectangle lineLeft = new Rectangle(10, 600, Color.GRAY);
         vbox.setPrefSize(190, 600);
@@ -249,14 +250,13 @@ public class LevelEditor {
         return false;
     }
 
-    //----------------------------------draw--------------------------------------------------------------
+//----------------------------------draw--------------------------------------------------------------
 
     private void drawimageOnPane(Image image, int posX, int posY){
         ImageView imageView = new ImageView(image);
         imageView.setX(posX);
         imageView.setY(posY);
         gc.drawImage(image, posX, posY);
-
     }
 
 
@@ -264,5 +264,4 @@ public class LevelEditor {
     public Scene getScene() {
         return scene;
     }
-
 }

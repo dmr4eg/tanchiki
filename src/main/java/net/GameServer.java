@@ -1,8 +1,6 @@
 package net;
 
-import game.Controller;
-import game.Model;
-import game.TanksMp;
+import game.*;
 import net.packets.Packet;
 import net.packets.Packet00Login;
 import net.packets.Packet11Update;
@@ -15,9 +13,11 @@ import java.util.List;
 public class GameServer extends Thread{
     private DatagramSocket socket;
     private Model model;
+    private LevelContainer levelContainer;
     private ArrayList<TanksMp> connectedPlayers = new ArrayList<TanksMp>();
 
-    public GameServer(Model model){
+    public GameServer(Model model , LevelContainer levelContainer){
+        this.levelContainer = levelContainer;
         this.model = model;
         try {
             this.socket = new DatagramSocket(1331);
@@ -60,7 +60,8 @@ public class GameServer extends Thread{
                 Packet00Login packet = new Packet00Login(data);
                 System.out.println("["+ address.getHostAddress() + ":" + port+ "] " + packet.getUsername()
                         + " has connected");
-                TanksMp player1 = new TanksMp(100, 1, 50, "player", model.getGc(), 3, 100, 100, model, address, port);
+
+                TanksMp player1 = (TanksMp) levelContainer.players.get(0);
                 if (connectedPlayers.isEmpty()){
                     connectedPlayers.add(player1);
                     byte[] messageToPlayer1 = ("02"+packet11Update.parseToData(player1) + "$"+ " ").getBytes();
@@ -68,7 +69,7 @@ public class GameServer extends Thread{
 //                    model.addToAllObjects(player1);
 //                    model.setPlayer1(player1);
                 }else{
-                    TanksMp player2 = new TanksMp(100, 1, 50, "player", model.getGc(), 3, 300, 300, model, address, port);
+                    TanksMp player2 = (TanksMp) levelContainer.players.get(1);
                     connectedPlayers.add(player2);
                     byte[] messageToPlayer2 = ("02"+packet11Update.parseToData( player2) + "$" + packet11Update.parseToData( connectedPlayers.get(0))).getBytes();
                     sendData(messageToPlayer2, address, port);

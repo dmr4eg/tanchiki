@@ -24,13 +24,13 @@ class MenuItem extends StackPane {
         );
         Rectangle bg;
         if(type.equals("menu")) {
-            bg = new Rectangle(720, 93, gradient);
+            bg = new Rectangle(800, 140, gradient);
             line = new Rectangle(5, 30);
         } else if (type.equals("levelEditor")) {
-            bg = new Rectangle(190, 30, gradient);
+            bg = new Rectangle(150, 30, gradient);
             line = new Rectangle(5, 30);
         }else{
-            bg = new Rectangle(720, 93, gradient);
+            bg = new Rectangle(800, 93, gradient);
             line = new Rectangle(5, 30);
         }
         if(type.equals("levelEditor")){
