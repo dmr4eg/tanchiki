@@ -1,14 +1,14 @@
 package net;
 
-import game.*;
 import net.packets.Packet;
 import net.packets.Packet00Login;
 import net.packets.Packet11Update;
+import structure.modules.LevelContainer;
+import structure.Model;
 
 import java.io.IOException;
 import java.net.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class GameServer extends Thread{
     private DatagramSocket socket;

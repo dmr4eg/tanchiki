@@ -1,10 +1,10 @@
 package game;
 
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import objects.Bullet;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import structure.Model;
 
 import java.util.ArrayList;
 

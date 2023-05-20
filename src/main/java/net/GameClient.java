@@ -1,9 +1,7 @@
 package net;
 
-import game.Controller;
-import game.Model;
-import game.Tanks;
-import game.TanksMp;
+import structure.Model;
+import objects.Tanks;
 import net.packets.Packet;
 import net.packets.Packet11Update;
 

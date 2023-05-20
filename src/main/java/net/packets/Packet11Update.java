@@ -1,7 +1,7 @@
 package net.packets;
 
-import game.Tanks;
-import game.TanksMp;
+import objects.Tanks;
+import net.TanksMp;
 import net.GameClient;
 import net.GameServer;
 
