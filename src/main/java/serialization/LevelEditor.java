@@ -137,7 +137,7 @@ public class LevelEditor {
 
 
     public void setBlock(int PosX, int PosY) {
-        int[] coords = neerAvalibleBlock(PosX, PosY);
+        int[] coords = nearAvalibleBlock(PosX, PosY);
         int posX = coords[0];
         int posY = coords[1];
         if(isProcessingBrick) {
@@ -193,17 +193,17 @@ public class LevelEditor {
             }
         }
         if(removeMode){
-            ArrayList<Obj> newlevelObjects = new ArrayList<>();
-            for(Obj object: levelContainer.getLevelObjects()) {
-                if ((object.getPosX() < PosX && object.getPosX() +50 > PosX) && (object.getPosY()< PosY && object.getPosY()+50 > PosY)){
+            ArrayList<LevelContainer.SaveObj> newlevelObjects = new ArrayList<>();
+            for(LevelContainer.SaveObj object: saveObjs) {
+                if ((object.getParam()[0] < PosX && object.getParam()[0] +50 > PosX) && (object.getParam()[1]< PosY && object.getParam()[1]+50 > PosY)){
                     gc.setFill(BLACK);
-                    gc.fillRect(object.getPosX(), object.getPosY(),50, 50 );
+                    gc.fillRect(object.getParam()[0], object.getParam()[1],50, 50 );
                     continue;
                 }
                 newlevelObjects.add(object);
             }
-            levelContainer.getLevelObjects().clear();
-            levelContainer.getLevelObjects().addAll(newlevelObjects);
+            saveObjs.clear();
+            saveObjs.addAll(newlevelObjects);
         }
 
     }
@@ -217,29 +217,28 @@ public class LevelEditor {
     }
     private boolean isOneBase(){
         for(Obj object: levelContainer.getLevelObjects()){
-            System.out.println(object.getType());
             if(object.getType().equals("base"))return true;
         }
         return false;
     }
 
-    private int[] neerAvalibleBlock(int posX, int posY){
-        int neerPosX = 0;
-        int neerPosY = 0;
+    private int[] nearAvalibleBlock(int posX, int posY){
+        int nearPosX = 0;
+        int nearPosY = 0;
         for(int i = 0; i <= posX; i = i + 50){
-            neerPosX = i;
+            nearPosX = i;
         }
         for(int i = 0; i < posY; i = i + 50){
-            neerPosY = i;
+            nearPosY = i;
         }
-        return new int[] {neerPosX, neerPosY};
+        return new int[] {nearPosX, nearPosY};
     }
 
     private boolean isCollision(int PosX, int PosY){
         int coordXcenter = PosX + 25;
         int coordYcenter = PosY + 25;
-        for(Obj object: levelContainer.getLevelObjects()){
-            if((coordXcenter > object.getPosX()-25) && (coordXcenter < object.getPosX()+75) && (coordYcenter > object.getPosY()-25) && (coordYcenter < object.getPosY() + 75)){
+        for(LevelContainer.SaveObj object: saveObjs){
+            if((coordXcenter > object.getParam()[0]-25) && (coordXcenter < object.getParam()[0]+75) && (coordYcenter > object.getParam()[1]-25) && (coordYcenter < object.getParam()[1] + 75)){
                 return true;
             }
         }

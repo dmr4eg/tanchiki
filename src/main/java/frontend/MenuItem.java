@@ -24,7 +24,7 @@ public class MenuItem extends StackPane {
         );
         Rectangle bg;
         if(type.equals("menu")) {
-            bg = new Rectangle(800, 140, gradient);
+            bg = new Rectangle(800, 112, gradient);
             line = new Rectangle(5, 30);
         } else if (type.equals("levelEditor")) {
             bg = new Rectangle(150, 30, gradient);

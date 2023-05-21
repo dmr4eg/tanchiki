@@ -6,46 +6,43 @@
   <component name="ChangeListManager">
     <list default="true" id="269ef673-ab83-4ed9-b222-3cd47ed4e238" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.1" beforeDir="false" afterPath="$PROJECT_DIR$/controllerLogs.txt.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.3" beforeDir="false" afterPath="$PROJECT_DIR$/controllerLogs.txt.3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllerLogs.txt.4" beforeDir="false" afterPath="$PROJECT_DIR$/controllerLogs.txt.4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/level3.json" beforeDir="false" afterPath="$PROJECT_DIR$/level3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelLogs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelLogs.txt.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelLogs.txt.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelLogs.txt.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelLogs.txt.4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelLogs.txt.5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelLogs.txt.6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelLogs.txt.7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/level4.json" beforeDir="false" afterPath="$PROJECT_DIR$/level4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelLogs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/modelLogs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelLogs.txt.1" beforeDir="false" afterPath="$PROJECT_DIR$/modelLogs.txt.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelLogs.txt.2" beforeDir="false" afterPath="$PROJECT_DIR$/modelLogs.txt.2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/MenuItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frontend/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/GameClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/GameServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/TanksMp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/TanksMp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objects/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Bullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/objects/Tanks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objects/Tanks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/serialization/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serialization/JsonUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/serialization/LevelEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/serialization/LevelEditor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/EventLis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/EventLis.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/modules/EnemyTanksBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/modules/EnemyTanksBrain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/structure/modules/LevelContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/modules/LevelContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/MenuItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/MenuItem.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/frontend/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/View.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/objects/Tanks.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objects/Tanks.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/GameClient$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/GameClient$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/GameClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/GameClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/GameServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/GameServer$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/GameServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/GameServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/objects/Bullet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objects/Bullet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/serialization/JsonUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/serialization/JsonUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/serialization/LevelEditor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/serialization/LevelEditor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/structure/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/structure/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/structure/EventLis.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/structure/EventLis.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/structure/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/structure/Model.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/structure/modules/EnemyTanksBrain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/structure/modules/EnemyTanksBrain.class" afterDir="false" />
     </list>
-    <list id="cdd31217-e03c-4ca4-8dc2-279c1533a47f" name="Changes by dmr4eg" comment="">
-      <change beforePath="$PROJECT_DIR$/controllerLogs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/structure/modules/EnemyTanksBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/structure/modules/EnemyTanksBrain.java" afterDir="false" />
-    </list>
+    <list id="cdd31217-e03c-4ca4-8dc2-279c1533a47f" name="Changes by dmr4eg" comment="" />
     <list id="418be624-e450-4897-b2a2-09db30ee6746" name="Changes by User" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,45 +61,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/structure/Model.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/structure/Model.java">
-      <ranges>
-        <range start1="3" end1="3" start2="3" end2="4" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="52" end1="53" start2="53" end2="54" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="66" end1="67" start2="67" end2="68" changelist="cdd31217-e03c-4ca4-8dc2-279c1533a47f" />
-        <range start1="89" end1="90" start2="90" end2="91" changelist="cdd31217-e03c-4ca4-8dc2-279c1533a47f" />
-        <range start1="342" end1="343" start2="343" end2="344" changelist="cdd31217-e03c-4ca4-8dc2-279c1533a47f" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/main/java/structure/Controller.java">
-      <ranges>
-        <range start1="54" end1="55" start2="54" end2="55" changelist="cdd31217-e03c-4ca4-8dc2-279c1533a47f" />
-        <range start1="88" end1="89" start2="88" end2="89" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="90" end1="91" start2="90" end2="90" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="103" end1="111" start2="102" end2="111" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="115" end1="115" start2="115" end2="117" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="116" end1="118" start2="118" end2="125" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="122" end1="122" start2="129" end2="131" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="123" end1="125" start2="132" end2="134" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/main/java/structure/modules/EnemyTanksBrain.java">
-      <ranges>
-        <range start1="49" end1="50" start2="49" end2="50" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="57" end1="58" start2="57" end2="58" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="65" end1="66" start2="65" end2="66" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="78" end1="111" start2="78" end2="78" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="129" end1="143" start2="96" end2="96" changelist="cdd31217-e03c-4ca4-8dc2-279c1533a47f" />
-        <range start1="144" end1="148" start2="97" end2="97" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="157" end1="158" start2="106" end2="106" changelist="cdd31217-e03c-4ca4-8dc2-279c1533a47f" />
-        <range start1="162" end1="163" start2="110" end2="110" changelist="cdd31217-e03c-4ca4-8dc2-279c1533a47f" />
-        <range start1="174" end1="175" start2="121" end2="121" changelist="cdd31217-e03c-4ca4-8dc2-279c1533a47f" />
-        <range start1="195" end1="195" start2="141" end2="142" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="196" end1="197" start2="143" end2="154" changelist="269ef673-ab83-4ed9-b222-3cd47ed4e238" />
-        <range start1="203" end1="203" start2="160" end2="188" changelist="cdd31217-e03c-4ca4-8dc2-279c1533a47f" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

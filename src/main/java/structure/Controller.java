@@ -1,6 +1,8 @@
 package structure;
 
 import frontend.View;
+import net.GameClient;
+import net.GameServer;
 import serialization.LevelEditor;
 import frontend.MenuItem;
 import javafx.animation.KeyFrame;
@@ -28,9 +30,9 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class Controller extends Application {
-    private final int WIDTH = 800;
-    private final int HEIGHT = 600;
-    private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
+    private final int WIDTH = 800; // set Width
+    private final int HEIGHT = 600; // set Height
+    private static final Logger LOGGER = Logger.getLogger(Controller.class.getName()); //initialization Loggers
     private GraphicsContext gc;
     private Model model;
     private View view;
@@ -38,6 +40,7 @@ public class Controller extends Application {
     private TextField nameField = new TextField();
 
     public void start(Stage stage) {
+        //Set of View
         view = new View(stage, WIDTH, HEIGHT);
         this.gc = view.getSPGc();
         Scene menuScene = new Scene(createContent(stage));
@@ -47,6 +50,8 @@ public class Controller extends Application {
         stage.show();
         stage.setTitle("Tanchiki");
         stage.setResizable(false);
+
+        //set cycle
         Timeline tl = new Timeline(new KeyFrame(Duration.millis(15), e -> run(gc)));
         tl.setCycleCount(Timeline.INDEFINITE);
 
@@ -61,101 +66,88 @@ public class Controller extends Application {
         tl.play();
     }
 
+    //event Listener for set model and scene
     private void setEventLis(Model model, Scene scene, StackPane gamepane) {
         EventLis eventLis = new EventLis(model, scene, gamepane);
     }
 
+
     public static void main(String[] args) {
         launch(args);
-    }
+    } // start of application
 
     public void run(GraphicsContext gc) {
-        if (model != null && model.getGameIsStart()) {
-            if (model.isOnlineStart()){
-                if (model.getGameIsStart() == true) {
+        if (model != null && model.getGameIsStart()) {//waiting for start game and executing of model
+            if (model.isOnlineStart()){ //if game is Online -> will waiting second Player
+                if (model.getGameIsStart() == true) { // method observed if game is paused
                     view.drawSPPane(model);
-                }else{
-
+                    model.UpdateModel();
                 }
             }
         }
-//        if(model != null && !model.getGameIsStart())view.drawEnd();
     }
 
-    public void modelStart(String mode) {
-        if(mode.equals("offline")) {
-            setEventLis(model, view.getSinglePlayerScene(), view.getSPGamePane());
-        }else {
-//            setEventLis(model, view.getMultiplayerScene(), view.getMPGamePane());
-        }
-        model.startGame();
-        View.addToScenes(view.getSinglePlayerScene());
-//        View.addToScenes(view.getSinglePlayerScene());
-//        View.addToScenes(scene);
-//        stage.setScene(scene);
-    }
-
-    private Parent createContent(Stage stage) {
+    private Parent createContent(Stage stage) { // Set game menu buttons
         Pane root = new Pane();
         root.setPrefSize(800, 600);
         VBox box = new VBox(10,
-            new MenuItem("Single player", () -> {
-//                if (model == null) {
+                new MenuItem("Single player", () -> {
                     StackPane canvas = view.buildNewStackPaneWithGc(gc);
                     Scene scene = view.buildNewSceneWithStackPane(canvas);
                     model = new Model(gc);
-                    setEventLis(model, scene, canvas);
-                    View.addToScenes(scene);
-//                }else {
-//                    View.addToScenes(View.getSinglePlayerScene());
-//                }
-            }, "menu"),
-            new MenuItem("Multiplayer player", () -> {
-                nameField.setOnKeyPressed((event) -> {
-                    if (event.getCode() == KeyCode.ENTER) {
-                        StackPane canvas = view.buildNewStackPaneWithGc(gc);
-                        Scene scene = view.buildNewSceneWithStackPane(canvas);
-                        model = new Model(gc, nameField.getText().trim());
-                        setEventLis(model, scene, canvas);
-                        View.addToScenes(scene);
-//                        if(model == null) {
-//                            model = new Model(view.getSPGc(), nameField.getText().trim());
-//                        }
-//                        setEventLis(model, View.getSinglePlayerScene(), View.getSPGamePane());
-//                        View.addToScenes(View.getSinglePlayerScene());
-                    }
-                });
-                Button startButton = new Button("Start");
-                startButton.setOnAction((ActionEvent e) -> {
+                    setEventLis(model, scene, canvas); // set Event listener for this scene and model
+                    View.addToScenes(scene);// add to stack of scenes and set on STAGE
+                }, "menu"),
+                new MenuItem("Multiplayer player", () -> {
                     StackPane canvas = view.buildNewStackPaneWithGc(gc);
                     Scene scene = view.buildNewSceneWithStackPane(canvas);
-                    model = new Model(gc, nameField.getText().trim());
-                    setEventLis(model, scene, canvas);
-                    View.addToScenes(scene);
-                });
-                HBox hbox = new HBox(4, nameLabel, nameField, startButton);
-                hbox.setPadding(new Insets(8));
-                hbox.setAlignment(Pos.CENTER);
-                Scene startScene = new Scene(hbox);
-                stage.setScene(startScene);
-            }, "menu"),
+                    nameField.setOnKeyPressed((event) -> {
+                        if (event.getCode() == KeyCode.ENTER) {
+                            model = new Model(gc, nameField.getText().trim());
+                            setEventLis(model, scene, canvas); // set Event listener for this scene and model
+                            View.addToScenes(scene); // add to stack of scenes and set on STAGE
+                        }
+                    });
+                    Button startButton = new Button("Start");
+                    startButton.setOnAction((ActionEvent e) -> {
+                        model = new Model(gc, nameField.getText().trim());
+                        setEventLis(model, scene, canvas); // set Event listener for this scene and model
+                        View.addToScenes(scene);  // add to stack of scenes and set on STAGE
+                    });
+                    HBox hbox = new HBox(4, nameLabel, nameField, startButton);
+                    hbox.setPadding(new Insets(8));
+                    hbox.setAlignment(Pos.CENTER);
+                    Scene startScene = new Scene(hbox);
+                    stage.setScene(startScene);
+                    stage.setOnCloseRequest(e -> { //stop of threads and game
+                        GameServer.stopRunning();
+                        GameClient.stopRunning();
+                        Platform.exit();
+                    });
+                }, "menu"),
 
                 new MenuItem("Level Editor SP", () -> {
-                LevelEditor levelEditor = new LevelEditor(gc, "offline");
-                View.addToScenes(levelEditor.getScene());
+                    LevelEditor levelEditor = new LevelEditor(gc, "offline");
+                    View.addToScenes(levelEditor.getScene());
 //                stage.setScene(levelEditor.getScene());
-            }, "menu"),
+                }, "menu"),
 
                 new MenuItem("Level Editor MP", () -> {
-                LevelEditor levelEditor = new LevelEditor(gc, "online");
-                View.addToScenes(levelEditor.getScene());
-            }, "menu"),
-            new MenuItem("Quit", Platform::exit, "menu"));
+                    LevelEditor levelEditor = new LevelEditor(gc, "online");
+                    View.addToScenes(levelEditor.getScene());
+                }, "menu"),
+                new MenuItem("Quit", ()->{ //stop of threads and game
+                    if(model!=null&& model.gameMode.equals("online")){
+                        GameClient.stopRunning();
+                        if(model.socketServer != null)GameServer.stopRunning();
+                    }
+                    Platform.exit();
+                }, "menu"));
         box.setBackground(new Background(
-            new BackgroundFill(Color.web("black", 1), null, null))
+                new BackgroundFill(Color.web("black", 1), null, null))
         );
         root.getChildren().addAll(
-            box
+                box
         );
         return root;
     }

@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
-public class Bullet {
+public class Bullet  {
     private int DMG;
     private int PosX;
     private int PosY;
@@ -13,10 +13,6 @@ public class Bullet {
     private int ms;
     private int Orientation;
     private Image bulletim = new Image("bullet2.png");
-
-    public int getDMG() {
-        return DMG;
-    }
 
     public Bullet(int DMG, int posX, int posY, int Orientation, GraphicsContext gc, int ms) {
         this.DMG = DMG;
@@ -38,7 +34,6 @@ public class Bullet {
                 PosY = posY + 50 + 1;
                 break;
         }
-
         this.Orientation = Orientation;
         this.gc = gc;
         this.ms = ms;
@@ -65,6 +60,10 @@ public class Bullet {
             }
             draw();
         }
+    }
+
+    public int getDMG() {
+        return DMG;
     }
 
     public int getPosX() {

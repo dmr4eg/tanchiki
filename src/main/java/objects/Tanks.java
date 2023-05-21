@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import structure.Model;
 
-public class Tanks extends Obj {
+public class Tanks extends Obj  {
     private final int DMG;
     private boolean[] isColision = new boolean[] {false, false, false, false};
     private boolean isTankMove = true;

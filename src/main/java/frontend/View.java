@@ -19,13 +19,13 @@ import java.util.HashMap;
 import static javafx.scene.paint.Color.BLACK;
 import static javafx.scene.paint.Color.WHITE;
 
-public class View {
+public class View{
     private static Stage STAGE;
     private GraphicsContext spgc;
-//    private GraphicsContext mpgc;
+    //    private GraphicsContext mpgc;
 //    private GraphicsContext legc;
     private Canvas SpCanvas;
-//    private Canvas MpCanvas;
+    //    private Canvas MpCanvas;
 //    private Canvas LeCanvas;
     //----------------------------------------------
 //    private static Scene MultiPlayerScene;
@@ -70,7 +70,7 @@ public class View {
     private void setSinglePlayerScene(Scene scene){
         SinglePlayerScene = scene;
     }
-//    public Scene getMultiplayerScene(){
+    //    public Scene getMultiplayerScene(){
 //        return MultiPlayerScene;
 //    }
 //    public void setMPGamePane(Canvas canvas){
@@ -102,16 +102,16 @@ public class View {
     }
 
     public void drawSPPane(Model model){
-        model.getGc().setFill(BLACK);
-        model.getGc().fillRect(0, 0, WIDTH - 200, HEIGHT);
-        model.getGc().setFill(WHITE);
-        model.getGc().fillRect(WIDTH-200, 0, 200, HEIGHT );
-        model.getGc().setFill(BLACK);
-        model.getGc().setFont(Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 20));
-        model.getGc().fillText(String.format("Player 1 HP: %d", model.getPlayer1().getHP()), 625,100, 300);
-        if(model.getPlayer2()!=null)model.getGc().fillText(String.format("Player 2 HP: %d", model.getPlayer2().getHP()), 625,150, 300);
-        model.getGc().fillText(String.format("Enemies left: %d", model.getEnemies()), 625,200, 300);
-        model.UpdateModel();
+        spgc.setFill(BLACK);
+        spgc.fillRect(0, 0, WIDTH - 200, HEIGHT);
+        spgc.setFill(WHITE);
+        spgc.fillRect(WIDTH-200, 0, 200, HEIGHT );
+        spgc.setFill(BLACK);
+        spgc.setFont(Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 20));
+        spgc.fillText(String.format("Player 1 HP: %d", model.getPlayer1().getHP()), 625,100, 300);
+        if(model.getPlayer2()!=null)spgc.fillText(String.format("Player 2 HP: %d", model.getPlayer2().getHP()), 625,150, 300);
+        spgc.fillText(String.format("Enemies left: %d", model.getEnemies()), 625,200, 300);
+        //model.UpdateModel();
     }
 
     public void drawEnd(){

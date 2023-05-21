@@ -9,7 +9,7 @@ import structure.Model;
 
 import java.util.ArrayList;
 
-public class LevelContainer {
+public class LevelContainer   {
     public void setSaveObjs(ArrayList<SaveObj> saveObjs) {
         this.saveObjs = saveObjs;
     }

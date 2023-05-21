@@ -61,7 +61,7 @@ public class EventLis {
         LOGGER.addHandler(fhc);
 
         HBox hbox = View.pauseHbox();
-        scene.setOnKeyPressed(event -> {
+        scene.setOnKeyPressed(event -> { //detect events on declare scene and execute methods for changing game parts
             switch (event.getCode()) {
                 case A, LEFT -> {
                     model.getPlayer1().setTankIsMove(true);
@@ -89,10 +89,9 @@ public class EventLis {
                 }
                 case ESCAPE -> {
                     if(model.getGameIsStart()) {
-
-                       //View.setScene("menu");
-                       View.pause(model,hbox, stackPane);
-                       model.setGameIsStart(false);
+                        //View.setScene("menu");
+                        View.pause(model,hbox, stackPane);
+                        model.setGameIsStart(false);
                     } else {
                         View.pause(model,hbox, stackPane);
                         model.setGameIsStart(true);
@@ -104,7 +103,7 @@ public class EventLis {
         });
     }
 
-    private void setEventLisLevelEditor(){
+    private void setEventLisLevelEditor(){//detect mouse events
         scene.setOnMouseDragged(mouseEvent -> {
             int posX =(int)mouseEvent.getX();
             int posY =(int)mouseEvent.getY();
