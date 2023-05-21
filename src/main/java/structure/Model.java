@@ -1,6 +1,5 @@
 package structure;
 
-import frontend.View;
 import javafx.scene.Parent;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
@@ -62,12 +61,6 @@ public class Model extends Thread{
         allObjects.add(player1);
         this.gc = gc;
         this.enemyBrain = new EnemyTanksBrain(base, player1);
-//        player1 = new Tanks(100, 1, 25, "player", gc, 1, 100, 100, this);
-//
-//        allObjects.addAll(bricks.getBricksClasses());
-//        base = bricks.getBase();
-//        enemyTank = new Tanks(100, 0 , 1, "enemyTank", gc, 1, 100, 400, this);
-
 
         FileHandler fhm = null;
         try {
@@ -82,7 +75,6 @@ public class Model extends Thread{
     public Model(GraphicsContext gc, String name) {
         this.gc = gc;
         this.gameMode = "online";
-
 
         levelContainer = new LevelContainer(this, gc, gameMode);
         allObjects = levelContainer.getLevelObjects();
@@ -336,10 +328,9 @@ public class Model extends Thread{
 
     public void UpdateModel(){
         if(player1.getHP() == 0) {
-            View view = new View(gc);
             gameIsStart = false;
-            view.drawEnd();
         }
+
         updateDraw();
         isCollision_tankObj(player1);
         player1.update();

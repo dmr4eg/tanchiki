@@ -30,7 +30,7 @@ public class EnemyTanksBrain { private final int  DMG = 5;
         targets.add(base);
     }
 
-    private void check_collisionObj(Tanks tank, ArrayList<Obj> allObjects){
+    public void check_collisionObj(Tanks tank, ArrayList<Obj> allObjects){
         boolean[] retCollisionArr = new boolean[]{false, false, false, false};
         for (Obj brick : allObjects) {
             if (brick != tank) {
@@ -109,7 +109,7 @@ public class EnemyTanksBrain { private final int  DMG = 5;
         return retCollisionArr;
     }
 
-    private Obj getPrioritytarget(Tanks tank){
+    public Obj getPrioritytarget(Tanks tank){
         ArrayList<Double> distance = new ArrayList<Double>();
         double min = 600;
         Obj retTarget = null;
@@ -147,7 +147,7 @@ public class EnemyTanksBrain { private final int  DMG = 5;
         fire_in_player_or_move_to_base(tank);
     }
 
-    private void fire_in_player_or_move_to_base(Tanks tank) {
+    public void fire_in_player_or_move_to_base(Tanks tank) {
         Obj target = getPrioritytarget(tank);
         if (!tank.getType().equals("player")) {
             boolean[] retCollisionArr = new boolean[]{false, false, false, false};

@@ -13,12 +13,12 @@ public class ModelTest {
 
     @BeforeEach
     public void setUp() {
-        model = new Model(null);
+        model = new Model(model.getGc());
     }
 
     @Test
     public void testAddBullet() {
-        Bullet bullet = new Bullet(0, 0, 1, 1, null, 0);
+        Bullet bullet = new Bullet(0, 0, 1, 1, model.getGc(), 0);
         model.addBullet(bullet);
 
         ArrayList<Bullet> bullets = model.getBullets();

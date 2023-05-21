@@ -1,67 +1,151 @@
 package frontend;
 
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import structure.Controller;
 import structure.Model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import static javafx.scene.paint.Color.BLACK;
 import static javafx.scene.paint.Color.WHITE;
 
 public class View {
-    private Stage stage;
-    private GraphicsContext gc;
-    private Canvas canvas;
-    private StackPane gamepane;
-    private Controller controller;
-
+    private static Stage STAGE;
+    private GraphicsContext spgc;
+    private GraphicsContext mpgc;
+    private GraphicsContext legc;
+    private Canvas SpCanvas;
+    private Canvas MpCanvas;
+    private Canvas LeCanvas;
+    //----------------------------------------------
+    private static Scene MultiPlayerScene;
+    private static StackPane MPGameGamePane;
+    //----------------------------------------------
+    private static Scene SinglePlayerScene;
+    private static StackPane SPGamePane;
     private int WIDTH, HEIGHT;
+    //----------------------------------------------
+    private Controller controller;
+    private static HashMap<String, Scene> Game_scenes = new HashMap<>();
+    private static ArrayList<Scene> sceneStack = new ArrayList<>();
+    //----------------------------------------------
+    public static void setStage(Stage stage){
+        STAGE = stage;
+    }
+    public void setSPGamePane(Canvas canvas){
+        SPGamePane = new StackPane(canvas);
+    }
+    public static StackPane getSPGamePane() {
+        return SPGamePane;
+    }
+    public static void addToScenes(Scene scene){
+        sceneStack.add(scene);
+        STAGE.setScene(scene);
+    }
+    public static void setScene(String name){
+        STAGE.setScene(Game_scenes.get(name));
+    }
+
+    public static void putOnGame_scenes(String key, Scene scene){
+        Game_scenes.put(key, scene);
+    }
+
+    public static void previousScene(){
+        if(!sceneStack.isEmpty()){
+            sceneStack.remove(sceneStack.size()-1);
+            Scene prevScene = sceneStack.get(sceneStack.size()-1);
+            STAGE.setScene(prevScene);
+        }
+    }
+    private void setSinglePlayerScene(Scene scene){
+        SinglePlayerScene = scene;
+    }
+    public Scene getMultiplayerScene(){
+        return MultiPlayerScene;
+    }
+    public void setMPGamePane(Canvas canvas){
+        MPGameGamePane = new StackPane(canvas);
+    }
+    public StackPane getMPGamePane(){
+        return MPGameGamePane;
+    }
+    public static Scene getSinglePlayerScene(){
+        return SinglePlayerScene;
+    }
+
 
     public View(Stage stage, int WIDTH,int  HEIGHT) {
-        this.stage = stage;
-        this.canvas = new Canvas(WIDTH, HEIGHT);
-        this.gc = canvas.getGraphicsContext2D();
-        this.gamepane = new StackPane(canvas);
+        setStage(stage);
+        this.SpCanvas = new Canvas(WIDTH, HEIGHT);
+        setSPGamePane(SpCanvas);
+        this.MpCanvas = new Canvas(WIDTH, HEIGHT);
+        setMPGamePane(MpCanvas);
+        this.spgc = SpCanvas.getGraphicsContext2D();
+        this.mpgc = MpCanvas.getGraphicsContext2D();
+        MultiPlayerScene = new Scene(MPGameGamePane);
+        SinglePlayerScene = new Scene(SPGamePane);
+        Game_scenes.put("SP", SinglePlayerScene);
+        Game_scenes.put("MP", MultiPlayerScene);
         this.WIDTH = WIDTH;
         this.HEIGHT = HEIGHT;
     }
 
-    public View(GraphicsContext gc){
-    }
-
-    public void createGameView(){
-        Scene scene = new Scene(gamepane);
-        stage.setScene(scene);
-    }
-
-    public void drawPane(Model model){
-        gc.setFill(BLACK);
-        gc.fillRect(0, 0, WIDTH - 200, HEIGHT);
-        gc.setFill(WHITE);
-        gc.fillRect(WIDTH-200, 0, 200, HEIGHT );
-        gc.setFill(BLACK);
+    public void drawSPPane(Model model){
+        spgc.setFill(BLACK);
+        spgc.fillRect(0, 0, WIDTH - 200, HEIGHT);
+        spgc.setFill(WHITE);
+        spgc.fillRect(WIDTH-200, 0, 200, HEIGHT );
+        spgc.setFill(BLACK);
+        spgc.setFont(Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 20));
+        spgc.fillText(String.format("Player 1 HP: %d", model.getPlayer1().getHP()), 625,100, 300);
+        if(model.getPlayer2()!=null)spgc.fillText(String.format("Player 2 HP: %d", model.getPlayer2().getHP()), 625,150, 300);
+        spgc.fillText(String.format("Enemies left: %d", model.getEnemies()), 625,200, 300);
         model.UpdateModel();
-        gc.setFont(Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 20));
-        gc.fillText(String.format("Player 1 HP: %d", model.getPlayer1().getHP()), 625,100, 300);
-        if(model.getPlayer2()!=null)gc.fillText(String.format("Player 2 HP: %d", model.getPlayer2().getHP()), 625,150, 300);
-        gc.fillText(String.format("Enemies left: %d", model.getEnemies()), 625,200, 300);
     }
 
     public void drawEnd(){
-        gc.setFill(BLACK);
-        gc.fillRect(0, 0, WIDTH, HEIGHT);
-        gc.setFont(Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 20));
-        gc.fillText("GGWP Loshara", 300,200, 300);
+        spgc.setFill(BLACK);
+        spgc.fillRect(0, 0 , WIDTH, HEIGHT);
+        spgc.setFill(WHITE);
+        spgc.setFont(Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 50));
+        spgc.fillText("GGWP Loshara", 250,300, 300);
     }
 
-    public GraphicsContext getGc() {
-        return gc;
+
+    public static void pause(Model model, HBox hbox, StackPane gamepane){
+        if (model.getGameIsStart())gamepane.getChildren().add(hbox);
+        else gamepane.getChildren().remove(hbox);
     }
-    public StackPane getGamepane() {
-        return gamepane;
+
+    public static HBox pauseHbox(){
+
+        VBox vbox = new VBox(20,
+                new MenuItem("Save",()->{}, "levelEditor" ),
+                new MenuItem("Menu", View::previousScene, "levelEditor")
+        );
+        vbox.setPrefSize(250, 250);
+        vbox.setAlignment(Pos.CENTER);
+        HBox hbox2 = new HBox(vbox);
+        hbox2.setBackground(new Background(new BackgroundFill(BLACK, null, null)));
+        hbox2.setPrefSize(800, 600);
+        hbox2.setTranslateX(0);
+        hbox2.setTranslateY(0);
+        hbox2.setAlignment(Pos.CENTER);
+        return hbox2;
     }
+
+    public GraphicsContext getSPGc() {
+        return spgc;
+    }
+
+
+
 }

@@ -39,14 +39,15 @@ public class Controller extends Application {
 
     public void start(Stage stage) {
         view = new View(stage, WIDTH, HEIGHT);
-        this.gc = view.getGc();
-        Scene scene = new Scene(view.getGamepane());
-
-        stage.setScene(new Scene(createContent(stage, scene)));
+        this.gc = view.getSPGc();
+        Scene menuScene = new Scene(createContent(stage));
+        View.addToScenes(menuScene);
+        View.putOnGame_scenes("menu",menuScene );
+        stage.setScene(menuScene);
         stage.show();
         stage.setTitle("Tanchiki");
         stage.setResizable(false);
-        Timeline tl = new Timeline(new KeyFrame(Duration.millis(15), e -> run(gc, scene)));
+        Timeline tl = new Timeline(new KeyFrame(Duration.millis(15), e -> run(gc)));
         tl.setCycleCount(Timeline.INDEFINITE);
 
         FileHandler fhc = null;
@@ -68,42 +69,60 @@ public class Controller extends Application {
         launch(args);
     }
 
-    public void run(GraphicsContext gc, Scene scene) {
+    public void run(GraphicsContext gc) {
         if (model != null && model.getGameIsStart()) {
             if (model.isOnlineStart()){
                 if (model.getGameIsStart() == true) {
-                    view.drawPane(model);
+                    view.drawSPPane(model);
+                }else{
+
                 }
             }
         }
+//        if(model != null && !model.getGameIsStart())view.drawEnd();
     }
 
-    public void modelStart(Scene scene, Stage stage, StackPane gamePane){
-        setEventLis(model, scene, gamePane);
+    public void modelStart(String mode) {
+        if(mode.equals("offline")) {
+            setEventLis(model, view.getSinglePlayerScene(), view.getSPGamePane());
+        }else {
+            setEventLis(model, view.getMultiplayerScene(), view.getMPGamePane());
+        }
+        System.out.println("hui");
         model.startGame();
-        stage.setScene(scene);
+        View.addToScenes(view.getSinglePlayerScene());
+//        View.addToScenes(view.getSinglePlayerScene());
+//        View.addToScenes(scene);
+//        stage.setScene(scene);
     }
 
-    private Parent createContent(Stage stage, Scene scene) {
+    private Parent createContent(Stage stage) {
         Pane root = new Pane();
         root.setPrefSize(800, 600);
         VBox box = new VBox(10,
             new MenuItem("Single player", () -> {
-                model = new Model(gc);
-                modelStart(scene, stage, view.getGamepane());
-            }, "menu"),
+                if (model==null){
+                    model = new Model(view.getSPGc());
+                    setEventLis(model, View.getSinglePlayerScene(), View.getSPGamePane());
+                }
+                //View.addToScenes(View.getSinglePlayerScene());
+                View.setScene("SP");
 
+                //modelStart("offline");
+            }, "menu"),
             new MenuItem("Multiplayer player", () -> {
                 nameField.setOnKeyPressed((event) -> {
                     if (event.getCode() == KeyCode.ENTER) {
                         model = new Model(gc, nameField.getText().trim());
-                        modelStart(scene, stage, view.getGamepane());
+                        //modelStart(scene, stage, view.getGamepane());
+                        modelStart("online");
                     }
                 });
                 Button startButton = new Button("Start");
                 startButton.setOnAction((ActionEvent e) -> {
                     model = new Model(gc, nameField.getText().trim());
-                    modelStart(scene, stage, view.getGamepane());
+                    //modelStart(scene, stage, view.getGamepane());
+                    modelStart("online");
                 });
                 HBox hbox = new HBox(4, nameLabel, nameField, startButton);
                 hbox.setPadding(new Insets(8));
@@ -111,13 +130,16 @@ public class Controller extends Application {
                 Scene startScene = new Scene(hbox);
                 stage.setScene(startScene);
             }, "menu"),
-            new MenuItem("Level Editor SP", () -> {
+
+                new MenuItem("Level Editor SP", () -> {
                 LevelEditor levelEditor = new LevelEditor(gc, "offline");
-                stage.setScene(levelEditor.getScene());
+                View.addToScenes(levelEditor.getScene());
+//                stage.setScene(levelEditor.getScene());
             }, "menu"),
-            new MenuItem("Level Editor MP", () -> {
+
+                new MenuItem("Level Editor MP", () -> {
                 LevelEditor levelEditor = new LevelEditor(gc, "online");
-                stage.setScene(levelEditor.getScene());
+                View.addToScenes(levelEditor.getScene());
             }, "menu"),
             new MenuItem("Quit", Platform::exit, "menu"));
         box.setBackground(new Background(

@@ -1,7 +1,10 @@
 package structure;
 
 import frontend.MenuItem;
+import frontend.View;
+import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import serialization.LevelEditor;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -47,6 +50,7 @@ public class EventLis {
     }
 
     private void setEventLisModel() {
+
         FileHandler fhc = null;
         try {
             fhc = new FileHandler("controllerLogs.txt");
@@ -55,7 +59,8 @@ public class EventLis {
         }
         fhc.setFormatter(new SimpleFormatter());
         LOGGER.addHandler(fhc);
-        HBox hbox = new HBox(new MenuItem("Save",()->{}, "levelEditor" ));
+
+        HBox hbox = View.pauseHbox();
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case A, LEFT -> {
@@ -63,47 +68,34 @@ public class EventLis {
                     model.setPlayer1Orientation(1);
                     LOGGER.log(Level.INFO, "Player1 move left");
                 }
-//                    if ((!(model.getPlayer1().getPosX() <= 0))&& !model.getPlayer1().getIsColision()[0]){
-//                        model.getPlayer1().moveLeft();
-//                    }
-//                    else model.setPlayer1Orientation(1);
                 case D, RIGHT -> {
                     model.getPlayer1().setTankIsMove(true);
                     model.setPlayer1Orientation(2);
                     LOGGER.log(Level.INFO, "Player1 move right");
                 }
-//                    if ((!(model.getPlayer1().getPosX() >= WIDTH-TILE)) && !model.getPlayer1().getIsColision()[1]){
-//                        model.getPlayer1().moveRight();
-//                    }else model.setPlayer1Orientation(2);
                 case W, UP -> {
                     model.getPlayer1().setTankIsMove(true);
                     model.setPlayer1Orientation(3);
                     LOGGER.log(Level.INFO, "Player1 move up");
                 }
-//                    if (!((model.getPlayer1().getPosY() <= 0)) && !model.getPlayer1().getIsColision()[2]) {
-//                        model.getPlayer1().moveUp();
-//                    }else model.setPlayer1Orientation(3);
                 case S, DOWN -> {
                     model.getPlayer1().setTankIsMove(true);
                     model.setPlayer1Orientation(4);
                     LOGGER.log(Level.INFO, "Player1 move down");
                 }
-//                    if ((!(model.getPlayer1().getPosY() >= HEIGHT- TILE)) && !model.getPlayer1().getIsColision()[3]){
-//                        model.getPlayer1().moveDown();
-//                    }else model.setPlayer1Orientation(4);
                 case E -> {
                     model.getPlayer1().fire();
                     LOGGER.log(Level.INFO, "Player1 fire");
                 }
                 case ESCAPE -> {
-                    System.out.println("forGame");
                     if(model.getGameIsStart()) {
+                        View.setScene("menu");
+                       //View.pause(model,hbox, View.getSPGamePane());
                         model.setGameIsStart(false);
-                        stackPane.getChildren().add(hbox);
                     } else {
-                        stackPane.getChildren().remove(hbox);
+                        //View.pause(model,hbox, View.getSPGamePane());
                         model.setGameIsStart(true);
-                        System.out.println(model.getGameIsStart());
+
                     }
                 }
                 default -> model.getPlayer1().setTankIsMove(false);

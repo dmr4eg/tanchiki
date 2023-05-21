@@ -13,6 +13,12 @@ public class Brick extends Obj{
         return isBreakable;
     }
 
+    public Brick(int PosX, int  PosY, int HP, GraphicsContext gc, String type, boolean isBase){
+        super(0, HP, PosX, PosY, type,  gc);
+        this.isBase = isBase;
+        img = new Image("base_block.png");
+    }
+
     public Brick(int PosX, int  PosY, int HP, GraphicsContext gc, String type){
         super(0, HP, PosX, PosY, type,  gc);
         if(type.equals("brick"))img = new Image("brickdef.png");
@@ -20,11 +26,10 @@ public class Brick extends Obj{
         else img = new Image("base_block.png");
     }
 
-    public Brick(int PosX, int  PosY, int HP, GraphicsContext gc, String type, boolean isBase){
-        super(0, HP, PosX, PosY, type,  gc);
-        this.isBase = isBase;
-        img = new Image("base_block.png");
+    public Brick(int PosX, int PosY, String base) {
+        super(0, 0, PosX, PosY, base, null);
     }
+
     @Override
     public void draw(){
         super.gc.drawImage(img, getPosX(), getPosY());

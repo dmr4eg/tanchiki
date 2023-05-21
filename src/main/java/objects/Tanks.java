@@ -43,6 +43,12 @@ public class Tanks extends Obj {
         this.model = model;
         getTankType(type);
     }
+
+    public Tanks(int hp, int ms, String type, int posX, int posY) {
+        super(hp, ms, posX, posY, type, null);
+        this.DMG = 0;
+    }
+
     public int getDMG() {
         return DMG;
     }
