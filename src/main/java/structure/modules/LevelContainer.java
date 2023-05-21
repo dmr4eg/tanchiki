@@ -10,14 +10,14 @@ import structure.Model;
 import java.util.ArrayList;
 
 public class LevelContainer {
-    public static void setSaveObjs(ArrayList<SaveObj> saveObjs) {
-        LevelContainer.saveObjs = saveObjs;
+    public void setSaveObjs(ArrayList<SaveObj> saveObjs) {
+        this.saveObjs = saveObjs;
     }
 
-    private static ArrayList<LevelContainer.SaveObj> saveObjs = new ArrayList<>();
-    private static ArrayList<LevelContainer.loadObj> loadObjs = new ArrayList<>();
-    private static ArrayList<Obj> levelOvjects = new ArrayList<Obj>();
-    private static ArrayList<Tanks> levelTanks = new ArrayList<Tanks>();
+    private ArrayList<LevelContainer.SaveObj> saveObjs = new ArrayList<>();
+    private ArrayList<LevelContainer.loadObj> loadObjs = new ArrayList<>();
+    private ArrayList<Obj> levelOvjects = new ArrayList<Obj>();
+    private ArrayList<Tanks> levelTanks = new ArrayList<Tanks>();
     public ArrayList<Tanks> getLevelTanks() {
         return levelTanks;
     }
@@ -61,11 +61,11 @@ public class LevelContainer {
         }
     }
     //Level Objects methods
-    public static void addToLevelObjects(Obj object) {
+    public void addToLevelObjects(Obj object) {
         levelOvjects.add(object);
     }
 
-    public static ArrayList<Obj> getLevelOvjects() {
+    public ArrayList<Obj> getLevelOvjects() {
         return levelOvjects;
     }
 //

@@ -52,7 +52,7 @@ public class Controller extends Application {
 
         FileHandler fhc = null;
         try {
-            fhc = new FileHandler("controllerLogs.txt");
+            fhc = new FileHandler("controllerLogs.txt", true);
         } catch (IOException e) {
             throw new RuntimeException("Cannot open log file", e);
         }
@@ -86,9 +86,8 @@ public class Controller extends Application {
         if(mode.equals("offline")) {
             setEventLis(model, view.getSinglePlayerScene(), view.getSPGamePane());
         }else {
-            setEventLis(model, view.getMultiplayerScene(), view.getMPGamePane());
+//            setEventLis(model, view.getMultiplayerScene(), view.getMPGamePane());
         }
-        System.out.println("hui");
         model.startGame();
         View.addToScenes(view.getSinglePlayerScene());
 //        View.addToScenes(view.getSinglePlayerScene());
@@ -101,28 +100,38 @@ public class Controller extends Application {
         root.setPrefSize(800, 600);
         VBox box = new VBox(10,
             new MenuItem("Single player", () -> {
-                if (model==null){
-                    model = new Model(view.getSPGc());
-                    setEventLis(model, View.getSinglePlayerScene(), View.getSPGamePane());
-                }
-                //View.addToScenes(View.getSinglePlayerScene());
-                View.setScene("SP");
-
-                //modelStart("offline");
+//                if (model == null) {
+                    StackPane canvas = view.buildNewStackPaneWithGc(gc);
+                    Scene scene = view.buildNewSceneWithStackPane(canvas);
+                    model = new Model(gc);
+                    setEventLis(model, scene, canvas);
+                    View.addToScenes(scene);
+//                }else {
+//                    View.addToScenes(View.getSinglePlayerScene());
+//                }
             }, "menu"),
             new MenuItem("Multiplayer player", () -> {
                 nameField.setOnKeyPressed((event) -> {
                     if (event.getCode() == KeyCode.ENTER) {
+                        StackPane canvas = view.buildNewStackPaneWithGc(gc);
+                        Scene scene = view.buildNewSceneWithStackPane(canvas);
                         model = new Model(gc, nameField.getText().trim());
-                        //modelStart(scene, stage, view.getGamepane());
-                        modelStart("online");
+                        setEventLis(model, scene, canvas);
+                        View.addToScenes(scene);
+//                        if(model == null) {
+//                            model = new Model(view.getSPGc(), nameField.getText().trim());
+//                        }
+//                        setEventLis(model, View.getSinglePlayerScene(), View.getSPGamePane());
+//                        View.addToScenes(View.getSinglePlayerScene());
                     }
                 });
                 Button startButton = new Button("Start");
                 startButton.setOnAction((ActionEvent e) -> {
+                    StackPane canvas = view.buildNewStackPaneWithGc(gc);
+                    Scene scene = view.buildNewSceneWithStackPane(canvas);
                     model = new Model(gc, nameField.getText().trim());
-                    //modelStart(scene, stage, view.getGamepane());
-                    modelStart("online");
+                    setEventLis(model, scene, canvas);
+                    View.addToScenes(scene);
                 });
                 HBox hbox = new HBox(4, nameLabel, nameField, startButton);
                 hbox.setPadding(new Insets(8));

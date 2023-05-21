@@ -1,6 +1,7 @@
 package frontend;
 
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -10,6 +11,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import structure.Controller;
 import structure.Model;
+import structure.modules.LevelContainer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,14 +22,14 @@ import static javafx.scene.paint.Color.WHITE;
 public class View {
     private static Stage STAGE;
     private GraphicsContext spgc;
-    private GraphicsContext mpgc;
-    private GraphicsContext legc;
+//    private GraphicsContext mpgc;
+//    private GraphicsContext legc;
     private Canvas SpCanvas;
-    private Canvas MpCanvas;
-    private Canvas LeCanvas;
+//    private Canvas MpCanvas;
+//    private Canvas LeCanvas;
     //----------------------------------------------
-    private static Scene MultiPlayerScene;
-    private static StackPane MPGameGamePane;
+//    private static Scene MultiPlayerScene;
+//    private static StackPane MPGameGamePane;
     //----------------------------------------------
     private static Scene SinglePlayerScene;
     private static StackPane SPGamePane;
@@ -68,46 +70,47 @@ public class View {
     private void setSinglePlayerScene(Scene scene){
         SinglePlayerScene = scene;
     }
-    public Scene getMultiplayerScene(){
-        return MultiPlayerScene;
-    }
-    public void setMPGamePane(Canvas canvas){
-        MPGameGamePane = new StackPane(canvas);
-    }
-    public StackPane getMPGamePane(){
-        return MPGameGamePane;
-    }
+//    public Scene getMultiplayerScene(){
+//        return MultiPlayerScene;
+//    }
+//    public void setMPGamePane(Canvas canvas){
+//        MPGameGamePane = new StackPane(canvas);
+//    }
+//    public StackPane getMPGamePane(){
+//        return MPGameGamePane;
+//    }
     public static Scene getSinglePlayerScene(){
         return SinglePlayerScene;
     }
+
 
 
     public View(Stage stage, int WIDTH,int  HEIGHT) {
         setStage(stage);
         this.SpCanvas = new Canvas(WIDTH, HEIGHT);
         setSPGamePane(SpCanvas);
-        this.MpCanvas = new Canvas(WIDTH, HEIGHT);
-        setMPGamePane(MpCanvas);
+//        this.MpCanvas = new Canvas(WIDTH, HEIGHT);
+//        setMPGamePane(MpCanvas);
         this.spgc = SpCanvas.getGraphicsContext2D();
-        this.mpgc = MpCanvas.getGraphicsContext2D();
-        MultiPlayerScene = new Scene(MPGameGamePane);
+//        this.mpgc = MpCanvas.getGraphicsContext2D();
+//        MultiPlayerScene = new Scene(MPGameGamePane);
         SinglePlayerScene = new Scene(SPGamePane);
         Game_scenes.put("SP", SinglePlayerScene);
-        Game_scenes.put("MP", MultiPlayerScene);
+//        Game_scenes.put("MP", MultiPlayerScene);
         this.WIDTH = WIDTH;
         this.HEIGHT = HEIGHT;
     }
 
     public void drawSPPane(Model model){
-        spgc.setFill(BLACK);
-        spgc.fillRect(0, 0, WIDTH - 200, HEIGHT);
-        spgc.setFill(WHITE);
-        spgc.fillRect(WIDTH-200, 0, 200, HEIGHT );
-        spgc.setFill(BLACK);
-        spgc.setFont(Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 20));
-        spgc.fillText(String.format("Player 1 HP: %d", model.getPlayer1().getHP()), 625,100, 300);
-        if(model.getPlayer2()!=null)spgc.fillText(String.format("Player 2 HP: %d", model.getPlayer2().getHP()), 625,150, 300);
-        spgc.fillText(String.format("Enemies left: %d", model.getEnemies()), 625,200, 300);
+        model.getGc().setFill(BLACK);
+        model.getGc().fillRect(0, 0, WIDTH - 200, HEIGHT);
+        model.getGc().setFill(WHITE);
+        model.getGc().fillRect(WIDTH-200, 0, 200, HEIGHT );
+        model.getGc().setFill(BLACK);
+        model.getGc().setFont(Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 20));
+        model.getGc().fillText(String.format("Player 1 HP: %d", model.getPlayer1().getHP()), 625,100, 300);
+        if(model.getPlayer2()!=null)model.getGc().fillText(String.format("Player 2 HP: %d", model.getPlayer2().getHP()), 625,150, 300);
+        model.getGc().fillText(String.format("Enemies left: %d", model.getEnemies()), 625,200, 300);
         model.UpdateModel();
     }
 
@@ -146,6 +149,20 @@ public class View {
         return spgc;
     }
 
+    public StackPane buildNewStackPaneWithGc(GraphicsContext gc){
+        //canvas = new GridPane();
+        StackPane canvas = new StackPane();
+        canvas.setStyle("-fx-background-color: black;");
+//        this.canvas.setPrefSize(800, 600);
+        canvas.getChildren().add(gc.getCanvas());
+        SPGamePane = canvas;
+        return canvas;
+    }
 
+    public Scene buildNewSceneWithStackPane(StackPane stackPane){
+        Scene scene = new Scene(stackPane);
+        SinglePlayerScene = scene;
+        return SinglePlayerScene;
+    }
 
 }

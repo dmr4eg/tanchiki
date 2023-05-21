@@ -1,6 +1,7 @@
 package structure;
 
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import net.GameClient;
@@ -50,7 +51,7 @@ public class Model extends Thread{
     private LevelContainer levelContainer;
     private static final Logger LOGGER = Logger.getLogger(Model.class.getName());
     private int enemyCount = 0;
-    public Model( GraphicsContext gc) {
+    public Model(GraphicsContext gc) {
         this.gameMode = "offline";
         levelContainer = new LevelContainer(this, gc, gameMode);
         allObjects = levelContainer.getLevelObjects();
@@ -64,7 +65,7 @@ public class Model extends Thread{
 
         FileHandler fhm = null;
         try {
-            fhm = new FileHandler("modelLogs.txt");
+            fhm = new FileHandler("modelLogs.txt", true);
         } catch (IOException e) {
             throw new RuntimeException("Cannot open log file", e);
         }
@@ -87,7 +88,7 @@ public class Model extends Thread{
         startBackend(name);
         FileHandler fhm = null;
         try {
-            fhm = new FileHandler("modelLogs.txt");
+            fhm = new FileHandler("modelLogs.txt", true);
         } catch (IOException e) {
             throw new RuntimeException("Cannot open log file", e);
         }
@@ -340,7 +341,7 @@ public class Model extends Thread{
             updateObj();
         }
     }
-//я ща подойду 5 мин
+
     public int getEnemies(){
         ArrayList<Tanks> a = levelContainer.getLevelTanks();
         return a.size();

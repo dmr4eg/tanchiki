@@ -56,6 +56,7 @@ public class LevelEditor {
         setButtonsField();
         scene = new Scene(canvas);
         eventLis = new EventLis(this, scene);
+        redrawAll();
     }
 
     private void setButtonsField(){
@@ -116,6 +117,7 @@ public class LevelEditor {
                 }, "levelEditor"),
                 new MenuItem("Back", () -> {
                     //View.setScene("menu");
+                    levelContainer.getLevelObjects().clear();
                     View.previousScene();
                 }, "levelEditor")
         );
@@ -251,6 +253,18 @@ public class LevelEditor {
         imageView.setX(posX);
         imageView.setY(posY);
         gc.drawImage(image, posX, posY);
+    }
+
+    private void redrawAll(){
+        for(Obj object: levelContainer.getLevelObjects()){
+            switch (object.getType()){
+                case "brick" -> drawimageOnPane(imageBrick , object.getPosX(), object.getPosY());
+                case "tank" ->drawimageOnPane(imageEnemy , object.getPosX(), object.getPosY());
+                case "base" ->drawimageOnPane(imageBase , object.getPosX(), object.getPosY());
+                case "armoredbrick" ->drawimageOnPane(imageArmoredBrick , object.getPosX(), object.getPosY());
+                case "player" ->drawimageOnPane(imagePlayer , object.getPosX(), object.getPosY());
+            }
+        }
     }
 
 

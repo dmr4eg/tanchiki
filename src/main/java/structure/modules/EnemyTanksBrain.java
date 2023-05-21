@@ -47,7 +47,7 @@ public class EnemyTanksBrain { private final int  DMG = 5;
                         ((tank.getPosX() + 50 <= brick.getPosX()+10) && (tank.getPosX() + 50 >= brick.getPosX()))) {
                     retCollisionArr[1] = true;
                     if(!brick.getType().equals("tank")) {
-                        if ((!brick.getType().equals("armoredbrick"))  && tank.getOrientation() == 1) tank.fire();
+                        if ((!brick.getType().equals("armoredbrick"))  && tank.getOrientation() == 2) tank.fire();
                     }
                 }
                 //forward
@@ -55,7 +55,7 @@ public class EnemyTanksBrain { private final int  DMG = 5;
                         ((tank.getPosY() <= brick.getPosY() + 50) && (tank.getPosY() >= brick.getPosY() + 40))) {
                     retCollisionArr[2] = true;
                     if(!brick.getType().equals("tank")) {
-                        if ((!brick.getType().equals("armoredbrick") ) && tank.getOrientation() == 1) tank.fire();
+                        if ((!brick.getType().equals("armoredbrick") ) && tank.getOrientation() == 3) tank.fire();
                     }
                 }
                 //backward
@@ -63,7 +63,7 @@ public class EnemyTanksBrain { private final int  DMG = 5;
                         ((tank.getPosY() + 50 <= brick.getPosY()+10) && (tank.getPosY() + 50 >= brick.getPosY() ))) {
                     retCollisionArr[3] = true;
                     if(!brick.getType().equals("tank")) {
-                        if ((!brick.getType().equals("armoredbrick"))  && tank.getOrientation() == 1) tank.fire();
+                        if ((!brick.getType().equals("armoredbrick"))  && tank.getOrientation() == 4) tank.fire();
                     }
                 }
             }
@@ -74,39 +74,6 @@ public class EnemyTanksBrain { private final int  DMG = 5;
     public void computing_to_baseObj(Tanks tank, ArrayList<Obj> objects){
         check_collisionObj(tank,objects);
         fire_in_player_or_move_to_base(tank);
-    }
-
-    private boolean[] check_collision(Tanks tank, ArrayList<Brick> bricks){
-        boolean[] retCollisionArr = new boolean[]{false, false, false, false};
-        for (Brick object : bricks) {
-            object.draw();
-            //left
-            if ((((tank.getPosY() + 1 >= object.getPosY() + 1) && (tank.getPosY() + 1 <= object.getPosY() + 49)) || ((tank.getPosY() + 49 >= object.getPosY() + 1) && (tank.getPosY() + 49 <= object.getPosY() + 49))) &&
-                    ((tank.getPosX() <= object.getPosX() + 50) && (tank.getPosX() >= object.getPosX() + 48))){
-                retCollisionArr[0] = true;
-                if(object.isBreakable() && tank.getOrientation()==1)tank.fire();
-            }
-            //right
-            if ((((tank.getPosY() + 1 >= object.getPosY() + 1) && (tank.getPosY() + 1 <= object.getPosY() + 49)) || ((tank.getPosY() + 49 >= object.getPosY() + 1) && (tank.getPosY() + 49 <= object.getPosY() + 49))) &&
-                    ((tank.getPosX() + 50 <= object.getPosX()) && (tank.getPosX() + 50 >= object.getPosX()))){
-                retCollisionArr[1] = true;
-                if(object.isBreakable() && tank.getOrientation()==2)tank.fire();
-            }
-            //forward
-            if ((((tank.getPosX() + 1 >= object.getPosX() + 1) && (tank.getPosX() + 1 <= object.getPosX() + 49)) || ((tank.getPosX() + 49 >= object.getPosX() + 1) && (tank.getPosX() + 49 <= object.getPosX() + 49))) &&
-                    ((tank.getPosY() <= object.getPosY() + 49) && (tank.getPosY() >= object.getPosY() + 49))){
-                retCollisionArr[2] = true;
-                if(object.isBreakable() && tank.getOrientation()==3)tank.fire();
-            }
-            //backward
-            if ((((tank.getPosX() + 1 >= object.getPosX() + 1) && (tank.getPosX() + 1 <= object.getPosX() + 49)) || ((tank.getPosX() + 49 >= object.getPosX() + 1) && (tank.getPosX() + 49 <= object.getPosX() + 49))) &&
-                    ((tank.getPosY() + 49 <= object.getPosY()) && (tank.getPosY() + 49 >= object.getPosY() - 1))){
-                retCollisionArr[3] = true;
-                if(object.isBreakable() && tank.getOrientation()==4)tank.fire();
-            }
-        }
-        tank.setIsColision(retCollisionArr);
-        return retCollisionArr;
     }
 
     public Obj getPrioritytarget(Tanks tank){
@@ -127,24 +94,6 @@ public class EnemyTanksBrain { private final int  DMG = 5;
     }
     public void move(Tanks tank){
         tank.update();
-//        switch (tank.getOrientation()){
-//            case 1:
-//                tank.moveLeft();
-//                break;
-//            case 2:
-//                tank.moveRight();
-//                break;
-//            case 3:
-//                tank.moveUp();
-//                break;
-//            case 4:
-//                tank.moveDown();
-//                break;
-//        }
-    }
-    public void computing_to_base(Tanks tank, ArrayList<Brick> bricks){
-        check_collision(tank,bricks);
-        fire_in_player_or_move_to_base(tank);
     }
 
     public void fire_in_player_or_move_to_base(Tanks tank) {
@@ -155,12 +104,10 @@ public class EnemyTanksBrain { private final int  DMG = 5;
                 if (target.getPosY() < tank.getPosY()) {
                     tank.setOrientation(3);
                     tank.fire();
-
                 }
                 if (target.getPosY() > tank.getPosY()) {
                     tank.setOrientation(4);
                     tank.fire();
-
                 }
             } else if (tank.getPosY()  == target.getPosY() && tank.getPosY() + 50 == target.getPosY() + 50) {
 
@@ -172,7 +119,6 @@ public class EnemyTanksBrain { private final int  DMG = 5;
                 if (target.getPosX() < tank.getPosX()) {
                     tank.setOrientation(1);
                     tank.fire();
-
                 }
             } else if (tank.getPosX() == base.getPosX() && tank.getPosX() + 50 == base.getPosX() + 50) {
                 if (base.getPosY() < tank.getPosY()) {
@@ -193,12 +139,51 @@ public class EnemyTanksBrain { private final int  DMG = 5;
                     tank.setOrientation(1);
                     tank.fire();
                 }
+
             } else {
-                if (target.getPosX() > tank.getPosX()) tank.setOrientation(1);
+//                int distY = Math.abs(tank.getPosY() - target.getPosY());
+//                int distX = Math.abs(tank.getPosX() - target.getPosX());
+//                if (distY < 250 && distX < 250) {
+//                    if (target.getPosX() > tank.getPosX()) tank.setOrientation(1);
+//                    if (target.getPosX() < tank.getPosX()) tank.setOrientation(2);
+//                    if (target.getPosY() < tank.getPosY()) tank.setOrientation(3);
+//                    if (target.getPosY() > tank.getPosY()) tank.setOrientation(4);
+//                } else {
+//                   setRandomOrientation(tank);
+//                }
+               if (target.getPosX() > tank.getPosX()) tank.setOrientation(1);
                 if (target.getPosX() < tank.getPosX()) tank.setOrientation(2);
                 if (target.getPosY() < tank.getPosY()) tank.setOrientation(3);
                 if (target.getPosY() > tank.getPosY()) tank.setOrientation(4);
             }
         }
     }
+
+    public void setRandomOrientation(Tanks tank){
+        int random = (int) (Math.random() * 4);
+        if (random == 0) tank.setOrientation(1);
+        if (random == 1) tank.setOrientation(2);
+        if (random == 2) tank.setOrientation(3);
+        if (random == 3) tank.setOrientation(4);
+    }
+//    public void randomMoves(Tanks tank){
+//        Obj target = getPrioritytarget(tank);
+//        if (!tank.getType().equals("player")) {
+//            int distY = Math.abs(tank.getPosY() - target.getPosY());
+//            int distX = Math.abs(tank.getPosX() - target.getPosX());
+//            if (distY < 100 && distX < 100) {
+//                if (target.getPosX() > tank.getPosX()) tank.setOrientation(1);
+//                if (target.getPosX() < tank.getPosX()) tank.setOrientation(2);
+//                if (target.getPosY() < tank.getPosY()) tank.setOrientation(3);
+//                if (target.getPosY() > tank.getPosY()) tank.setOrientation(4);
+//            } else {
+//                int random = (int) (Math.random() * 4);
+//                if (random == 0) tank.setOrientation(1);
+//                if (random == 1) tank.setOrientation(2);
+//                if (random == 2) tank.setOrientation(3);
+//                if (random == 3) tank.setOrientation(4);
+//            }
+//        }
+//    }
+
 }

@@ -89,11 +89,12 @@ public class EventLis {
                 }
                 case ESCAPE -> {
                     if(model.getGameIsStart()) {
-                        View.setScene("menu");
-                       //View.pause(model,hbox, View.getSPGamePane());
-                        model.setGameIsStart(false);
+
+                       //View.setScene("menu");
+                       View.pause(model,hbox, stackPane);
+                       model.setGameIsStart(false);
                     } else {
-                        //View.pause(model,hbox, View.getSPGamePane());
+                        View.pause(model,hbox, stackPane);
                         model.setGameIsStart(true);
 
                     }
