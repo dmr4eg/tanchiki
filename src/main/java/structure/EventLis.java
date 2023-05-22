@@ -60,7 +60,7 @@ public class EventLis {
         fhc.setFormatter(new SimpleFormatter());
         LOGGER.addHandler(fhc);
 
-        HBox hbox = View.pauseHbox();
+        HBox hbox = View.pauseHbox(model);
         scene.setOnKeyPressed(event -> { //detect events on declare scene and execute methods for changing game parts
             switch (event.getCode()) {
                 case A, LEFT -> {
@@ -89,7 +89,6 @@ public class EventLis {
                 }
                 case ESCAPE -> {
                     if(model.getGameIsStart()) {
-                        //View.setScene("menu");
                         View.pause(model,hbox, stackPane);
                         model.setGameIsStart(false);
                     } else {

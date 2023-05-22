@@ -27,12 +27,19 @@ public class Model extends Thread{
     private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
     private final ArrayList<Tanks> tanks;
     private ArrayList<Obj> allObjects = new ArrayList<Obj>();
+
+    public ArrayList<Obj> getAllObjects() {
+        return allObjects;
+    }
+
     private final ArrayList<Brick> bricks;
     private GraphicsContext gc;
     private Tanks player1;
     private Tanks player2;
     private Pane gamePane = new Pane();
     private boolean gameIsStart = true;
+    private boolean gameEnd = false;
+    private boolean gameWin = false;
     public void setPlayer2(Tanks player2) {
         this.player2 = player2;
     }
@@ -49,8 +56,13 @@ public class Model extends Thread{
     GameServer socketServer;
     GameClient socketClient;
     private LevelContainer levelContainer;
+    public LevelContainer getLevelContainer() {
+        return levelContainer;
+    }
     private static final Logger LOGGER = Logger.getLogger(Model.class.getName());
+
     private int enemyCount = 0;
+
     public Model(GraphicsContext gc) {
         //construct game storage for handling objects
         this.gameMode = "offline";
@@ -137,9 +149,6 @@ public class Model extends Thread{
     }
     //checking if is there collision with brick and bullet
     public void isCollision_tankObj(Tanks checking_obj) {
-//        if (checking_obj.hasCollided) {
-//            return;
-//        }
         boolean[] retCollisionArr = new boolean[]{false, false, false, false};
         for (Obj object : allObjects) {
             if (object != checking_obj) {
@@ -190,10 +199,6 @@ public class Model extends Thread{
             int objectY = object.getPosY();
             if((((bulletX>= objectX) && (bulletX <= objectX + 50)) || ((bulletX + 10>= objectX) && (bulletX + 10 <= objectX + 50))) &&
                     (((bulletY >= objectY) && (bulletY <= objectY+50)) || ((bulletY+10 >= objectY)&&(bulletY+10 <= objectY + 50)))){
-                if (object == base){
-//                    isStart = false;
-                    System.out.println(isStart);
-                }
                 return object;
             }
         }
@@ -208,17 +213,12 @@ public class Model extends Thread{
                 bullet.update();
                 if((object = isBulletCollisionObj(bullet))!= null) {
                     if(object.getType().equals("armoredbrick")){
-//                        allObjects.remove(object);
                         continue;
                     }
-//                    if(object.getType().equals("brick")) {
-//                        if(object.getType().equals("player"))continue;
                     boolean isDead = object.isDead(bullet.getDMG());
                     if(isDead){
-                        System.out.println(object.getType() + " " + object.getHP());
                         allObjects.remove(object);
                         tanks.remove(object);
-//                        }
                     }
                     continue;
                 }
@@ -231,7 +231,6 @@ public class Model extends Thread{
     public GraphicsContext getGc() {
         return gc;
     }
-    //опа, гс удаляет))
 
     public void addToTanks(Tanks tank) {
         tanks.add(tank);
@@ -277,10 +276,8 @@ public class Model extends Thread{
         try {
             DatagramSocket socket = new DatagramSocket(1331);
             socket.close();
-            System.out.println("Server is not running");
             return false;
         } catch (IOException ex) {
-            System.out.println("Server already running");
             return true;
         }
     }
@@ -289,15 +286,23 @@ public class Model extends Thread{
         this.enemyBrain = new EnemyTanksBrain(base, player1, player2);
     }
 
+    public boolean isGameEnd() {
+        return gameEnd;
+    }
+
+    public boolean isGameWin() {
+        return gameWin;
+    }
+
     //update
     public void UpdateModel(){
-        if(player1.getHP() == 0) {
-            gameIsStart = false;
+
+        if(player1.getHP() == 0||base.getHP() == 0) {
+            gameEnd = true;
         }
         updateDraw();
         isCollision_tankObj(player1);
         player1.update();
-//        if(socketServer != null)
         enemy_computingObj();
         if (player2 != null) getPlayer2().updateCooldownAndAnimation();
         if (!getBullets().isEmpty()) {
@@ -307,6 +312,9 @@ public class Model extends Thread{
 
     public int getEnemies(){
         ArrayList<Tanks> a = levelContainer.getLevelTanks();
+        if (a.size() == 0){
+            gameWin = true;
+        }
         return a.size();
     }
 

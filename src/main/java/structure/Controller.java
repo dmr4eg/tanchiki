@@ -36,6 +36,7 @@ public class Controller extends Application {
     private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
     private GraphicsContext gc;
     private Model model;
+    private Model modelMp;
     private View view;
     private Label nameLabel = new Label("Enter your name:");
     private TextField nameField = new TextField();
@@ -82,9 +83,14 @@ public class Controller extends Application {
     public void run(GraphicsContext gc) {
         if (model != null && model.getGameIsStart()) {//waiting for start game and executing of model
             if (model.isOnlineStart()){ //if game is Online -> will waiting second Player
-                if (model.getGameIsStart() == true) { // method observed if game is paused
-                    view.drawSPPane(model);
-                    model.UpdateModel();
+                if(model.isGameEnd()|| model.isGameWin()) {
+                    view.drawEnd(model);
+                }
+                else{
+                    if (model.getGameIsStart() == true) { // method observed if game is paused
+                        view.drawSPPane(model);
+                        model.UpdateModel();
+                    }
                 }
             }
         }
@@ -101,7 +107,7 @@ public class Controller extends Application {
                     setEventLis(model, scene, canvas); // set Event listener for this scene and model
                     View.addToScenes(scene);// add to stack of scenes and set on STAGE
                 }, "menu"),
-                new MenuItem("Multiplayer player", () -> {
+                new MenuItem("Multi player", () -> {
                     StackPane canvas = view.buildNewStackPaneWithGc(gc);
                     Scene scene = view.buildNewSceneWithStackPane(canvas);
                     nameField.setOnKeyPressed((event) -> {
@@ -132,7 +138,6 @@ public class Controller extends Application {
                 new MenuItem("Level Editor SP", () -> {
                     LevelEditor levelEditor = new LevelEditor(gc, "offline");
                     View.addToScenes(levelEditor.getScene());
-//                stage.setScene(levelEditor.getScene());
                 }, "menu"),
 
                 new MenuItem("Level Editor MP", () -> {

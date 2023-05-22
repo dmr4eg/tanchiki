@@ -44,14 +44,11 @@ public class LevelEditor {
 
     public LevelEditor(GraphicsContext gc, String filename) {
         levelContainer = new LevelContainer(filename);
-        //root.getChildren().add(gc.getCanvas());
         this.gc = gc;
         gc.fillRect(0, 0, 800,600);
         gc.setFill(BLACK);
-        //canvas = new GridPane();
         canvas = new Group();
         canvas.setStyle("-fx-background-color: black;");
-//        this.canvas.setPrefSize(800, 600);
         canvas.getChildren().add(gc.getCanvas());
         setButtonsField();
         scene = new Scene(canvas);
@@ -68,7 +65,6 @@ public class LevelEditor {
             isProcessingEnemy = false;
             isProcessingPlayer = false;
             removeMode = false;
-            System.out.println("BrickButton");
         }, "levelEditor"),
                 new MenuItem("TANK", () -> {
                     isProcessingBase = false;
@@ -103,11 +99,11 @@ public class LevelEditor {
                     isProcessingPlayer = false;
                     removeMode = false;
                 }, "levelEditor"),
-                new MenuItem("Save", ()->{
+                new MenuItem("SAVE", ()->{
                     levelContainer.setSaveObjs(saveObjs);
                     levelContainer.saveData();
                 }, "levelEditor"),
-                new MenuItem("Remove", () -> {
+                new MenuItem("REMOVE", () -> {
                     removeMode = true;
                     isProcessingEnemy = false;
                     isProcessingBase = false;
@@ -115,7 +111,7 @@ public class LevelEditor {
                     isProcessingBrick = false;
                     isProcessingPlayer = false;
                 }, "levelEditor"),
-                new MenuItem("Back", () -> {
+                new MenuItem("BACK", () -> {
                     //View.setScene("menu");
                     levelContainer.getLevelObjects().clear();
                     View.previousScene();
@@ -141,7 +137,6 @@ public class LevelEditor {
         int posX = coords[0];
         int posY = coords[1];
         if(isProcessingBrick) {
-            //TODO..
             Obj object = new Obj(0, 1, posX, posY, "brick", gc);
             LevelContainer.SaveObj saveObj = new LevelContainer.SaveObj(1, 1, posX, posY);
             if(!isCollision(posX, posY)){
@@ -151,7 +146,6 @@ public class LevelEditor {
             }
         }
         if(isProcessingPlayer) {
-            //TODO..
             Obj object = new Obj(1, 100, posX, posY, "player", gc);
             LevelContainer.SaveObj saveObj = new LevelContainer.SaveObj(100, 4, posX, posY);
             if(!isCollision(posX, posY)){
@@ -162,7 +156,6 @@ public class LevelEditor {
             }
         }
         if(isProcessingBase) {
-            //TODO..
             Obj object = new Obj(1, 1, posX, posY, "base", gc);
             LevelContainer.SaveObj saveObj = new LevelContainer.SaveObj(1, 3, posX, posY);
             if(!isCollision(posX, posY)){
@@ -173,7 +166,6 @@ public class LevelEditor {
             }
         }
         if(isProcessingEnemy) {
-            //TODO..
             Obj object = new Obj(1, 30, posX, posY, "tank", gc);
             LevelContainer.SaveObj saveObj = new LevelContainer.SaveObj(100, 2, posX, posY);
             if(!isCollision(posX, posY)){
@@ -183,7 +175,6 @@ public class LevelEditor {
             }
         }
         if(isProcessingArmoredBrick) {
-            //TODO..
             Obj object = new Obj(1, 30, posX, posY, "armoredbrick", gc);
             LevelContainer.SaveObj saveObj = new LevelContainer.SaveObj(1, 5, posX, posY);
             if(!isCollision(posX, posY)){

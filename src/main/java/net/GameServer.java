@@ -35,6 +35,7 @@ public class GameServer extends Thread{
     }
 
     public void run(){
+
         while(running){
             byte[] data = new byte[1024];
             DatagramPacket packet = new DatagramPacket(data, data.length);
@@ -84,7 +85,6 @@ public class GameServer extends Thread{
                     LOGGER.info("Sending update to player at " + player.ipAddress.getHostAddress() + ":" + player.port);
                     System.out.println();
                     if(port == player.port)continue;
-//                        packet11Update.parseData(message, player);
 
                     else sendData(("11" + message).getBytes(), player.ipAddress, player.port);
                 }

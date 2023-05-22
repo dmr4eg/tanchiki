@@ -7,7 +7,9 @@ import net.packets.Packet11Update;
 
 import java.io.IOException;
 import java.net.*;
+import java.util.logging.FileHandler;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class GameClient extends Thread{
 
@@ -84,8 +86,6 @@ public class GameClient extends Thread{
                     packet11Update.parseData(message,model.getPlayer2());
                 }
                 String returnMess = packet11Update.parseToData(model.getPlayer1());
-//                if(model.getSocketServer()!= null)returnMess += packet11Update.parseOrientation(model);
-//                else packet11Update.parseDataToOrientation(model, message);
                 sendData(("11"+returnMess).getBytes());
                 break;
         }

@@ -8,12 +8,12 @@ import objects.Tanks;
 import structure.Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LevelContainer   {
     public void setSaveObjs(ArrayList<SaveObj> saveObjs) {
         this.saveObjs = saveObjs;
     }
-
     private ArrayList<LevelContainer.SaveObj> saveObjs = new ArrayList<>();
     private ArrayList<LevelContainer.loadObj> loadObjs = new ArrayList<>();
     private ArrayList<Obj> levelOvjects = new ArrayList<Obj>();
@@ -31,10 +31,14 @@ public class LevelContainer   {
     private static final JsonUtil jsonUtil = new JsonUtil();
     private String filename;
 
+
     public LevelContainer(Model model, GraphicsContext gc, String mode) {
         this.model = model;
         this.gc = gc;
-        if (mode.equals("offline"))loadObjs = (ArrayList<LevelContainer.loadObj>) jsonUtil.loadJsonSaveObj("level3.json");
+        if (mode.equals("offline")){
+            loadObjs = (ArrayList<LevelContainer.loadObj>) jsonUtil.loadJsonSaveObj("level3.json");
+            filename = "level3.json";
+        }
         if (mode.equals("online"))loadObjs = (ArrayList<LevelContainer.loadObj>) jsonUtil.loadJsonSaveObj("level4.json");
         generateFromSaveObj();
         parse_From_Obj_To_Brick(levelOvjects);
@@ -50,9 +54,7 @@ public class LevelContainer   {
         if (mode.equals("online"))this.filename = "level4.json";
     }
     private void generateFromSaveObj(){
-        System.out.println("nigger");
         for(loadObj loadObj: loadObjs){
-            System.out.println(loadObj.param[2]);
             if(loadObj.param[2] == 1)levelOvjects.add(new Obj(0, loadObj.hp,loadObj.param[0] ,loadObj.param[1] ,"brick" , gc));
             if(loadObj.param[2] == 2)levelOvjects.add(new Obj(1, loadObj.hp,loadObj.param[0] ,loadObj.param[1] ,"tank" , gc));
             if(loadObj.param[2] == 3)levelOvjects.add(new Obj(0, loadObj.hp,loadObj.param[0] ,loadObj.param[1] ,"base" , gc));
@@ -68,13 +70,6 @@ public class LevelContainer   {
     public ArrayList<Obj> getLevelOvjects() {
         return levelOvjects;
     }
-//
-//    public void loadData() {
-//         levelOvjects = (ArrayList<Obj>) jsonUtil.loadJsonSaveObj(filename);
-//         parse_From_Obj_To_Tank(levelOvjects, 25, 10);
-//         parse_From_Obj_To_Brick(levelOvjects);
-//
-//    }
 
     public void saveData() {
         jsonUtil.saveJsonSaveObj(saveObjs, filename);
@@ -160,5 +155,21 @@ public class LevelContainer   {
         public int getHP() {
             return hp;
         }
+    }
+
+    public void fromObjToSaveObj(ArrayList<Obj> levelOvjects){
+        HashMap<String, Integer> typeToNumType = new HashMap<>();
+        typeToNumType.put("brick", 1);
+        typeToNumType.put("tank", 2);
+        typeToNumType.put("base", 3);
+        typeToNumType.put("player", 4);
+        typeToNumType.put("armoredbrick", 5);
+
+        ArrayList<SaveObj> ToSaveObjs = new ArrayList<>();
+        for(Obj object : levelOvjects){
+            System.out.println(typeToNumType.get(object.getType()));
+            ToSaveObjs.add(new SaveObj(object.getHP(), typeToNumType.get(object.getType()), object.getPosX(), object.getPosY()));
+        }
+        jsonUtil.saveJsonSaveObj(ToSaveObjs, filename);
     }
 }

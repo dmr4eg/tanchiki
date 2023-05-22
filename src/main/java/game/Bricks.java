@@ -14,17 +14,10 @@ public class Bricks {
     private Brick base;
     private ArrayList<BrickData> bricksData;
     private final JsonUtil jsonUtil = new JsonUtil();
-//    private final LevelContainer levelContainer;
 
     public Bricks(String filename, GraphicsContext gc, Model model) {
         this.gc = gc;
-//        bricksData = (ArrayList<BrickData>) jsonUtil.loadJson(filename);
-//        generateBricks();
         base = new Brick(300, 550, 100000, gc, "base", true);
-//        levelContainer = new LevelContainer(model, gc);
-//        bricksClasses = levelContainer.getLevelBricks();
-//        bricksClasses.add(base);
-
     }
 
     public Brick getBase() {

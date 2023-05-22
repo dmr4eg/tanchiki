@@ -33,49 +33,48 @@ public class EnemyTanksBrain { private final int  DMG = 5;
     public void check_collisionObj(Tanks tank, ArrayList<Obj> allObjects){
         boolean[] retCollisionArr = new boolean[]{false, false, false, false};
         for (Obj brick : allObjects) {
-//            int distY = Math.abs(tank.getPosY() - brick.getPosY());
-//            int distX = Math.abs(tank.getPosX() - brick.getPosX());
-//            if (!(distY < 150 && distX < 150))continue;
+            int distY = Math.abs(tank.getPosY() - brick.getPosY());
+            int distX = Math.abs(tank.getPosX() - brick.getPosX());
+            if (!(distY < 150 && distX < 150))continue;
             if (brick != tank) {
                 //left
                 if ((((tank.getPosY() + 1 >= brick.getPosY() + 1) && (tank.getPosY() + 1 <= brick.getPosY() + 49)) || ((tank.getPosY() + 49 >= brick.getPosY() + 1) && (tank.getPosY() + 49 <= brick.getPosY() + 49))) &&
                         ((tank.getPosX() <= brick.getPosX() + 50) && (tank.getPosX() >= brick.getPosX() + 40))
             ||(tank.getPosX() < 0)) {
                     retCollisionArr[0] = true;
-                    if(!brick.getType().equals("tank")) {
-                        if ((tank.getOrientation() == 1)) setRandomOrientation(tank);
-                    }
+                    if (brick.getType().equals("brick")  && tank.getOrientation() == 1)
+                        tank.fire();
                 }
                 //right
                 if ((((tank.getPosY() + 1 >= brick.getPosY() + 1) && (tank.getPosY() + 1 <= brick.getPosY() + 49)) || ((tank.getPosY() + 49 >= brick.getPosY() + 1) && (tank.getPosY() + 49 <= brick.getPosY() + 49))) &&
                         ((tank.getPosX() + 50 <= brick.getPosX()+10) && (tank.getPosX() + 50 >= brick.getPosX())) || (tank.getPosX() > 550)
                 ) {
                     retCollisionArr[1] = true;
-                    if(!brick.getType().equals("tank")) {
-                        if (( tank.getOrientation() == 2)) setRandomOrientation(tank);
-                    }
+                    if (brick.getType().equals("brick")  && tank.getOrientation() == 2)
+                        tank.fire();
                 }
                 //forward
                 if ((((tank.getPosX() + 1 >= brick.getPosX() + 1) && (tank.getPosX() + 1 <= brick.getPosX() + 49)) || ((tank.getPosX() + 49 >= brick.getPosX() + 1) && (tank.getPosX() + 49 <= brick.getPosX() + 49))) &&
                         ((tank.getPosY() <= brick.getPosY() + 50) && (tank.getPosY() >= brick.getPosY() + 40)) || (tank.getPosY() < 0)
                 ) {
                     retCollisionArr[2] = true;
-                    if(!brick.getType().equals("tank")) {
-                        if ((tank.getOrientation() == 3))  setRandomOrientation(tank);
-                    }
+                    if (brick.getType().equals("brick")  && tank.getOrientation() == 3) tank.fire();
                 }
                 //backward
                 if ((((tank.getPosX() + 1 >= brick.getPosX() + 1) && (tank.getPosX() + 1 <= brick.getPosX() + 49)) || ((tank.getPosX() + 49 >= brick.getPosX() + 1) && (tank.getPosX() + 49 <= brick.getPosX() + 49))) &&
                         ((tank.getPosY() + 50 <= brick.getPosY()+10) && (tank.getPosY() + 50 >= brick.getPosY() ))||(tank.getPosY() > 550)) {
                     retCollisionArr[3] = true;
+
                     if(!brick.getType().equals("tank")) {
-                        if ((tank.getOrientation() == 4)) setRandomOrientation(tank);
+                        if (brick.getType().equals("brick")  && tank.getOrientation() == 4) tank.fire();
+
+                    }
                     }
                 }
             }
+            tank.setIsColision(retCollisionArr);
         }
-        tank.setIsColision(retCollisionArr);
-    }
+
 
     public void computing_to_baseObj(Tanks tank, ArrayList<Obj> objects){
         check_collisionObj(tank,objects);
@@ -106,7 +105,6 @@ public class EnemyTanksBrain { private final int  DMG = 5;
     public void fire_in_player_or_move_to_base(Tanks tank) {
         Obj target = getPrioritytarget(tank);
         if (!tank.getType().equals("player")) {
-            boolean[] retCollisionArr = new boolean[]{false, false, false, false};
             if (tank.getPosX() == target.getPosX() && tank.getPosX() + 50 == target.getPosX() + 50){
                 if (target.getPosY() < tank.getPosY()) {
                     tank.setOrientation(3);
@@ -162,10 +160,11 @@ public class EnemyTanksBrain { private final int  DMG = 5;
 
     public void setRandomOrientation(Tanks tank){
         int random = (int) (Math.random() * 4);
-        switch (random){
-            case 0 -> tank.setOrientation(1);
+        int orientation = tank.getOrientation();
+        switch (orientation){
+            case 4 -> tank.setOrientation(3);
             case 1 -> tank.setOrientation(2);
-            case 2 -> tank.setOrientation(3);
+            case 2 -> tank.setOrientation(1);
             case 3 -> tank.setOrientation(4);
         }
     }

@@ -72,12 +72,13 @@ public class View{
         LOGGER.fine("Drawing single-player pane.");
     }
 
-    public void drawEnd(){
+    public void drawEnd(Model model){
         spgc.setFill(BLACK);
         spgc.fillRect(0, 0 , WIDTH, HEIGHT);
         spgc.setFill(WHITE);
         spgc.setFont(Font.loadFont(getClass().getResourceAsStream("/CCOverbyteOffW00-Regular.ttf"), 50));
-        spgc.fillText("GGWP Loshara", 250,300, 300);
+        if (model.isGameEnd())spgc.fillText("You Lose :(", 300,300, 300);
+        else spgc.fillText("You Win :)", 300,300, 300);
         LOGGER.fine("Drawing end screen.");
     }
 
@@ -87,12 +88,16 @@ public class View{
         else gamepane.getChildren().remove(hbox);
     }
 
-    public static HBox pauseHbox(){
+    public static HBox pauseHbox(Model model){
 
-        VBox vbox = new VBox(20,
-                new MenuItem("Save",()->{}, "levelEditor" ),
+        VBox vbox = new VBox(20,(
                 new MenuItem("Menu", View::previousScene, "levelEditor")
-        );
+        ));
+        if(model.gameMode.equals("offline")){
+            vbox.getChildren().add(new MenuItem("Save",()->{
+                model.getLevelContainer().fromObjToSaveObj(model.getAllObjects());
+            }, "levelEditor" ));
+        }
         vbox.setPrefSize(250, 250);
         vbox.setAlignment(Pos.CENTER);
         HBox hbox2 = new HBox(vbox);
@@ -105,10 +110,8 @@ public class View{
     }
 
     public StackPane buildNewStackPaneWithGc(GraphicsContext gc){
-        //canvas = new GridPane();
         StackPane canvas = new StackPane();
         canvas.setStyle("-fx-background-color: black;");
-//        this.canvas.setPrefSize(800, 600);
         canvas.getChildren().add(gc.getCanvas());
         SPGamePane = canvas;
         return canvas;
