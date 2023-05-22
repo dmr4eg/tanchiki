@@ -26,13 +26,14 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class Controller extends Application {
     private final int WIDTH = 800; // set Width
     private final int HEIGHT = 600; // set Height
-    private static final Logger LOGGER = Logger.getLogger(Controller.class.getName()); //initialization Loggers
+    private static final Logger LOGGER = Logger.getLogger(Controller.class.getName());
     private GraphicsContext gc;
     private Model model;
     private View view;
@@ -58,11 +59,12 @@ public class Controller extends Application {
         FileHandler fhc = null;
         try {
             fhc = new FileHandler("controllerLogs.txt", true);
+            fhc.setFormatter(new SimpleFormatter());
+            LOGGER.addHandler(fhc);
         } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Failed to initialize logger", e);
             throw new RuntimeException("Cannot open log file", e);
         }
-        fhc.setFormatter(new SimpleFormatter());
-        LOGGER.addHandler(fhc);
         tl.play();
     }
 
@@ -73,6 +75,7 @@ public class Controller extends Application {
 
 
     public static void main(String[] args) {
+        LOGGER.setLevel(Level.INFO);
         launch(args);
     } // start of application
 

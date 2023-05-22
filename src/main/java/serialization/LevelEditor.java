@@ -209,15 +209,15 @@ public class LevelEditor {
     }
     private boolean isTwoPlayers(){
         int counter = 0;
-        for (Obj object: levelContainer.getLevelObjects()){
-            if(object.getType().equals("player"))counter++;
+        for (LevelContainer.SaveObj object: saveObjs){
+            if(object.getParam()[2] == 4)counter++;
             if(counter == 2)return true;
         }
         return false;
     }
     private boolean isOneBase(){
-        for(Obj object: levelContainer.getLevelObjects()){
-            if(object.getType().equals("base"))return true;
+        for(LevelContainer.SaveObj object: saveObjs){
+            if(object.getParam()[2] == 3)return true;
         }
         return false;
     }

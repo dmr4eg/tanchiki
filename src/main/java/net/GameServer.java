@@ -10,6 +10,7 @@ import structure.Model;
 import java.io.IOException;
 import java.net.*;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class GameServer extends Thread{
     private DatagramSocket socket;
@@ -18,6 +19,8 @@ public class GameServer extends Thread{
     private ArrayList<TanksMp> connectedPlayers = new ArrayList<TanksMp>();
     private Packet11Update packet11Update;
     private static boolean running = true;
+    private static final Logger LOGGER = Logger.getLogger(GameServer.class.getName());
+
 
     public GameServer(Model model , LevelContainer levelContainer){
         this.levelContainer = levelContainer;
@@ -26,6 +29,7 @@ public class GameServer extends Thread{
         try {
             this.socket = new DatagramSocket(1331);
         } catch (SocketException e) {
+            LOGGER.severe("Error creating socket: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -37,6 +41,7 @@ public class GameServer extends Thread{
             try {
                 socket.receive(packet);
             } catch (IOException e) {
+                LOGGER.severe("Error receiving packet: " + e.getMessage());
                 throw new RuntimeException(e);
             }
             parsePacket(packet.getData(), packet.getAddress(), packet.getPort());
@@ -54,6 +59,7 @@ public class GameServer extends Thread{
                 break;
             case LOGIN:
                 Packet00Login packet = new Packet00Login(data);
+                LOGGER.info("[" + address.getHostAddress() + ":" + port + "] " + packet.getUsername() + " has connected");
                 System.out.println("["+ address.getHostAddress() + ":" + port+ "] " + packet.getUsername() + " has connected");
                 if (connectedPlayers.isEmpty()){
                     Tanks p1 = levelContainer.players.get(0);
@@ -75,6 +81,7 @@ public class GameServer extends Thread{
             case UPDATE:
                 message = message.substring(2);
                 for (TanksMp player: connectedPlayers){
+                    LOGGER.info("Sending update to player at " + player.ipAddress.getHostAddress() + ":" + player.port);
                     System.out.println();
                     if(port == player.port)continue;
 //                        packet11Update.parseData(message, player);

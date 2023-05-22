@@ -4,6 +4,7 @@ import objects.Tanks;
 import net.TanksMp;
 import net.GameClient;
 import net.GameServer;
+import structure.Model;
 
 public class Packet11Update extends Packet{
     private String data;
@@ -64,6 +65,27 @@ public class Packet11Update extends Packet{
         player.setPos(Integer.parseInt(messageValues[2]),Integer.parseInt(messageValues[3]));
         player.setHP(Integer.parseInt(messageValues[4]));
     }
+
+
+//    public void parseDataToOrientation(Model model, String data){
+//        String[] messageValues = data.split("\\|");
+//        int count = 5;
+//        for (Tanks tank: model.getTanks()) {
+//            if (!tank.getType().equals("player")) {
+//                tank.setOrientation(Integer.parseInt(messageValues[count]));
+//                count++;
+//            }
+//        }
+//    }
+//
+//    public String parseOrientation(Model model){
+//        String message = "";
+//        for (Tanks tank: model.getTanks()){
+//            if(!tank.getType().equals("player"))
+//                message += "|" + (String.valueOf(tank.getOrientation()));
+//        }
+//        return message;
+//    }
 
     @Override
     public byte[] getData() {

@@ -7,6 +7,7 @@ import net.packets.Packet11Update;
 
 import java.io.IOException;
 import java.net.*;
+import java.util.logging.Logger;
 
 public class GameClient extends Thread{
 
@@ -14,6 +15,7 @@ public class GameClient extends Thread{
     private InetAddress ipAddress;
     private DatagramSocket socket;
     private Model model;
+    private static final Logger LOGGER = Logger.getLogger(GameClient.class.getName());
 
     public GameClient(Model model, String ipAddress){
         this.model = model;
@@ -32,6 +34,7 @@ public class GameClient extends Thread{
             try {
                 socket.receive(packet);
             } catch (IOException e) {
+                LOGGER.severe("Error receiving packet: " + e.getMessage());
                 throw new RuntimeException(e);
             }
             String message = new String(packet.getData());
@@ -46,6 +49,7 @@ public class GameClient extends Thread{
         try {
             socket.send(packet);
         } catch (IOException e) {
+            LOGGER.severe("Error sending packet: " + e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -80,6 +84,8 @@ public class GameClient extends Thread{
                     packet11Update.parseData(message,model.getPlayer2());
                 }
                 String returnMess = packet11Update.parseToData(model.getPlayer1());
+//                if(model.getSocketServer()!= null)returnMess += packet11Update.parseOrientation(model);
+//                else packet11Update.parseDataToOrientation(model, message);
                 sendData(("11"+returnMess).getBytes());
                 break;
         }

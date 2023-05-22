@@ -297,6 +297,7 @@ public class Model extends Thread{
         updateDraw();
         isCollision_tankObj(player1);
         player1.update();
+//        if(socketServer != null)
         enemy_computingObj();
         if (player2 != null) getPlayer2().updateCooldownAndAnimation();
         if (!getBullets().isEmpty()) {
@@ -309,4 +310,11 @@ public class Model extends Thread{
         return a.size();
     }
 
+    public ArrayList<Tanks> getTanks() {
+        return tanks;
+    }
+
+    public GameServer getSocketServer() {
+        return socketServer;
+    }
 }
