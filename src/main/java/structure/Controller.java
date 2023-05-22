@@ -54,7 +54,7 @@ public class Controller extends Application {
         stage.setResizable(false);
 
         //set cycle
-        Timeline tl = new Timeline(new KeyFrame(Duration.millis(15), e -> run(gc)));
+        Timeline tl = new Timeline(new KeyFrame(Duration.millis(20), e -> run(gc)));
         tl.setCycleCount(Timeline.INDEFINITE);
 
         FileHandler fhc = null;

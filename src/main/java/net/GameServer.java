@@ -46,6 +46,11 @@ public class GameServer extends Thread{
                 throw new RuntimeException(e);
             }
             parsePacket(packet.getData(), packet.getAddress(), packet.getPort());
+            try {
+                sleep(10);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
         socket.close();
         interrupt();

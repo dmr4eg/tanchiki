@@ -41,6 +41,11 @@ public class GameClient extends Thread{
             }
             String message = new String(packet.getData());
             parsePacket(packet);
+            try {
+                sleep(10);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
         socket.close();
         interrupt();
