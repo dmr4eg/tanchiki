@@ -14,9 +14,9 @@
 
 # <span dir="">•</span> **Creators**
 
-> **Damir Asylbekov** @assyldam
+> [**Damir Asylbekov**](https://github.com/dmr4eg)
 >
-> **Alisher Nurakhmetov** @nurakali
+> [**Alisher Nurakhmetov**](https://github.com/1Lukrecia1)
 
 #### Our project is written entirely in Java(ver. 19) using MVC. We are using Java FX to draw the GUI. The view is responsible for the GUI along with the controller. The logic will be placed in Model.
 
