@@ -34,7 +34,7 @@
 
 #### Below is information about each class and its methods, attributes:
 
-![java](uploads/1ad73e9e56f40e278874da7b2bbb9c07/java.png)
+![java](recources/java.png)
 
 ---
 
@@ -46,11 +46,11 @@
 
 > #### block - obstacle made of durable materials, that means it is solid.
 >
-> ![solidbrick](uploads/db11638fafd51e9d8d194438389d5c0f/solidbrick.png)
+> ![solidbrick](recources/solidbrick.png)
 >
 > #### removable_brick - obstacle made of bricks, which players can break with their bullets by shooting at them.
 >
-> ![brickdef](uploads/938835c31f0763ab31205b26a091bb17/brickdef.png)
+> ![brickdef](recources/brickdef.png)
 >
 > #### base - object, that players must protect, because if someone breaks it, the game will end.
 >
