@@ -34,7 +34,7 @@
 
 #### Below is information about each class and its methods, attributes:
 
-![java](resources/java.png)
+![java](uploads/java.png)
 
 ---
 
@@ -86,11 +86,11 @@
 >
 > **The game "Tanks" has a simple level editor that allows players to create their own levels. In the construction, players can choose various blocks to create their map, such as walls (breakable or unbreakable), bonuses, or enemy tank spawners.**
 >
-> ![Screenshot_2023-05-22_at_11.59.10_AM](uploads/bb6364869111a95c4fafa4f672aa01a7/Screenshot_2023-05-22_at_11.59.10_AM.png)
+> ![Screenshot_2023-05-22_at_11.59.10_AM](uploads/Screenshot_2023-05-22_at_11.59.10_AM.png)
 
 ## **<span dir="">•</span> _In the actual game, you will see something like this:_**
 
-> ### ![NES_01](uploads/1b64701158faba76dd2894610ab0b0fa/NES_01.gif)
+> ### ![NES_01](uploads/NES_01-2.gif)
 >
 > ### On the right side of a page, you can see amount of enemies on a level and each players remaining life count.
 
