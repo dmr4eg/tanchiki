@@ -34,7 +34,7 @@
 
 #### Below is information about each class and its methods, attributes:
 
-![java](recources/java.png)
+![java](resources/java.png)
 
 ---
 
@@ -46,15 +46,15 @@
 
 > #### block - obstacle made of durable materials, that means it is solid.
 >
-> ![solidbrick](recources/solidbrick.png)
+> ![solidbrick](src/main/resources/solidbrick.png)
 >
 > #### removable_brick - obstacle made of bricks, which players can break with their bullets by shooting at them.
 >
-> ![brickdef](recources/brickdef.png)
+> ![brickdef](src/main/resources/brickdef.png)
 >
 > #### base - object, that players must protect, because if someone breaks it, the game will end.
 >
-> ![base_block](uploads/4fb3983e0d6587b4def8e0e2c0584097/base_block.png)
+> ![base_block](src/main/resources/base_block.png)
 
 ---
 
@@ -62,15 +62,15 @@
 
 > #### enemy - enemy tanks, their mission is to kill players or destroy the base.
 >
-> ![enup](uploads/d95f12185fb668e4206300f22fffa47d/enup.png)
+> ![enup](src/main/resources/enup.png)
 >
 > #### player - this objects represents player's model and behaviour.
 >
-> ![p1up](uploads/5c32d7975aa72a593cd444d7ea545435/p1up.png)
+> ![p1up](src/main/resources/p1up.png)
 >
 > #### bullet - this objects displays a bullet that was shot by an enemy or a player.
 >
-> ![enemy_bullet](uploads/c783aa3d857f1cf863eda5001bcfe63e/enemy_bullet.png)
+> ![enemy_bullet](src/main/resources/bullet.png)
 
 # How to play?!
 
