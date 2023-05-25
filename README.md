@@ -70,7 +70,7 @@
 >
 > #### bullet - this objects displays a bullet that was shot by an enemy or a player.
 >
-> ![enemy_bullet](src/main/resources/bullet.png)
+> ![enemy_bullet](src/main/resources/bullet2.png)
 
 # How to play?!
 
